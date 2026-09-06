@@ -28,6 +28,8 @@ export const en = {
 	},
 	hero: {
 		metaTitle: "Your Color Picker — Color Finder From Any Photo",
+		metaDescription:
+			"Free color picker and color finder from image — instant HEX, RGB, and HSL codes, plus a complementary color finder and random color picker.",
 		eyebrow: "Free color picker · No signup · Nothing ever uploaded",
 		heading: "The color picker that finds any color in a photo",
 		subhead:
@@ -156,6 +158,8 @@ export const en = {
 		pageHeading: "Frequently asked questions",
 		pageIntro:
 			"Everything people ask us about picking colors from an image, reading HEX and RGB codes, and building a color palette — plus a few color questions that come up along the way.",
+		metaDescription:
+			"Answers about picking colors from an image, reading HEX and RGB codes, and building a color palette — plus other common color questions.",
 		sectionHeading: "Color picker and color finder — frequently asked",
 		viewAll: "View all FAQs",
 		items: [
@@ -243,7 +247,8 @@ export const en = {
 	},
 	about: {
 		title: "About Us — Your Color Picker",
-		description: "Your Color Picker is a free, private, browser-based color picker and color finder from image. Learn what it does, how it works, and why nothing is ever uploaded.",
+		description:
+			"Your Color Picker is a free, private, browser-based color picker and color finder from image — see what it does and why nothing is uploaded.",
 		eyebrow: "About",
 		heading: "About Your Color Picker",
 		intro: "A small, focused tool for one job: pulling exact HEX, RGB, and HSL values out of any image, instantly and privately.",
@@ -423,6 +428,9 @@ export const en = {
 		eyebrow: "Tool",
 		heading: "Gradient Maker",
 		intro: "Add colors, choose linear or radial, and copy the finished CSS gradient.",
+		explainerHeading: "Why use a CSS gradient?",
+		explainerBody:
+			"Gradients add depth to a flat background without loading an image — commonly used for hero sections, buttons, and overlays. Linear gradients blend along a straight line at any angle; radial gradients blend outward from a center point. Set your colors here and copy the exact CSS, ready to drop into any stylesheet.",
 		addColor: "+ Add color",
 		linear: "Linear",
 		radial: "Radial",
@@ -492,6 +500,9 @@ export const en = {
 		eyebrow: "Tool",
 		heading: "Contrast Checker",
 		intro: "Enter a text color and a background color to check their WCAG contrast ratio for accessible design.",
+		explainerHeading: "Why contrast ratio matters",
+		explainerBody:
+			"WCAG defines minimum contrast ratios so text stays readable for people with low vision or color blindness: 4.5:1 for normal text and 3:1 for large text at AA, rising to 7:1 and 4.5:1 at the stricter AAA level. Checking your text and background combination against these thresholds is one of the simplest ways to make a design more accessible.",
 		textLabel: "Text",
 		backgroundLabel: "Background",
 		largeSample: "Large text sample (24px)",
@@ -519,6 +530,9 @@ export const en = {
 		eyebrow: "Tool",
 		heading: "Random Color Generator",
 		intro: "Click Generate for a fresh random color, with matching palette suggestions.",
+		explainerHeading: "When a random color helps",
+		explainerBody:
+			"Sometimes the hardest part of choosing a color is picking a starting point. Generating a random HEX, RGB, and HSL code — along with its complementary and analogous matches — gives you something concrete to react to and refine, rather than staring at a blank color picker.",
 		generate: "Generate random color",
 		help: {
 			title: "How to use the Random Color Generator",
@@ -538,6 +552,9 @@ export const en = {
 		eyebrow: "Tool",
 		heading: "Color Mixer",
 		intro: "Pick two colors and a blend ratio to find the color between them.",
+		explainerHeading: "How color mixing works here",
+		explainerBody:
+			"This mixer blends two colors in RGB space at whatever ratio you set, rather than simulating paint or pigment mixing — so a 50/50 blend of red and blue returns a clean purple, matching how colors combine on screen. Useful for finding a midpoint shade between a brand's two main colors, or previewing a hover state between two states.",
 		colorA: "Color A",
 		colorB: "Color B",
 		blendRatio: "Blend ratio",
@@ -559,6 +576,9 @@ export const en = {
 		eyebrow: "Tool",
 		heading: "Shades & Tints Generator",
 		intro: "Pick a base color to generate a full lightness ramp — from near-white tints to near-black shades.",
+		explainerHeading: "Shades vs. tints",
+		explainerBody:
+			"A tint is your base color mixed toward white — lighter and softer, useful for backgrounds and hover states. A shade is the same color mixed toward black — darker and richer, useful for text or borders that need to stay recognizably related to the base. Generating a full ramp of both gives you a consistent set to build a UI color scale around.",
 		tints: "Tints (toward white)",
 		base: "Base",
 		shades: "Shades (toward black)",
@@ -575,13 +595,16 @@ export const en = {
 		},
 	},
 	paletteGeneratorTool: {
-		title: "Palette Generator — Complementary, Analogous & Triadic | Your Color Picker",
+		title: "Palette Generator — Color Schemes | Your Color Picker",
 		description:
 			"Generate a full color palette from any base color — complementary, analogous, triadic, and monochromatic schemes, ready to export as CSS, Tailwind, or JSON.",
 		eyebrow: "Tool",
 		heading: "Palette Generator",
 		intro:
 			"Pick a base color or randomize one, then explore complementary, analogous, triadic, and monochromatic palettes built from it — export any of them when you're ready.",
+		explainerHeading: "Complementary, analogous, and triadic, explained",
+		explainerBody:
+			"These are classic color-wheel relationships: complementary pairs sit opposite each other for high contrast, analogous colors sit next to each other for a calm, cohesive look, and triadic sets space three colors evenly around the wheel for balanced variety. Starting from one base color and generating all three gives you several ready-made directions to choose from.",
 		baseColorLabel: "Base color",
 		randomize: "Randomize",
 		exportHeading: "Export",

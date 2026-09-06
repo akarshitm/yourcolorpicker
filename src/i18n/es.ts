@@ -30,6 +30,8 @@ export const es: Dictionary = {
 	},
 	hero: {
 		metaTitle: "Your Color Picker — Selector de Color de Imagen",
+		metaDescription:
+			"Selector de color y buscador de color desde imagen gratis — códigos HEX, RGB y HSL al instante, más un buscador de color complementario y selector aleatorio.",
 		eyebrow: "Selector de color gratis · Sin registro · Nada se sube nunca",
 		heading: "El selector de color que encuentra cualquier color en una foto",
 		subhead:
@@ -162,6 +164,8 @@ export const es: Dictionary = {
 		pageHeading: "Preguntas frecuentes",
 		pageIntro:
 			"Todo lo que nos preguntan sobre cómo elegir colores de una imagen, leer códigos HEX y RGB, y crear una paleta de colores — además de algunas preguntas sobre color que surgen en el camino.",
+		metaDescription:
+			"Respuestas sobre cómo elegir colores de una imagen, leer códigos HEX y RGB, y crear una paleta de colores — y otras preguntas frecuentes sobre color.",
 		sectionHeading: "Selector y buscador de color — preguntas frecuentes",
 		viewAll: "Ver todas las preguntas",
 		items: [
@@ -249,7 +253,8 @@ export const es: Dictionary = {
 	},
 	about: {
 		title: "Sobre Nosotros — Your Color Picker",
-		description: "Your Color Picker es un selector de color y buscador de color desde imagen gratuito, privado y basado en el navegador. Descubre qué hace, cómo funciona y por qué nunca se sube nada.",
+		description:
+			"Your Color Picker es un selector y buscador de color desde imagen gratuito y privado — descubre qué hace y por qué nunca se sube nada.",
 		eyebrow: "Nosotros",
 		heading: "Sobre Your Color Picker",
 		intro: "Una herramienta pequeña y enfocada en una sola tarea: extraer valores HEX, RGB y HSL exactos de cualquier imagen, al instante y de forma privada.",
@@ -429,6 +434,9 @@ export const es: Dictionary = {
 		eyebrow: "Herramienta",
 		heading: "Generador de Degradados",
 		intro: "Añade colores, elige lineal o radial, y copia el degradado CSS terminado.",
+		explainerHeading: "¿Por qué usar un degradado CSS?",
+		explainerBody:
+			"Los degradados dan profundidad a un fondo plano sin necesidad de cargar una imagen — se usan mucho en secciones hero, botones y overlays. Los degradados lineales mezclan colores en línea recta con cualquier ángulo; los radiales se expanden desde un punto central. Ajusta tus colores aquí y copia el CSS exacto, listo para pegar en cualquier hoja de estilos.",
 		addColor: "+ Añadir color",
 		linear: "Lineal",
 		radial: "Radial",
@@ -498,6 +506,9 @@ export const es: Dictionary = {
 		eyebrow: "Herramienta",
 		heading: "Verificador de Contraste",
 		intro: "Introduce un color de texto y un color de fondo para comprobar su relación de contraste WCAG.",
+		explainerHeading: "Por qué importa el ratio de contraste",
+		explainerBody:
+			"WCAG define ratios mínimos de contraste para que el texto siga siendo legible para personas con baja visión o daltonismo: 4.5:1 para texto normal y 3:1 para texto grande en el nivel AA, subiendo a 7:1 y 4.5:1 en el nivel AAA, más estricto. Comprobar tu combinación de texto y fondo con estos umbrales es una de las formas más simples de hacer un diseño más accesible.",
 		textLabel: "Texto",
 		backgroundLabel: "Fondo",
 		largeSample: "Muestra de texto grande (24px)",
@@ -525,6 +536,9 @@ export const es: Dictionary = {
 		eyebrow: "Herramienta",
 		heading: "Generador de Color Aleatorio",
 		intro: "Haz clic en Generar para obtener un color aleatorio nuevo, con sugerencias de paleta a juego.",
+		explainerHeading: "Cuándo ayuda un color aleatorio",
+		explainerBody:
+			"A veces lo más difícil al elegir un color es encontrar un punto de partida. Generar un código HEX, RGB y HSL al azar — junto con sus combinaciones complementarias y análogas — te da algo concreto para reaccionar y ajustar, en lugar de quedarte mirando un selector de color en blanco.",
 		generate: "Generar color aleatorio",
 		help: {
 			title: "Cómo usar el Generador de Color Aleatorio",
@@ -544,6 +558,9 @@ export const es: Dictionary = {
 		eyebrow: "Herramienta",
 		heading: "Mezclador de Colores",
 		intro: "Elige dos colores y una proporción de mezcla para encontrar el color entre ellos.",
+		explainerHeading: "Cómo funciona esta mezcla de colores",
+		explainerBody:
+			"Este mezclador combina dos colores en el espacio RGB según la proporción que elijas, en lugar de simular pintura o pigmento — así que un 50/50 de rojo y azul da un morado limpio, tal como se combinan los colores en pantalla. Útil para encontrar un tono intermedio entre los dos colores principales de una marca, o para previsualizar un estado hover.",
 		colorA: "Color A",
 		colorB: "Color B",
 		blendRatio: "Proporción de mezcla",
@@ -565,6 +582,9 @@ export const es: Dictionary = {
 		eyebrow: "Herramienta",
 		heading: "Generador de Tonos y Matices",
 		intro: "Elige un color base para generar una escala completa de luminosidad — desde tonos casi blancos hasta matices casi negros.",
+		explainerHeading: "Tintes vs. sombras",
+		explainerBody:
+			"Un tinte es tu color base mezclado hacia el blanco — más claro y suave, útil para fondos y estados hover. Una sombra es el mismo color mezclado hacia el negro — más oscuro e intenso, útil para texto o bordes que deben seguir relacionados con el color base. Generar una rampa completa de ambos te da un conjunto coherente para construir una escala de color.",
 		tints: "Tonos (hacia el blanco)",
 		base: "Base",
 		shades: "Matices (hacia el negro)",
@@ -581,11 +601,14 @@ export const es: Dictionary = {
 		},
 	},
 	paletteGeneratorTool: {
-		title: "Generador de Paletas — Complementaria, Análoga y Triádica | Your Color Picker",
+		title: "Generador de Paletas — Esquemas de Color | Your Color Picker",
 		description:
 			"Genera una paleta de colores completa a partir de cualquier color base — esquemas complementario, análogo, triádico y monocromático, listos para exportar como CSS, Tailwind o JSON.",
 		eyebrow: "Herramienta",
 		heading: "Generador de Paletas",
+		explainerHeading: "Complementario, análogo y triádico, explicados",
+		explainerBody:
+			"Son relaciones clásicas de la rueda de color: los complementarios están uno frente al otro para máximo contraste, los análogos están uno junto al otro para un look calmado y cohesivo, y los triádicos distribuyen tres colores de forma uniforme en la rueda para una variedad equilibrada. Partiendo de un color base y generando los tres, obtienes varias direcciones listas para elegir.",
 		intro:
 			"Elige un color base o genera uno aleatorio, luego explora paletas complementarias, análogas, triádicas y monocromáticas creadas a partir de él — exporta cualquiera cuando estés listo.",
 		baseColorLabel: "Color base",

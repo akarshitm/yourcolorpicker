@@ -13,7 +13,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<PageLayout title={t.faq.pageHeading + " — " + t.brandName} description={t.faq.pageIntro} path="/faq" lang={lang}>
+<PageLayout title={t.faq.pageHeading + " — " + t.brandName} description={t.faq.metaDescription} path="/faq" lang={lang}>
 	<PageHeader eyebrow={t.faq.pageEyebrow} heading={t.faq.pageHeading} intro={t.faq.pageIntro} />
 	<Faq lang={lang} showHeading={false} />
 </PageLayout>

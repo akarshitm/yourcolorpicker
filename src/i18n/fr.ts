@@ -30,6 +30,8 @@ export const fr: Dictionary = {
 	},
 	hero: {
 		metaTitle: "Your Color Picker — Sélecteur de Couleur d'Image",
+		metaDescription:
+			"Sélecteur et détecteur de couleur à partir d'une image, gratuit — codes HEX, RGB et HSL instantanés, plus un détecteur de couleur complémentaire et un sélecteur aléatoire.",
 		eyebrow: "Sélecteur de couleur gratuit · Sans inscription · Rien n'est jamais téléversé",
 		heading: "Le sélecteur de couleur qui trouve n'importe quelle couleur dans une photo",
 		subhead:
@@ -162,6 +164,8 @@ export const fr: Dictionary = {
 		pageHeading: "Questions fréquentes",
 		pageIntro:
 			"Tout ce qu'on nous demande sur le choix de couleurs à partir d'une image, la lecture des codes HEX et RGB, et la création d'une palette de couleurs — plus quelques questions sur les couleurs qui reviennent souvent.",
+		metaDescription:
+			"Réponses sur le choix de couleurs à partir d'une image, la lecture des codes HEX et RGB, et la création d'une palette — et d'autres questions fréquentes.",
 		sectionHeading: "Sélecteur et détecteur de couleur — questions fréquentes",
 		viewAll: "Voir toutes les questions",
 		items: [
@@ -249,7 +253,8 @@ export const fr: Dictionary = {
 	},
 	about: {
 		title: "À Propos — Your Color Picker",
-		description: "Your Color Picker est un sélecteur de couleur et détecteur de couleur à partir d'image gratuit, privé et basé sur le navigateur. Découvrez ce qu'il fait, comment il fonctionne, et pourquoi rien n'est jamais téléversé.",
+		description:
+			"Your Color Picker est un sélecteur et détecteur de couleur à partir d'image gratuit et privé — découvrez ce qu'il fait et pourquoi rien n'est jamais téléversé.",
 		eyebrow: "À propos",
 		heading: "À propos de Your Color Picker",
 		intro: "Un outil petit et ciblé pour une seule tâche : extraire des valeurs HEX, RGB et HSL exactes de n'importe quelle image, instantanément et en privé.",
@@ -429,6 +434,9 @@ export const fr: Dictionary = {
 		eyebrow: "Outil",
 		heading: "Générateur de Dégradés",
 		intro: "Ajoutez des couleurs, choisissez linéaire ou radial, et copiez le dégradé CSS final.",
+		explainerHeading: "Pourquoi utiliser un dégradé CSS ?",
+		explainerBody:
+			"Les dégradés donnent de la profondeur à un fond plat sans avoir à charger une image — très utilisés pour les sections hero, les boutons et les overlays. Les dégradés linéaires mélangent les couleurs en ligne droite selon un angle donné ; les dégradés radiaux s'étendent depuis un point central. Réglez vos couleurs ici et copiez le CSS exact, prêt à coller dans n'importe quelle feuille de style.",
 		addColor: "+ Ajouter une couleur",
 		linear: "Linéaire",
 		radial: "Radial",
@@ -501,6 +509,9 @@ export const fr: Dictionary = {
 		eyebrow: "Outil",
 		heading: "Vérificateur de Contraste",
 		intro: "Saisissez une couleur de texte et une couleur de fond pour vérifier leur rapport de contraste WCAG.",
+		explainerHeading: "Pourquoi le ratio de contraste compte",
+		explainerBody:
+			"Les normes WCAG définissent des ratios de contraste minimums pour que le texte reste lisible pour les personnes malvoyantes ou daltoniennes : 4,5:1 pour le texte normal et 3:1 pour le grand texte au niveau AA, jusqu'à 7:1 et 4,5:1 au niveau AAA, plus strict. Vérifier votre combinaison de texte et de fond par rapport à ces seuils est l'un des moyens les plus simples de rendre un design plus accessible.",
 		textLabel: "Texte",
 		backgroundLabel: "Fond",
 		largeSample: "Exemple de grand texte (24px)",
@@ -528,6 +539,9 @@ export const fr: Dictionary = {
 		eyebrow: "Outil",
 		heading: "Générateur de Couleur Aléatoire",
 		intro: "Cliquez sur Générer pour obtenir une nouvelle couleur aléatoire, avec des suggestions de palette assorties.",
+		explainerHeading: "Quand une couleur aléatoire est utile",
+		explainerBody:
+			"Parfois, le plus difficile en choisissant une couleur est de trouver un point de départ. Générer un code HEX, RGB et HSL aléatoire — avec ses correspondances complémentaires et analogues — vous donne quelque chose de concret à ajuster, plutôt que de fixer un sélecteur de couleur vide.",
 		generate: "Générer une couleur aléatoire",
 		help: {
 			title: "Comment utiliser le Générateur de Couleur Aléatoire",
@@ -547,6 +561,9 @@ export const fr: Dictionary = {
 		eyebrow: "Outil",
 		heading: "Mélangeur de Couleurs",
 		intro: "Choisissez deux couleurs et une proportion de mélange pour trouver la couleur entre elles.",
+		explainerHeading: "Comment fonctionne ce mélange de couleurs",
+		explainerBody:
+			"Ce mélangeur combine deux couleurs dans l'espace RGB selon le ratio que vous choisissez, plutôt que de simuler un mélange de peinture ou de pigment — un mélange 50/50 de rouge et de bleu donne donc un violet net, comme les couleurs se combinent réellement à l'écran. Pratique pour trouver une teinte intermédiaire entre les deux couleurs principales d'une marque, ou pour prévisualiser un état hover.",
 		colorA: "Couleur A",
 		colorB: "Couleur B",
 		blendRatio: "Proportion du mélange",
@@ -568,6 +585,9 @@ export const fr: Dictionary = {
 		eyebrow: "Outil",
 		heading: "Générateur de Tons et Nuances",
 		intro: "Choisissez une couleur de base pour générer une gamme complète de luminosité — des tons presque blancs aux nuances presque noires.",
+		explainerHeading: "Teintes claires vs. teintes foncées",
+		explainerBody:
+			"Une teinte claire est votre couleur de base mélangée vers le blanc — plus douce, utile pour les fonds et les états hover. Une teinte foncée est la même couleur mélangée vers le noir — plus riche, utile pour du texte ou des bordures qui doivent rester liés à la couleur de base. Générer une rampe complète des deux vous donne un ensemble cohérent pour construire une échelle de couleurs.",
 		tints: "Tons (vers le blanc)",
 		base: "Base",
 		shades: "Nuances (vers le noir)",
@@ -584,11 +604,14 @@ export const fr: Dictionary = {
 		},
 	},
 	paletteGeneratorTool: {
-		title: "Générateur de Palettes — Complémentaire, Analogue et Triadique | Your Color Picker",
+		title: "Générateur de Palettes — Schémas de Couleurs | Your Color Picker",
 		description:
 			"Générez une palette de couleurs complète à partir de n'importe quelle couleur de base — schémas complémentaire, analogue, triadique et monochromatique, prêts à exporter en CSS, Tailwind ou JSON.",
 		eyebrow: "Outil",
 		heading: "Générateur de Palettes",
+		explainerHeading: "Complémentaire, analogue et triadique, expliqués",
+		explainerBody:
+			"Ce sont des relations classiques de la roue chromatique : les couleurs complémentaires se font face pour un contraste maximal, les analogues sont voisines pour un rendu calme et cohérent, et les triadiques répartissent trois couleurs à égale distance sur la roue pour une variété équilibrée. En partant d'une couleur de base et en générant les trois, vous obtenez plusieurs pistes prêtes à l'emploi.",
 		intro:
 			"Choisissez une couleur de base ou générez-en une aléatoirement, puis explorez les palettes complémentaires, analogues, triadiques et monochromatiques créées à partir d'elle — exportez celle de votre choix.",
 		baseColorLabel: "Couleur de base",

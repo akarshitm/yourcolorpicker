@@ -30,6 +30,8 @@ export const de: Dictionary = {
 	},
 	hero: {
 		metaTitle: "Your Color Picker — Farben aus Fotos finden",
+		metaDescription:
+			"Kostenloser Color Picker und Farbfinder aus Bildern — sofort HEX-, RGB- und HSL-Codes, plus Komplementärfarben-Finder und Zufallsfarben-Generator.",
 		eyebrow: "Kostenloser Color Picker · Keine Anmeldung · Nichts wird je hochgeladen",
 		heading: "Der Color Picker, der jede Farbe in einem Foto findet",
 		subhead:
@@ -162,6 +164,8 @@ export const de: Dictionary = {
 		pageHeading: "Häufig gestellte Fragen",
 		pageIntro:
 			"Alles, was man uns über das Auswählen von Farben aus einem Bild, das Ablesen von HEX- und RGB-Codes und das Erstellen einer Farbpalette fragt — plus ein paar Farbfragen, die dabei so aufkommen.",
+		metaDescription:
+			"Antworten zum Auswählen von Farben aus einem Bild, Ablesen von HEX- und RGB-Codes und Erstellen einer Farbpalette — plus weitere häufige Fragen.",
 		sectionHeading: "Color Picker und Farbfinder — häufig gefragt",
 		viewAll: "Alle FAQs ansehen",
 		items: [
@@ -249,7 +253,8 @@ export const de: Dictionary = {
 	},
 	about: {
 		title: "Über uns — Your Color Picker",
-		description: "Your Color Picker ist ein kostenloser, privater, browserbasierter Color Picker und Farbfinder aus einem Bild. Erfahre, was er tut, wie er funktioniert und warum nie etwas hochgeladen wird.",
+		description:
+			"Your Color Picker ist ein kostenloser, privater Color Picker und Farbfinder aus einem Bild — erfahre, was er tut und warum nie etwas hochgeladen wird.",
 		eyebrow: "Über uns",
 		heading: "Über Your Color Picker",
 		intro: "Ein kleines, fokussiertes Werkzeug für eine Aufgabe: exakte HEX-, RGB- und HSL-Werte aus jedem Bild zu extrahieren, sofort und privat.",
@@ -429,6 +434,9 @@ export const de: Dictionary = {
 		eyebrow: "Werkzeug",
 		heading: "Verlaufsgenerator",
 		intro: "Füge Farben hinzu, wähle linear oder radial, und kopiere den fertigen CSS-Verlauf.",
+		explainerHeading: "Warum einen CSS-Verlauf nutzen?",
+		explainerBody:
+			"Verläufe verleihen einem flachen Hintergrund Tiefe, ohne dass ein Bild geladen werden muss — häufig genutzt für Hero-Bereiche, Buttons und Overlays. Lineare Verläufe mischen Farben entlang einer geraden Linie in beliebigem Winkel; radiale Verläufe breiten sich von einem Mittelpunkt aus. Stelle hier deine Farben ein und kopiere das exakte CSS, fertig zum Einfügen in jedes Stylesheet.",
 		addColor: "+ Farbe hinzufügen",
 		linear: "Linear",
 		radial: "Radial",
@@ -498,6 +506,9 @@ export const de: Dictionary = {
 		eyebrow: "Werkzeug",
 		heading: "Kontrastprüfer",
 		intro: "Gib eine Textfarbe und eine Hintergrundfarbe ein, um ihr WCAG-Kontrastverhältnis zu prüfen.",
+		explainerHeading: "Warum das Kontrastverhältnis wichtig ist",
+		explainerBody:
+			"WCAG definiert Mindest-Kontrastverhältnisse, damit Text für Menschen mit Sehschwäche oder Farbenblindheit lesbar bleibt: 4,5:1 für normalen Text und 3:1 für großen Text auf AA-Niveau, bis zu 7:1 und 4,5:1 auf dem strengeren AAA-Niveau. Die eigene Text-Hintergrund-Kombination gegen diese Schwellenwerte zu prüfen, ist eine der einfachsten Arten, ein Design barrierefreier zu machen.",
 		textLabel: "Text",
 		backgroundLabel: "Hintergrund",
 		largeSample: "Beispiel für großen Text (24px)",
@@ -525,6 +536,9 @@ export const de: Dictionary = {
 		eyebrow: "Werkzeug",
 		heading: "Zufallsfarben-Generator",
 		intro: "Klicke auf Generieren für eine neue Zufallsfarbe, mit passenden Palettenvorschlägen.",
+		explainerHeading: "Wann eine Zufallsfarbe hilft",
+		explainerBody:
+			"Manchmal ist der schwierigste Teil bei der Farbwahl, überhaupt einen Ausgangspunkt zu finden. Ein zufälliger HEX-, RGB- und HSL-Code — samt passender Komplementär- und Analogfarben — gibt dir etwas Konkretes zum Reagieren und Anpassen, statt vor einem leeren Color Picker zu sitzen.",
 		generate: "Zufallsfarbe generieren",
 		help: {
 			title: "So verwendest du den Zufallsfarben-Generator",
@@ -544,6 +558,9 @@ export const de: Dictionary = {
 		eyebrow: "Werkzeug",
 		heading: "Farbmischer",
 		intro: "Wähle zwei Farben und ein Mischverhältnis, um die Farbe dazwischen zu finden.",
+		explainerHeading: "So funktioniert diese Farbmischung",
+		explainerBody:
+			"Dieser Mixer mischt zwei Farben im RGB-Raum im gewählten Verhältnis, anstatt Farbe oder Pigmente zu simulieren — eine 50/50-Mischung aus Rot und Blau ergibt daher ein klares Violett, genau wie Farben am Bildschirm tatsächlich kombiniert werden. Praktisch, um einen Zwischenton zwischen den beiden Hauptfarben einer Marke zu finden oder einen Hover-Zustand zu testen.",
 		colorA: "Farbe A",
 		colorB: "Farbe B",
 		blendRatio: "Mischverhältnis",
@@ -565,6 +582,9 @@ export const de: Dictionary = {
 		eyebrow: "Werkzeug",
 		heading: "Schattierungs- und Tönungsgenerator",
 		intro: "Wähle eine Grundfarbe, um eine vollständige Helligkeitsskala zu erzeugen — von fast weißen Tönungen bis zu fast schwarzen Schattierungen.",
+		explainerHeading: "Tints vs. Shades",
+		explainerBody:
+			"Ein Tint ist deine Grundfarbe, gemischt in Richtung Weiß — heller und weicher, nützlich für Hintergründe und Hover-Zustände. Ein Shade ist dieselbe Farbe, gemischt in Richtung Schwarz — dunkler und kräftiger, nützlich für Text oder Ränder, die erkennbar mit der Grundfarbe verwandt bleiben sollen. Eine vollständige Rampe aus beiden zu erzeugen, ergibt ein stimmiges Set für eine Farbskala.",
 		tints: "Tönungen (Richtung Weiß)",
 		base: "Basis",
 		shades: "Schattierungen (Richtung Schwarz)",
@@ -581,11 +601,14 @@ export const de: Dictionary = {
 		},
 	},
 	paletteGeneratorTool: {
-		title: "Paletten-Generator — Komplementär, Analog & Triadisch | Your Color Picker",
+		title: "Paletten-Generator — Farbschemata | Your Color Picker",
 		description:
 			"Erzeuge eine vollständige Farbpalette aus jeder Grundfarbe — komplementäre, analoge, triadische und monochromatische Schemata, bereit zum Export als CSS, Tailwind oder JSON.",
 		eyebrow: "Werkzeug",
 		heading: "Paletten-Generator",
+		explainerHeading: "Komplementär, analog und triadisch erklärt",
+		explainerBody:
+			"Das sind klassische Beziehungen im Farbkreis: Komplementärfarben liegen sich für maximalen Kontrast gegenüber, Analogfarben liegen nebeneinander für einen ruhigen, stimmigen Look, und triadische Sets verteilen drei Farben gleichmäßig über den Farbkreis für ausgewogene Vielfalt. Von einer Grundfarbe ausgehend und alle drei zu erzeugen, liefert dir mehrere fertige Richtungen zur Auswahl.",
 		intro:
 			"Wähle eine Grundfarbe oder erzeuge eine zufällige, und erkunde dann komplementäre, analoge, triadische und monochromatische Paletten daraus — exportiere, wenn du bereit bist.",
 		baseColorLabel: "Grundfarbe",

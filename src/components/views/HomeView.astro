@@ -17,7 +17,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<PageLayout title={t.hero.metaTitle} description={t.hero.subhead} path="/" lang={lang}>
+<PageLayout title={t.hero.metaTitle} description={t.hero.metaDescription} path="/" lang={lang}>
 	<Hero lang={lang} />
 	<ColorTool lang={lang} />
 	<TrustBand lang={lang} />
