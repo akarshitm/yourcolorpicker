@@ -7,6 +7,7 @@ export const de: Dictionary = {
 		tools: "Werkzeuge",
 		whyUs: "Warum wir",
 		faq: "FAQ",
+		blog: "Blog",
 		about: "Über uns",
 		contact: "Kontakt",
 		howToUse: "Anleitung",

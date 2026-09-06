@@ -7,6 +7,7 @@ export const ja: Dictionary = {
 		tools: "ツール一覧",
 		whyUs: "特長",
 		faq: "よくある質問",
+		blog: "ブログ",
 		about: "概要",
 		contact: "お問い合わせ",
 		howToUse: "使い方",

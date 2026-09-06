@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { getCollection } from "astro:content";
 import { locales, defaultLocale, localeTags } from "../i18n/config";
 import { localizePath } from "../i18n/utils";
 
@@ -31,8 +32,16 @@ function absoluteUrl(locale: (typeof locales)[number], path: string) {
 	return `${siteUrl}${localizePath(locale, path)}`;
 }
 
-export const GET: APIRoute = () => {
-	const entries = pages
+// Blog posts are English-only, so they get a single <url> entry each with no
+// hreflang alternates, unlike the fully-localized pages above.
+function englishOnlyUrl(path: string, changefreq: string, priority: string, lastmodOverride?: string) {
+	return ["\t<url>", `\t\t<loc>${siteUrl}${path}</loc>`, `\t\t<lastmod>${lastmodOverride ?? lastmod}</lastmod>`, `\t\t<changefreq>${changefreq}</changefreq>`, `\t\t<priority>${priority}</priority>`, "\t</url>"].join(
+		"\n",
+	);
+}
+
+export const GET: APIRoute = async () => {
+	const localizedEntries = pages
 		.flatMap((page) =>
 			locales.map((locale) => {
 				const alternates = locales
@@ -53,7 +62,13 @@ export const GET: APIRoute = () => {
 		)
 		.join("\n");
 
-	const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entries}\n</urlset>\n`;
+	const posts = await getCollection("blog");
+	const blogEntries = [
+		englishOnlyUrl("/blog", "weekly", "0.7"),
+		...posts.map((post) => englishOnlyUrl(`/blog/${post.id}`, "yearly", "0.5", post.data.publishDate.toISOString().slice(0, 10))),
+	].join("\n");
+
+	const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${localizedEntries}\n${blogEntries}\n</urlset>\n`;
 
 	return new Response(xml, {
 		headers: { "Content-Type": "application/xml; charset=utf-8" },

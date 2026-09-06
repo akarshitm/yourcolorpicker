@@ -1,0 +1,114 @@
+---
+import { getCollection, render } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { title, description, publishDate, relatedTool } = post.data;
+const { Content } = await render(post);
+
+const siteUrl = "https://www.yourcolorpicker.com";
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	headline: title,
+	description,
+	datePublished: publishDate.toISOString(),
+	author: { "@type": "Organization", name: "Your Color Picker" },
+	publisher: { "@type": "Organization", name: "Your Color Picker" },
+	mainEntityOfPage: `${siteUrl}/blog/${post.id}`,
+};
+
+const formattedDate = publishDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+---
+
+<PageLayout
+	title={`${title} | Your Color Picker Blog`}
+	description={description}
+	path={`/blog/${post.id}`}
+	lang="en"
+	breadcrumbName={title}
+	breadcrumbParent={{ name: "Blog", path: "/blog" }}
+	singleLocale
+>
+	<PageHeader eyebrow="Blog" heading={title} intro={description} />
+	<article class="mx-auto max-w-[720px] px-lg pb-3xl md:pb-4xl">
+		<p class="type-body-sm text-mute mb-lg">{formattedDate}</p>
+		<div class="article-body">
+			<Content />
+		</div>
+		<div class="feature-card mt-2xl flex flex-wrap items-center justify-between gap-md">
+			<p class="type-body-md text-body">Ready to try it yourself?</p>
+			<a href={relatedTool.href} class="btn-primary">{relatedTool.label}</a>
+		</div>
+		<p class="type-body-md mt-lg">
+			<a href="/blog" class="underline">← Back to the blog</a>
+		</p>
+	</article>
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+	<style>
+		.article-body :global(h2) {
+			font-family: var(--font-sans);
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 28px;
+			letter-spacing: -0.4px;
+			color: var(--color-ink);
+			margin: 2em 0 0.6em;
+		}
+		.article-body :global(h3) {
+			font-family: var(--font-sans);
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 24px;
+			color: var(--color-ink);
+			margin: 1.6em 0 0.5em;
+		}
+		.article-body :global(p) {
+			font-family: var(--font-sans);
+			font-size: 16px;
+			line-height: 26px;
+			color: var(--color-body);
+			margin: 0 0 1em;
+		}
+		.article-body :global(ul),
+		.article-body :global(ol) {
+			font-family: var(--font-sans);
+			font-size: 16px;
+			line-height: 26px;
+			color: var(--color-body);
+			margin: 0 0 1em;
+			padding-left: 1.4em;
+		}
+		.article-body :global(li) {
+			margin-bottom: 0.4em;
+		}
+		.article-body :global(a) {
+			color: var(--color-link);
+			text-decoration: underline;
+		}
+		.article-body :global(strong) {
+			color: var(--color-ink);
+			font-weight: 600;
+		}
+		.article-body :global(code) {
+			font-family: var(--font-mono);
+			font-size: 0.9em;
+			background: var(--color-hairline-soft);
+			border-radius: 4px;
+			padding: 0.15em 0.4em;
+		}
+		.article-body :global(blockquote) {
+			border-left: 3px solid var(--color-hairline);
+			margin: 1.2em 0;
+			padding-left: 1em;
+			color: var(--color-mute);
+		}
+	</style>
+</PageLayout>

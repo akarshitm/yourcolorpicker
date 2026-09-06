@@ -17,6 +17,9 @@ interface Props {
 	noindex?: boolean;
 	breadcrumbName?: string;
 	breadcrumbParent?: BreadcrumbEntry;
+	// Blog pages exist in English only — skip hreflang alternates rather than
+	// advertise localized URLs (e.g. /es/blog/...) that 404.
+	singleLocale?: boolean;
 }
 
 const {
@@ -27,6 +30,7 @@ const {
 	noindex = false,
 	breadcrumbName,
 	breadcrumbParent,
+	singleLocale = false,
 } = Astro.props;
 
 const siteUrl = "https://www.yourcolorpicker.com/";
@@ -150,11 +154,15 @@ const breadcrumbJsonLd = breadcrumbName
 		<meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
 		<link rel="canonical" href={pageUrl} />
 		{
-			locales.map((locale) => (
-				<link rel="alternate" hreflang={localeTags[locale]} href={new URL(localizePath(locale, path), siteUrl).toString()} />
-			))
+			!singleLocale && (
+				<>
+					{locales.map((locale) => (
+						<link rel="alternate" hreflang={localeTags[locale]} href={new URL(localizePath(locale, path), siteUrl).toString()} />
+					))}
+					<link rel="alternate" hreflang="x-default" href={new URL(localizePath(defaultLocale, path), siteUrl).toString()} />
+				</>
+			)
 		}
-		<link rel="alternate" hreflang="x-default" href={new URL(localizePath(defaultLocale, path), siteUrl).toString()} />
 		<meta name="theme-color" content="#fafafa" id="theme-color-meta" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />

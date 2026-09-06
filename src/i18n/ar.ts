@@ -7,6 +7,7 @@ export const ar: Dictionary = {
 		tools: "الأدوات",
 		whyUs: "لماذا نحن",
 		faq: "الأسئلة الشائعة",
+		blog: "المدونة",
 		about: "من نحن",
 		contact: "تواصل معنا",
 		howToUse: "طريقة الاستخدام",

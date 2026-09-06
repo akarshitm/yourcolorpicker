@@ -30,9 +30,10 @@ interface Props {
 	// pages, its "Tools" parent) in a BreadcrumbList schema.
 	breadcrumbName?: string;
 	breadcrumbParent?: BreadcrumbEntry;
+	singleLocale?: boolean;
 }
 
-const { title, description, path, lang, noindex, helpTitle, helpSteps, breadcrumbName, breadcrumbParent } = Astro.props;
+const { title, description, path, lang, noindex, helpTitle, helpSteps, breadcrumbName, breadcrumbParent, singleLocale } = Astro.props;
 const t = useTranslations(lang);
 ---
 
@@ -44,6 +45,7 @@ const t = useTranslations(lang);
 	noindex={noindex}
 	breadcrumbName={breadcrumbName}
 	breadcrumbParent={breadcrumbParent}
+	singleLocale={singleLocale}
 >
 	<Nav lang={lang} path={path} />
 	<slot />

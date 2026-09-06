@@ -7,6 +7,7 @@ export const hi: Dictionary = {
 		tools: "टूल्स",
 		whyUs: "क्यों चुनें",
 		faq: "सवाल-जवाब",
+		blog: "ब्लॉग",
 		about: "हमारे बारे में",
 		contact: "संपर्क करें",
 		howToUse: "उपयोग कैसे करें",
