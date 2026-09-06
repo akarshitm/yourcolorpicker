@@ -366,6 +366,7 @@ export const it: Dictionary = {
 			"Tutti gli strumenti di colore gratuiti in un unico posto: selettore di colore, convertitore, generatore di gradienti, verificatore di contrasto, simulatore di daltonismo, mixer e altro.",
 		eyebrow: "Strumenti",
 		heading: "Tutti gli strumenti",
+		guidesHeading: "Guide",
 		intro: "Tutti gli strumenti di colore gratuiti di questo sito, in un unico posto.",
 		items: [
 			{
@@ -634,6 +635,58 @@ export const it: Dictionary = {
 				},
 			],
 		},
+	},
+	eyedropperGuide: {
+		title: "Contagocce Online — Scegli Qualsiasi Colore | Your Color Picker",
+		description:
+			"Contagocce online gratuito: scegli qualsiasi colore dallo schermo o da un'immagine e ottieni subito i codici HEX, RGB e HSL. 100% privato, non viene caricato nulla.",
+		eyebrow: "Guida",
+		heading: "Contagocce Online",
+		intro: "Scegli qualsiasi colore dallo schermo, da uno screenshot o da una foto, direttamente nel browser — senza estensioni né installazioni.",
+		explainerHeading: "Come funziona il contagocce",
+		explainerBody:
+			"Questo contagocce usa gli strumenti di selezione colore integrati nel browser per campionare un pixel in qualsiasi punto dello schermo, oppure ti permette di caricare un'immagine e cliccare direttamente su un pixel. In entrambi i casi ottieni subito il valore esatto in HEX, RGB e HSL, pronto da incollare nel tuo strumento di design, nel CSS o nell'editor di codice.",
+		faqHeading: "Domande frequenti",
+		faq: [
+			{
+				q: "Questo contagocce funziona su mobile?",
+				a: "Scegliere un colore da un'immagine caricata funziona su qualsiasi dispositivo, inclusi telefoni e tablet. Il prelievo diretto dallo schermo usa una funzione del browser (l'API EyeDropper) attualmente supportata da Chrome, Edge e altri browser basati su Chromium su desktop.",
+			},
+			{
+				q: "Qualcosa viene caricato su un server?",
+				a: "No. Ogni pixel viene letto localmente nel browser tramite l'API Canvas — la tua immagine e il tuo schermo non lasciano mai il tuo dispositivo.",
+			},
+			{
+				q: "Che formati di colore ottengo?",
+				a: "HEX, RGB e HSL per ogni colore scelto, ciascuno con un pulsante per copiarlo con un clic.",
+			},
+		],
+	},
+	hexFromImageGuide: {
+		title: "Ottieni il Codice HEX da un'Immagine | Your Color Picker",
+		description:
+			"Carica qualsiasi foto e ottieni subito il codice HEX esatto di qualsiasi pixel, oltre a RGB, HSL e una palette completa. Gratuito e 100% privato — nulla lascia il tuo dispositivo.",
+		eyebrow: "Guida",
+		heading: "Ottieni il Codice HEX da Qualsiasi Immagine",
+		intro: "Carica una foto, uno screenshot o un logo e clicca su qualsiasi pixel per leggerne il codice HEX esatto, insieme a RGB, HSL e una palette di colori abbinata.",
+		explainerHeading: "Come trovare un codice HEX in una foto",
+		explainerBody:
+			"Trascina un'immagine nello strumento qui sotto, poi clicca o passa il cursore su qualsiasi pixel per leggerne il colore esatto. HEX, RGB e HSL si aggiornano all'istante, e puoi estrarre una palette completa dall'immagine con un clic. Tutto avviene nel tuo browser, quindi l'immagine non viene mai caricata su un server.",
+		faqHeading: "Domande frequenti",
+		faq: [
+			{
+				q: "Posso ottenere il codice HEX da uno screenshot?",
+				a: "Sì — carica uno screenshot come faresti con qualsiasi foto, poi clicca sul pixel di cui vuoi il codice HEX.",
+			},
+			{
+				q: "Funziona con un logo o un PNG trasparente?",
+				a: "Sì, funziona con immagini PNG, JPG e WebP, compresi i PNG trasparenti — le aree trasparenti vengono lette come il colore del pixel sottostante.",
+			},
+			{
+				q: "La mia immagine viene caricata da qualche parte?",
+				a: "No. L'immagine viene decodificata e letta interamente nel tuo browser tramite l'API Canvas — non lascia mai il tuo dispositivo.",
+			},
+		],
 	},
 	notFound: {
 		title: "Pagina Non Trovata — Your Color Picker",

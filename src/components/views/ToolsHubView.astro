@@ -26,6 +26,11 @@ const hrefs = [
 ];
 const icons: ToolIconName[] = ["picker", "converter", "gradient", "contrast", "blindness", "mixer", "shadesTints", "random", "names", "palette"];
 const tools = t.toolsHub.items.map((item, i) => ({ ...item, href: hrefs[i], icon: icons[i] }));
+
+const guides = [
+	{ title: t.eyedropperGuide.heading, body: t.eyedropperGuide.intro, href: "/eyedropper-tool" },
+	{ title: t.hexFromImageGuide.heading, body: t.hexFromImageGuide.intro, href: "/hex-code-from-image" },
+];
 ---
 
 <PageLayout title={t.toolsHub.title} description={t.toolsHub.description} path="/tools" lang={lang} breadcrumbName={t.toolsHub.heading}>
@@ -41,6 +46,23 @@ const tools = t.toolsHub.items.map((item, i) => ({ ...item, href: hrefs[i], icon
 						<span>
 							<h2 class="type-heading-md mb-xs text-ink">{tool.title}</h2>
 							<p class="type-body-md text-body">{tool.body}</p>
+						</span>
+					</a>
+				))
+			}
+		</div>
+
+		<h2 class="type-heading-md mt-xl mb-md">{t.toolsHub.guidesHeading}</h2>
+		<div class="grid gap-md sm:grid-cols-2">
+			{
+				guides.map((guide) => (
+					<a href={guide.href} class="feature-card flex gap-sm no-underline hover-pop">
+						<span class="tool-card-icon">
+							<ToolIcon name="picker" />
+						</span>
+						<span>
+							<h3 class="type-heading-md mb-xs text-ink">{guide.title}</h3>
+							<p class="type-body-md text-body">{guide.body}</p>
 						</span>
 					</a>
 				))

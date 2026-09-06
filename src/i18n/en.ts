@@ -358,6 +358,7 @@ export const en = {
 		eyebrow: "Tools",
 		heading: "All tools",
 		intro: "Every free color tool on this site, in one place.",
+		guidesHeading: "Guides",
 		items: [
 			{
 				title: "Image Color Picker",
@@ -625,6 +626,58 @@ export const en = {
 				},
 			],
 		},
+	},
+	eyedropperGuide: {
+		title: "Online Eyedropper Tool — Pick Any Color | Your Color Picker",
+		description:
+			"Free online eyedropper tool — pick any color from your screen or an image and get instant HEX, RGB, and HSL codes. 100% private, nothing is uploaded.",
+		eyebrow: "Guide",
+		heading: "Online Eyedropper Tool",
+		intro: "Pick any color from your screen, a screenshot, or a photo, right in your browser — no extension or install needed.",
+		explainerHeading: "How the eyedropper tool works",
+		explainerBody:
+			"This eyedropper uses your browser's built-in color-picking tools to sample a pixel from anywhere on your screen, or lets you upload an image and click a pixel directly. Either way, you get the exact HEX, RGB, and HSL value instantly, ready to copy into your design tool, CSS, or code editor.",
+		faqHeading: "Frequently asked questions",
+		faq: [
+			{
+				q: "Does this eyedropper tool work on mobile?",
+				a: "Picking from an uploaded image works on any device, including phones and tablets. Picking directly from your screen uses a browser feature (the EyeDropper API) currently supported in Chrome, Edge, and other Chromium-based browsers on desktop.",
+			},
+			{
+				q: "Is anything uploaded to a server?",
+				a: "No. Every pixel is read locally in your browser using the Canvas API — your image and screen never leave your device.",
+			},
+			{
+				q: "What color formats does it give me?",
+				a: "HEX, RGB, and HSL for every color you pick, each with a one-click copy button.",
+			},
+		],
+	},
+	hexFromImageGuide: {
+		title: "Get the HEX Code From an Image | Your Color Picker",
+		description:
+			"Upload any photo and get the exact HEX code of any pixel instantly, plus RGB, HSL, and a full palette. Free and 100% private — nothing leaves your device.",
+		eyebrow: "Guide",
+		heading: "Get the HEX Code From Any Image",
+		intro: "Upload a photo, screenshot, or logo and click any pixel to read its exact HEX code, along with RGB, HSL, and a matching color palette.",
+		explainerHeading: "How to find a HEX code in a photo",
+		explainerBody:
+			"Drop an image into the tool below, then click or hover over any pixel to read its exact color. HEX, RGB, and HSL all update instantly, and you can extract a full palette from the image in one click. Everything runs in your browser, so the image itself is never uploaded to a server.",
+		faqHeading: "Frequently asked questions",
+		faq: [
+			{
+				q: "Can I get the HEX code from a screenshot?",
+				a: "Yes — upload a screenshot the same way you'd upload any photo, then click the pixel you want the HEX code for.",
+			},
+			{
+				q: "Will this work with a logo or a transparent PNG?",
+				a: "Yes, PNG, JPG, and WebP images all work, including transparent PNGs — transparent areas are read as their underlying pixel color.",
+			},
+			{
+				q: "Is my image uploaded anywhere?",
+				a: "No. The image is decoded and read entirely in your browser using the Canvas API — it never leaves your device.",
+			},
+		],
 	},
 	notFound: {
 		title: "Page Not Found — Your Color Picker",

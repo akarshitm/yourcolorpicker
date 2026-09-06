@@ -19,6 +19,8 @@ const pages: { path: string; changefreq: string; priority: string }[] = [
 	{ path: "/random-color-generator", changefreq: "monthly", priority: "0.6" },
 	{ path: "/color-names", changefreq: "monthly", priority: "0.6" },
 	{ path: "/palette-generator", changefreq: "monthly", priority: "0.6" },
+	{ path: "/eyedropper-tool", changefreq: "monthly", priority: "0.6" },
+	{ path: "/hex-code-from-image", changefreq: "monthly", priority: "0.6" },
 	{ path: "/privacy-policy", changefreq: "monthly", priority: "0.3" },
 	{ path: "/terms-and-conditions", changefreq: "monthly", priority: "0.3" },
 ];

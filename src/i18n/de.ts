@@ -364,6 +364,7 @@ export const de: Dictionary = {
 		eyebrow: "Werkzeuge",
 		heading: "Alle Werkzeuge",
 		intro: "Alle kostenlosen Farbwerkzeuge dieser Seite an einem Ort.",
+		guidesHeading: "Anleitungen",
 		items: [
 			{
 				title: "Bild-Farbwähler",
@@ -631,6 +632,58 @@ export const de: Dictionary = {
 				},
 			],
 		},
+	},
+	eyedropperGuide: {
+		title: "Online-Pipette – Jede Farbe Auswählen | Your Color Picker",
+		description:
+			"Kostenlose Online-Pipette – wähle jede Farbe von deinem Bildschirm oder einem Bild und erhalte sofort HEX-, RGB- und HSL-Codes. 100 % privat, es wird nichts hochgeladen.",
+		eyebrow: "Anleitung",
+		heading: "Online-Pipette",
+		intro: "Wähle jede Farbe von deinem Bildschirm, einem Screenshot oder einem Foto – direkt im Browser, ohne Erweiterung oder Installation.",
+		explainerHeading: "So funktioniert die Farbpipette",
+		explainerBody:
+			"Diese Pipette nutzt die im Browser integrierten Farbauswahl-Werkzeuge, um einen Pixel von beliebiger Stelle auf deinem Bildschirm zu erfassen, oder lässt dich ein Bild hochladen und direkt auf einen Pixel klicken. In beiden Fällen erhältst du sofort den exakten HEX-, RGB- und HSL-Wert, bereit zum Einfügen in dein Design-Tool, CSS oder deinen Code-Editor.",
+		faqHeading: "Häufig gestellte Fragen",
+		faq: [
+			{
+				q: "Funktioniert diese Pipette auf dem Handy?",
+				a: "Die Farbauswahl aus einem hochgeladenen Bild funktioniert auf jedem Gerät, auch auf Smartphones und Tablets. Die direkte Auswahl vom Bildschirm nutzt eine Browserfunktion (die EyeDropper-API), die derzeit in Chrome, Edge und anderen Chromium-basierten Desktop-Browsern unterstützt wird.",
+			},
+			{
+				q: "Wird etwas an einen Server gesendet?",
+				a: "Nein. Jeder Pixel wird lokal in deinem Browser über die Canvas-API gelesen – dein Bild und dein Bildschirm verlassen niemals dein Gerät.",
+			},
+			{
+				q: "Welche Farbformate erhalte ich?",
+				a: "HEX, RGB und HSL für jede ausgewählte Farbe, jeweils mit einem Kopieren-Button per Klick.",
+			},
+		],
+	},
+	hexFromImageGuide: {
+		title: "HEX-Code aus einem Bild Ermitteln | Your Color Picker",
+		description:
+			"Lade ein beliebiges Foto hoch und erhalte sofort den exakten HEX-Code jedes Pixels, dazu RGB, HSL und eine vollständige Palette. Kostenlos und 100 % privat – nichts verlässt dein Gerät.",
+		eyebrow: "Anleitung",
+		heading: "HEX-Code aus Jedem Bild Ermitteln",
+		intro: "Lade ein Foto, einen Screenshot oder ein Logo hoch und klicke auf einen beliebigen Pixel, um dessen exakten HEX-Code zusammen mit RGB, HSL und einer passenden Farbpalette abzulesen.",
+		explainerHeading: "So findest du einen HEX-Code in einem Foto",
+		explainerBody:
+			"Ziehe ein Bild in das Tool unten und klicke oder fahre dann über einen beliebigen Pixel, um dessen exakte Farbe abzulesen. HEX, RGB und HSL werden sofort aktualisiert, und du kannst mit einem Klick eine vollständige Palette aus dem Bild extrahieren. Alles läuft in deinem Browser, das Bild selbst wird also nie auf einen Server hochgeladen.",
+		faqHeading: "Häufig gestellte Fragen",
+		faq: [
+			{
+				q: "Kann ich den HEX-Code aus einem Screenshot erhalten?",
+				a: "Ja – lade einen Screenshot genauso hoch wie jedes andere Foto und klicke dann auf den Pixel, dessen HEX-Code du möchtest.",
+			},
+			{
+				q: "Funktioniert das mit einem Logo oder einem transparenten PNG?",
+				a: "Ja, PNG-, JPG- und WebP-Bilder funktionieren alle, auch transparente PNGs – transparente Bereiche werden als die darunterliegende Pixelfarbe gelesen.",
+			},
+			{
+				q: "Wird mein Bild irgendwohin hochgeladen?",
+				a: "Nein. Das Bild wird vollständig in deinem Browser über die Canvas-API dekodiert und gelesen – es verlässt niemals dein Gerät.",
+			},
+		],
 	},
 	notFound: {
 		title: "Seite nicht gefunden — Your Color Picker",

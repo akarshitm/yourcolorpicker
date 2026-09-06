@@ -140,6 +140,13 @@ const breadcrumbJsonLd = breadcrumbName
 		<link rel="manifest" href="/site.webmanifest" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<!--
+			Search engine ownership verification — paste the tokens Google Search
+			Console and Bing Webmaster Tools give you (Settings > Ownership
+			verification > HTML tag), then uncomment:
+			<meta name="google-site-verification" content="PASTE_GOOGLE_TOKEN_HERE" />
+			<meta name="msvalidate.01" content="PASTE_BING_TOKEN_HERE" />
+		-->
 		<meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
 		<link rel="canonical" href={pageUrl} />
 		{

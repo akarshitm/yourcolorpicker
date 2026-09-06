@@ -1,0 +1,54 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import ColorTool from "../ColorTool.astro";
+import RelatedTools from "../RelatedTools.astro";
+import { localizePath } from "../../i18n/utils";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout
+	title={t.eyedropperGuide.title}
+	description={t.eyedropperGuide.description}
+	path="/eyedropper-tool"
+	lang={lang}
+	breadcrumbName={t.eyedropperGuide.heading}
+	breadcrumbParent={{ name: t.nav.tools, path: "/tools" }}
+>
+	<PageHeader eyebrow={t.eyedropperGuide.eyebrow} heading={t.eyedropperGuide.heading} intro={t.eyedropperGuide.intro} icon="picker" />
+	<ColorTool lang={lang} />
+	<section class="mx-auto max-w-[1100px] px-lg pb-3xl md:pb-4xl">
+		<div class="mb-xl">
+			<h2 class="type-heading-md mb-xs">{t.eyedropperGuide.explainerHeading}</h2>
+			<p class="type-body-md text-body max-w-[70ch]">{t.eyedropperGuide.explainerBody}</p>
+		</div>
+
+		<div class="mb-xl">
+			<h2 class="type-heading-md mb-md">{t.eyedropperGuide.faqHeading}</h2>
+			<div class="flex flex-col gap-lg">
+				{
+					t.eyedropperGuide.faq.map((item) => (
+						<div>
+							<h3 class="type-heading-md mb-xs">{item.q}</h3>
+							<p class="type-body-md text-body max-w-[70ch]">{item.a}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+
+		<p class="type-body-md">
+			<a href={localizePath(lang, "/hex-code-from-image")} class="underline">{t.hexFromImageGuide.heading}</a>
+		</p>
+
+		<RelatedTools lang={lang} current="/eyedropper-tool" picks={["/#tool", "/color-converter", "/color-names"]} />
+	</section>
+</PageLayout>
