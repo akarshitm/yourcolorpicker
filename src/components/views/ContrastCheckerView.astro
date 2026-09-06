@@ -1,6 +1,7 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHeader from "../PageHeader.astro";
+import RelatedTools from "../RelatedTools.astro";
 import type { Locale } from "../../i18n/config";
 import { useTranslations } from "../../i18n/utils";
 
@@ -19,6 +20,8 @@ const t = useTranslations(lang);
 	lang={lang}
 	helpTitle={t.contrastCheckerTool.help.title}
 	helpSteps={t.contrastCheckerTool.help.steps}
+	breadcrumbName={t.contrastCheckerTool.heading}
+	breadcrumbParent={{ name: t.nav.tools, path: "/tools" }}
 >
 	<PageHeader
 		eyebrow={t.contrastCheckerTool.eyebrow}
@@ -69,6 +72,8 @@ const t = useTranslations(lang);
 			<h2 class="type-heading-md mb-xs">{t.contrastCheckerTool.explainerHeading}</h2>
 			<p class="type-body-md text-body">{t.contrastCheckerTool.explainerBody}</p>
 		</div>
+
+		<RelatedTools lang={lang} current="/contrast-checker" picks={["/color-converter", "/color-blindness-simulator", "/color-names"]} />
 	</section>
 
 	<style>

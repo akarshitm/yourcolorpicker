@@ -401,6 +401,9 @@ export const en = {
 			},
 		],
 	},
+	relatedTools: {
+		heading: "Related tools",
+	},
 	colorConverterTool: {
 		title: "Color Converter — HEX, RGB, HSL, HSV | Your Color Picker",
 		description: "Convert any color between HEX, RGB, HSL, and HSV instantly. Edit any field and every other format updates live, with one-click copy.",

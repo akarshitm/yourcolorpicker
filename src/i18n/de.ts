@@ -407,6 +407,9 @@ export const de: Dictionary = {
 			},
 		],
 	},
+	relatedTools: {
+		heading: "Verwandte Werkzeuge",
+	},
 	colorConverterTool: {
 		title: "Farbkonverter — HEX, RGB, HSL, HSV | Your Color Picker",
 		description: "Wandle jede Farbe sofort zwischen HEX, RGB, HSL und HSV um. Ändere ein beliebiges Feld, und jedes andere Format aktualisiert sich live.",

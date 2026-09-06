@@ -1,0 +1,89 @@
+---
+import ToolIcon, { type ToolIconName } from "./ToolIcon.astro";
+import type { Locale } from "../i18n/config";
+import { useTranslations, localizePath } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+	current: string;
+	picks: string[];
+}
+
+const { lang, current, picks } = Astro.props;
+const t = useTranslations(lang);
+
+const hrefs = [
+	"/#tool",
+	"/color-converter",
+	"/gradient-maker",
+	"/contrast-checker",
+	"/color-blindness-simulator",
+	"/color-mixer",
+	"/shades-and-tints-generator",
+	"/random-color-generator",
+	"/color-names",
+	"/palette-generator",
+];
+const icons: ToolIconName[] = ["picker", "converter", "gradient", "contrast", "blindness", "mixer", "shadesTints", "random", "names", "palette"];
+const allTools = t.toolsHub.items.map((item, i) => ({ title: item.title, href: hrefs[i], icon: icons[i] }));
+
+const related = picks
+	.map((href) => allTools.find((tool) => tool.href === href))
+	.filter((tool): tool is (typeof allTools)[number] => tool !== undefined && tool.href !== current);
+
+// "/#tool" is the homepage anchor — localizePath() would otherwise route it
+// through the "/" branch as a real path segment, producing a URL like
+// "/ar/#tool" whose trailing-slash path triggers a redirect before the hash
+// even applies. Build it from the home path instead so it never gets one.
+function toolHref(href: string): string {
+	if (href === "/#tool") return `${localizePath(lang, "/")}#tool`;
+	return localizePath(lang, href);
+}
+---
+
+{
+	related.length > 0 && (
+		<div class="mt-lg">
+			<h2 class="type-heading-md mb-xs">{t.relatedTools.heading}</h2>
+			<div class="flex flex-wrap gap-xs">
+				{related.map((tool) => (
+					<a href={toolHref(tool.href)} class="related-tool-link no-underline">
+						<span class="related-tool-icon">
+							<ToolIcon name={tool.icon} size={16} />
+						</span>
+						{tool.title}
+					</a>
+				))}
+			</div>
+		</div>
+	)
+}
+
+<style>
+	.related-tool-link {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-xxs);
+		background: var(--color-canvas-elevated);
+		color: var(--color-ink);
+		border: 1px solid var(--color-hairline);
+		border-radius: var(--radius-sm);
+		padding: 8px 12px;
+		font-family: var(--font-sans);
+		font-size: 13.5px;
+		font-weight: 600;
+		transition:
+			transform 0.15s ease,
+			border-color 0.15s ease;
+	}
+	.related-tool-link:hover {
+		transform: scale(1.03);
+		border-color: var(--color-ink);
+	}
+	.related-tool-icon {
+		display: inline-flex;
+		width: 18px;
+		height: 18px;
+		flex-shrink: 0;
+	}
+</style>

@@ -11,7 +11,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const lastUpdated = "September 5, 2026";
-const contactEmail = "knightfury13849@gmail.com";
+const contactEmail = "akarshitmishra642@gmail.com";
 
 const [beforeEmail, afterEmail] = t.privacy.contactBody.split("{{email}}");
 const [beforeLink, afterLink] = afterEmail.split("{{link}}");
@@ -20,7 +20,7 @@ const [beforeOptout, afterOptout] = t.privacy.cookiesBody.split("{{optout}}");
 const [beforePrivacyLink, afterPrivacyLink] = afterOptout.split("{{privacy}}");
 ---
 
-<PageLayout title={t.privacy.title} description={t.privacy.description} path="/privacy-policy" lang={lang}>
+<PageLayout title={t.privacy.title} description={t.privacy.description} path="/privacy-policy" lang={lang} breadcrumbName={t.privacy.heading}>
 	<PageHeader eyebrow={t.privacy.eyebrow} heading={t.privacy.heading} intro={`${t.privacy.lastUpdatedPrefix} ${lastUpdated}`} />
 	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
 		<div class="flex flex-col gap-lg">

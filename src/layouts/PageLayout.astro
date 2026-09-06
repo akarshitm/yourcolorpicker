@@ -11,6 +11,11 @@ interface HelpStep {
 	body: string;
 }
 
+interface BreadcrumbEntry {
+	name: string;
+	path: string;
+}
+
 interface Props {
 	title: string;
 	description: string;
@@ -21,13 +26,25 @@ interface Props {
 	// to the default "how to use the image color picker" content below.
 	helpTitle?: string;
 	helpSteps?: HelpStep[];
+	// Omitted on the homepage — every other page names itself (and, for tool
+	// pages, its "Tools" parent) in a BreadcrumbList schema.
+	breadcrumbName?: string;
+	breadcrumbParent?: BreadcrumbEntry;
 }
 
-const { title, description, path, lang, noindex, helpTitle, helpSteps } = Astro.props;
+const { title, description, path, lang, noindex, helpTitle, helpSteps, breadcrumbName, breadcrumbParent } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<Layout title={title} description={description} path={path} lang={lang} noindex={noindex}>
+<Layout
+	title={title}
+	description={description}
+	path={path}
+	lang={lang}
+	noindex={noindex}
+	breadcrumbName={breadcrumbName}
+	breadcrumbParent={breadcrumbParent}
+>
 	<Nav lang={lang} path={path} />
 	<slot />
 	<Footer lang={lang} />

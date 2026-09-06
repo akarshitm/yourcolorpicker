@@ -400,6 +400,9 @@ export const ar: Dictionary = {
 			},
 		],
 	},
+	relatedTools: {
+		heading: "أدوات ذات صلة",
+	},
 	colorConverterTool: {
 		title: "محوّل الألوان — HEX وRGB وHSL وHSV | Your Color Picker",
 		description: "حوّل أي لون بين HEX وRGB وHSL وHSV فورًا. عدّل أي حقل وستتحدث كل الصيغ الأخرى مباشرة، مع نسخ بنقرة واحدة.",

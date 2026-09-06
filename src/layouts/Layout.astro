@@ -4,12 +4,19 @@ import { locales, defaultLocale, localeTags, localeDirs, type Locale } from "../
 import { localizePath } from "../i18n/utils";
 import CookieConsent from "../components/CookieConsent.astro";
 
+interface BreadcrumbEntry {
+	name: string;
+	path: string;
+}
+
 interface Props {
 	title?: string;
 	description?: string;
 	path?: string;
 	lang?: Locale;
 	noindex?: boolean;
+	breadcrumbName?: string;
+	breadcrumbParent?: BreadcrumbEntry;
 }
 
 const {
@@ -18,6 +25,8 @@ const {
 	path = "/",
 	lang = defaultLocale,
 	noindex = false,
+	breadcrumbName,
+	breadcrumbParent,
 } = Astro.props;
 
 const siteUrl = "https://www.yourcolorpicker.com/";
@@ -55,6 +64,27 @@ const jsonLd = {
 		"WCAG contrast checker",
 	],
 };
+
+const breadcrumbJsonLd = breadcrumbName
+	? {
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Your Color Picker", item: new URL(localizePath(lang, "/"), siteUrl).toString() },
+				...(breadcrumbParent
+					? [
+							{
+								"@type": "ListItem",
+								position: 2,
+								name: breadcrumbParent.name,
+								item: new URL(localizePath(lang, breadcrumbParent.path), siteUrl).toString(),
+							},
+						]
+					: []),
+				{ "@type": "ListItem", position: breadcrumbParent ? 3 : 2, name: breadcrumbName, item: pageUrl },
+			],
+		}
+	: null;
 ---
 
 <!doctype html>
@@ -132,6 +162,7 @@ const jsonLd = {
 		<meta name="twitter:image" content={ogImage} />
 		<title>{title}</title>
 		<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+		{breadcrumbJsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbJsonLd)} />}
 	</head>
 	<body>
 		<slot />

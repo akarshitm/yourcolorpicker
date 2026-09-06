@@ -1,6 +1,7 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHeader from "../PageHeader.astro";
+import RelatedTools from "../RelatedTools.astro";
 import type { Locale } from "../../i18n/config";
 import { useTranslations } from "../../i18n/utils";
 
@@ -19,6 +20,8 @@ const t = useTranslations(lang);
 	lang={lang}
 	helpTitle={t.colorMixerTool.help.title}
 	helpSteps={t.colorMixerTool.help.steps}
+	breadcrumbName={t.colorMixerTool.heading}
+	breadcrumbParent={{ name: t.nav.tools, path: "/tools" }}
 >
 	<PageHeader eyebrow={t.colorMixerTool.eyebrow} heading={t.colorMixerTool.heading} intro={t.colorMixerTool.intro} icon="mixer" />
 	<section class="mx-auto max-w-[700px] px-lg pb-3xl md:pb-4xl">
@@ -69,6 +72,8 @@ const t = useTranslations(lang);
 			<h2 class="type-heading-md mb-xs">{t.colorMixerTool.explainerHeading}</h2>
 			<p class="type-body-md text-body">{t.colorMixerTool.explainerBody}</p>
 		</div>
+
+		<RelatedTools lang={lang} current="/color-mixer" picks={["/gradient-maker", "/shades-and-tints-generator", "/palette-generator"]} />
 	</section>
 
 	<style>

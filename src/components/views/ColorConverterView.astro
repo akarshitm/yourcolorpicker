@@ -1,6 +1,7 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHeader from "../PageHeader.astro";
+import RelatedTools from "../RelatedTools.astro";
 import type { Locale } from "../../i18n/config";
 import { useTranslations } from "../../i18n/utils";
 
@@ -19,6 +20,8 @@ const t = useTranslations(lang);
 	lang={lang}
 	helpTitle={t.colorConverterTool.help.title}
 	helpSteps={t.colorConverterTool.help.steps}
+	breadcrumbName={t.colorConverterTool.heading}
+	breadcrumbParent={{ name: t.nav.tools, path: "/tools" }}
 >
 	<PageHeader eyebrow={t.colorConverterTool.eyebrow} heading={t.colorConverterTool.heading} intro={t.colorConverterTool.intro} icon="converter" />
 	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
@@ -67,6 +70,8 @@ const t = useTranslations(lang);
 			<h2 class="type-heading-md mb-xs">{t.colorConverterTool.explainerHeading}</h2>
 			<p class="type-body-md text-body">{t.colorConverterTool.explainerBody}</p>
 		</div>
+
+		<RelatedTools lang={lang} current="/color-converter" picks={["/palette-generator", "/color-mixer", "/color-names"]} />
 	</section>
 
 	<style>

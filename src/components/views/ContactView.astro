@@ -11,10 +11,10 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const contactEmail = "knightfury13849@gmail.com";
+const contactEmail = "akarshitmishra642@gmail.com";
 ---
 
-<PageLayout title={t.contact.title} description={t.contact.description} path="/contact" lang={lang}>
+<PageLayout title={t.contact.title} description={t.contact.description} path="/contact" lang={lang} breadcrumbName={t.contact.heading}>
 	<PageHeader eyebrow={t.contact.eyebrow} heading={t.contact.heading} intro={t.contact.intro} />
 	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
 		<div class="flex flex-col gap-lg">

@@ -1,6 +1,7 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHeader from "../PageHeader.astro";
+import RelatedTools from "../RelatedTools.astro";
 import { getAllNamedColors } from "../../scripts/colorNames";
 import type { Locale } from "../../i18n/config";
 import { useTranslations } from "../../i18n/utils";
@@ -22,6 +23,8 @@ const intro = `${t.colorNamesTool.introPrefix}${colors.length}${t.colorNamesTool
 	lang={lang}
 	helpTitle={t.colorNamesTool.help.title}
 	helpSteps={t.colorNamesTool.help.steps}
+	breadcrumbName={t.colorNamesTool.heading}
+	breadcrumbParent={{ name: t.nav.tools, path: "/tools" }}
 >
 	<PageHeader eyebrow={t.colorNamesTool.eyebrow} heading={t.colorNamesTool.heading} intro={intro} icon="names" />
 	<section class="mx-auto max-w-[1100px] px-lg pb-3xl md:pb-4xl">
@@ -44,6 +47,8 @@ const intro = `${t.colorNamesTool.introPrefix}${colors.length}${t.colorNamesTool
 			}
 		</div>
 		<p id="color-empty" class="type-body-md text-faint mt-lg hidden">{t.colorNamesTool.empty}</p>
+
+		<RelatedTools lang={lang} current="/color-names" picks={["/color-converter", "/contrast-checker", "/random-color-generator"]} />
 	</section>
 
 	<style>

@@ -1,6 +1,7 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHeader from "../PageHeader.astro";
+import RelatedTools from "../RelatedTools.astro";
 import type { Locale } from "../../i18n/config";
 import { useTranslations } from "../../i18n/utils";
 
@@ -19,6 +20,8 @@ const t = useTranslations(lang);
 	lang={lang}
 	helpTitle={t.randomColorTool.help.title}
 	helpSteps={t.randomColorTool.help.steps}
+	breadcrumbName={t.randomColorTool.heading}
+	breadcrumbParent={{ name: t.nav.tools, path: "/tools" }}
 >
 	<PageHeader eyebrow={t.randomColorTool.eyebrow} heading={t.randomColorTool.heading} intro={t.randomColorTool.intro} icon="random" />
 	<section class="mx-auto max-w-[700px] px-lg pb-3xl md:pb-4xl">
@@ -68,6 +71,8 @@ const t = useTranslations(lang);
 			<h2 class="type-heading-md mb-xs">{t.randomColorTool.explainerHeading}</h2>
 			<p class="type-body-md text-body">{t.randomColorTool.explainerBody}</p>
 		</div>
+
+		<RelatedTools lang={lang} current="/random-color-generator" picks={["/palette-generator", "/color-converter", "/shades-and-tints-generator"]} />
 	</section>
 
 	<style>

@@ -13,7 +13,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<PageLayout title={t.about.title} description={t.about.description} path="/about" lang={lang}>
+<PageLayout title={t.about.title} description={t.about.description} path="/about" lang={lang} breadcrumbName={t.about.heading}>
 	<PageHeader eyebrow={t.about.eyebrow} heading={t.about.heading} intro={t.about.intro} />
 	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
 		<div class="flex flex-col gap-lg">

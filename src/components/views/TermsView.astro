@@ -12,13 +12,13 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const lastUpdated = "September 5, 2026";
-const contactEmail = "knightfury13849@gmail.com";
+const contactEmail = "akarshitmishra642@gmail.com";
 
 const [beforeEmail, afterEmail] = t.terms.contactBody.split("{{email}}");
 const [beforeLink, afterLink] = afterEmail.split("{{link}}");
 ---
 
-<PageLayout title={t.terms.title} description={t.terms.description} path="/terms-and-conditions" lang={lang}>
+<PageLayout title={t.terms.title} description={t.terms.description} path="/terms-and-conditions" lang={lang} breadcrumbName={t.terms.heading}>
 	<PageHeader eyebrow={t.terms.eyebrow} heading={t.terms.heading} intro={`${t.terms.lastUpdatedPrefix} ${lastUpdated}`} />
 	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
 		<div class="flex flex-col gap-lg">

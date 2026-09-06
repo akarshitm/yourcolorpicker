@@ -400,6 +400,9 @@ export const hi: Dictionary = {
 			},
 		],
 	},
+	relatedTools: {
+		heading: "संबंधित टूल",
+	},
 	colorConverterTool: {
 		title: "कलर कन्वर्टर — HEX, RGB, HSL, HSV | Your Color Picker",
 		description: "HEX, RGB, HSL और HSV के बीच किसी भी रंग को तुरंत बदलें। कोई भी फ़ील्ड बदलें और बाकी सभी फ़ॉर्मेट लाइव अपडेट हो जाते हैं।",

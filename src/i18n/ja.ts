@@ -397,6 +397,9 @@ export const ja: Dictionary = {
 			},
 		],
 	},
+	relatedTools: {
+		heading: "関連ツール",
+	},
 	colorConverterTool: {
 		title: "カラーコンバーター — HEX・RGB・HSL・HSV | Your Color Picker",
 		description: "HEX・RGB・HSL・HSVの間で色を瞬時に変換します。どの項目を編集しても、他のすべての形式がライブで更新され、ワンクリックでコピーできます。",
