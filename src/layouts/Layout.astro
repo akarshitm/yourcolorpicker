@@ -61,6 +61,30 @@ const jsonLd = {
 <html lang={localeTags[lang]} dir={localeDirs[lang]}>
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline data-ga-id="G-NYQMKLM3C1">
+			// Google Consent Mode v2: default to denied so no analytics cookies are set
+			// until the user accepts via CookieConsent.astro, but gtag.js still loads
+			// and pings Google so tag-verification tools can detect it.
+			(function () {
+				window.dataLayer = window.dataLayer || [];
+				function gtag() {
+					dataLayer.push(arguments);
+				}
+				window.gtag = gtag;
+				var GA_ID = document.currentScript.getAttribute("data-ga-id");
+				var granted = false;
+				try {
+					granted = localStorage.getItem("rcf:cookie-consent") === "granted";
+				} catch (e) {}
+				gtag("consent", "default", { analytics_storage: granted ? "granted" : "denied" });
+				gtag("js", new Date());
+				gtag("config", GA_ID);
+				var s = document.createElement("script");
+				s.async = true;
+				s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+				document.head.appendChild(s);
+			})();
+		</script>
 		<script is:inline>
 			// Runs before first paint so the correct theme applies with zero flash.
 			// Kept in sync at runtime by src/scripts/theme.ts.

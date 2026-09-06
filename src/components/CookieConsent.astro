@@ -21,25 +21,14 @@ const t = useTranslations(lang);
 	</div>
 </div>
 
-<script is:inline data-ga-id="G-NYQMKLM3C1">
+<script is:inline>
 	(function () {
 		var CONSENT_KEY = "rcf:cookie-consent";
-		var script = document.currentScript;
-		var GA_ID = script && script.getAttribute("data-ga-id");
 
-		function loadGA() {
-			if (window.__gaLoaded || !GA_ID) return;
-			window.__gaLoaded = true;
-			var s = document.createElement("script");
-			s.async = true;
-			s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
-			document.head.appendChild(s);
-			window.dataLayer = window.dataLayer || [];
-			window.gtag = function () {
-				window.dataLayer.push(arguments);
-			};
-			window.gtag("js", new Date());
-			window.gtag("config", GA_ID);
+		function updateConsent(granted) {
+			if (typeof window.gtag === "function") {
+				window.gtag("consent", "update", { analytics_storage: granted ? "granted" : "denied" });
+			}
 		}
 
 		function getConsent() {
@@ -61,20 +50,19 @@ const t = useTranslations(lang);
 		var banner = document.getElementById("cookie-consent");
 		var consent = getConsent();
 
-		if (consent === "granted") {
-			loadGA();
-		} else if (consent !== "denied" && banner) {
+		if (consent !== "granted" && consent !== "denied" && banner) {
 			banner.hidden = false;
 		}
 
 		document.getElementById("cookie-consent-accept")?.addEventListener("click", function () {
 			setConsent("granted");
 			if (banner) banner.hidden = true;
-			loadGA();
+			updateConsent(true);
 		});
 		document.getElementById("cookie-consent-decline")?.addEventListener("click", function () {
 			setConsent("denied");
 			if (banner) banner.hidden = true;
+			updateConsent(false);
 		});
 	})();
 </script>
