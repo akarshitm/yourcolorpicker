@@ -1,0 +1,421 @@
+@import "tailwindcss";
+
+/* Geist fonts (self-hosted via Fontsource) — weights 400/500/600 */
+@import "@fontsource/geist-sans/latin-400.css";
+@import "@fontsource/geist-sans/latin-500.css";
+@import "@fontsource/geist-sans/latin-600.css";
+@import "@fontsource/geist-mono/latin-400.css";
+@import "@fontsource/geist-mono/latin-500.css";
+
+/* ---------------------------------------------------------------- */
+/* Design tokens — translated from DESIGN.md (Vercel / Geist system) */
+/* ---------------------------------------------------------------- */
+
+@theme {
+	--font-sans: "Geist Sans", Arial, sans-serif;
+	--font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+	/* Ink / surface / text ladder */
+	--color-ink: #171717;
+	--color-on-primary: #ffffff;
+	--color-body: #4d4d4d;
+	--color-mute: #8f8f8f;
+	--color-faint: #a1a1a1;
+	--color-hairline: #ebebeb;
+	--color-hairline-soft: #f2f2f2;
+	--color-canvas: #fafafa;
+	--color-canvas-elevated: #ffffff;
+
+	/* Accent + semantic */
+	--color-link: #0070f3;
+	--color-link-deep: #0761d1;
+	--color-link-soft: #d3e5ff;
+	--color-error: #ee0000;
+	--color-error-deep: #c50000;
+	--color-warning: #f5a623;
+	--color-warning-soft: #ffefcf;
+	--color-warning-deep: #ab570a;
+	--color-success: #0070f3;
+
+	/* Chromatic accent family (illustration / mesh-gradient only) */
+	--color-violet: #7928ca;
+	--color-violet-soft: #d8ccf1;
+	--color-cyan: #50e3c2;
+	--color-cyan-soft: #aaffec;
+	--color-pink: #ff0080;
+	--color-magenta: #eb367f;
+
+	/* Radius scale */
+	--radius-sm: 6px;
+	--radius-md: 12px;
+	--radius-lg: 16px;
+	--radius-pill-category: 64px;
+	--radius-pill: 100px;
+
+	/* Named spacing on top of Tailwind's default numeric scale */
+	--spacing-xxs: 4px;
+	--spacing-xs: 8px;
+	--spacing-sm: 12px;
+	--spacing-md: 16px;
+	--spacing-lg: 24px;
+	--spacing-xl: 32px;
+	--spacing-2xl: 40px;
+	--spacing-3xl: 64px;
+	--spacing-4xl: 96px;
+	--spacing-section: 128px;
+}
+
+/* Plain CSS vars — gradient stops, used only in the hero mesh gradient. */
+:root {
+	--gradient-develop-start: #007cf0;
+	--gradient-develop-end: #00dfd8;
+	--gradient-preview-start: #7928ca;
+	--gradient-preview-end: #ff0080;
+	--gradient-ship-start: #ff4d4d;
+	--gradient-ship-end: #f9cb28;
+}
+
+/*
+ * Dark mode — an inverted Geist palette, toggled instantly via
+ * documentElement[data-theme]. Every component reads these same custom
+ * properties (via Tailwind's generated utilities or var() in inline
+ * styles), so redefining them here is the entire theme switch — no
+ * per-component dark: variants needed. See src/scripts/theme.ts.
+ */
+:root[data-theme="dark"] {
+	color-scheme: dark;
+
+	--color-ink: #ededed;
+	--color-on-primary: #0a0a0a;
+	--color-body: #a1a1a1;
+	--color-mute: #8a8a8a;
+	--color-faint: #666666;
+	--color-hairline: #2e2e2e;
+	--color-hairline-soft: #1a1a1a;
+	--color-canvas: #0a0a0a;
+	--color-canvas-elevated: #171717;
+
+	--color-link: #3291ff;
+	--color-link-deep: #5aa6ff;
+	--color-link-soft: #0f2942;
+	--color-error: #ff5555;
+	--color-error-deep: #ff8080;
+	--color-warning: #f7b955;
+	--color-warning-soft: #3d2e0f;
+	--color-warning-deep: #ffd280;
+	--color-success: #3291ff;
+}
+
+@layer base {
+	:root {
+		color-scheme: light;
+	}
+	body {
+		background: var(--color-canvas);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+	}
+	:focus-visible {
+		outline: 2px solid var(--color-link);
+		outline-offset: 2px;
+		border-radius: var(--radius-sm);
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		html {
+			scroll-behavior: smooth;
+		}
+	}
+}
+
+/* A small "inflate on hover" lift for interactive controls — buttons, icon
+   buttons, and swatches. Gated on prefers-reduced-motion so it never fights
+   a user's OS-level motion preference. */
+@media (prefers-reduced-motion: no-preference) {
+	.btn-primary,
+	.btn-secondary,
+	.btn-primary-sm,
+	.btn-ghost-sm,
+	.icon-btn,
+	.hover-pop {
+		transition:
+			transform 0.15s ease,
+			opacity 0.15s ease,
+			border-color 0.15s ease,
+			background 0.15s ease;
+	}
+	.btn-primary:hover,
+	.btn-secondary:hover,
+	.btn-primary-sm:hover,
+	.btn-ghost-sm:hover,
+	.icon-btn:hover,
+	.hover-pop:hover {
+		transform: scale(1.06);
+	}
+	.btn-primary:active,
+	.btn-secondary:active,
+	.btn-primary-sm:active,
+	.btn-ghost-sm:active,
+	.icon-btn:active,
+	.hover-pop:active {
+		transform: scale(0.97);
+	}
+}
+
+/* ---------------------------------------------------------------- */
+/* Typography primitives — DESIGN.md's typography scale needs weight */
+/* + tracking + leading combos Tailwind's --text-* keys can't carry. */
+/* ---------------------------------------------------------------- */
+
+@layer components {
+	.type-display-xl {
+		font-family: var(--font-sans);
+		/* Scales down on narrow phones instead of forcing awkward line breaks
+		   at a fixed 48px; letter-spacing is em-based so it scales with it. */
+		font-size: clamp(32px, 8vw, 48px);
+		font-weight: 600;
+		line-height: 1;
+		letter-spacing: -0.05em;
+	}
+	.type-heading-lg {
+		font-family: var(--font-sans);
+		font-size: clamp(24px, 6vw, 32px);
+		font-weight: 600;
+		line-height: 1.25;
+		letter-spacing: -0.04em;
+	}
+	.type-heading-md {
+		font-family: var(--font-sans);
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 28px;
+		letter-spacing: -0.4px;
+	}
+	.type-label-sm {
+		font-family: var(--font-sans);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 20px;
+		letter-spacing: -0.28px;
+	}
+	.type-mono-eyebrow {
+		font-family: var(--font-mono);
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 16px;
+		letter-spacing: 0;
+		text-transform: uppercase;
+	}
+	.type-body-lg {
+		font-family: var(--font-sans);
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+	}
+	.type-body-md {
+		font-family: var(--font-sans);
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 20px;
+	}
+	.type-body-sm {
+		font-family: var(--font-sans);
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 16px;
+	}
+	.type-code {
+		font-family: var(--font-mono);
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 20px;
+	}
+
+	/* Buttons */
+	.btn-primary {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-xxs);
+		background: var(--color-ink);
+		color: var(--color-on-primary);
+		font-family: var(--font-sans);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 20px;
+		border-radius: var(--radius-pill);
+		padding: 12px 14px;
+		white-space: nowrap;
+		transition: opacity 0.15s ease;
+	}
+	.btn-primary:hover {
+		opacity: 0.85;
+	}
+	.btn-secondary {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-xxs);
+		background: var(--color-canvas-elevated);
+		color: var(--color-ink);
+		border: 1px solid var(--color-hairline);
+		font-family: var(--font-sans);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 20px;
+		border-radius: var(--radius-pill);
+		padding: 12px 14px;
+		white-space: nowrap;
+		transition: border-color 0.15s ease;
+	}
+	.btn-secondary:hover {
+		border-color: var(--color-faint);
+	}
+	.btn-primary-sm {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-xxs);
+		background: var(--color-ink);
+		color: var(--color-on-primary);
+		font-family: var(--font-sans);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 20px;
+		border-radius: var(--radius-sm);
+		padding: 8px 12px;
+		white-space: nowrap;
+	}
+	.btn-ghost-sm {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-xxs);
+		background: var(--color-canvas-elevated);
+		color: var(--color-ink);
+		border: 1px solid var(--color-hairline);
+		font-family: var(--font-sans);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 20px;
+		border-radius: var(--radius-sm);
+		padding: 8px 12px;
+		white-space: nowrap;
+	}
+
+	/* Form fields */
+	.field-input {
+		background: var(--color-canvas-elevated);
+		color: var(--color-ink);
+		border: 1px solid var(--color-hairline);
+		font-family: var(--font-sans);
+		font-size: 14px;
+		line-height: 20px;
+		border-radius: var(--radius-sm);
+		padding: 8px 12px;
+	}
+	.field-input:focus-visible {
+		outline: 2px solid var(--color-link);
+		outline-offset: 1px;
+	}
+
+	.icon-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		border-radius: var(--radius-sm);
+		color: var(--color-ink);
+		background: transparent;
+	}
+	.icon-btn:hover {
+		background: var(--color-hairline-soft);
+	}
+
+	/* Color options menu items — built dynamically in JS, so these live here
+	   (a global layer) rather than in a component's scoped <style>. */
+	.ctx-item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		width: 100%;
+		text-align: left;
+		border: none;
+		background: none;
+		color: var(--color-ink);
+		padding: 8px 8px;
+		border-radius: var(--radius-sm);
+		font-family: var(--font-sans);
+		font-size: 13.5px;
+		cursor: pointer;
+	}
+	.ctx-item:hover,
+	.ctx-item:focus-visible {
+		background: var(--color-hairline-soft);
+	}
+	.ctx-item svg {
+		flex-shrink: 0;
+		opacity: 0.75;
+	}
+
+	.saved-color-chip {
+		position: relative;
+		width: 44px;
+	}
+	.saved-color-remove {
+		position: absolute;
+		top: -7px;
+		right: -7px;
+		width: 18px;
+		height: 18px;
+		border-radius: 9999px;
+		padding: 0;
+		font-size: 11px;
+		line-height: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--color-ink);
+		color: var(--color-on-primary);
+		border: 2px solid var(--color-canvas-elevated);
+		opacity: 0;
+		transition: opacity 0.12s ease;
+	}
+	.saved-color-chip:hover .saved-color-remove,
+	.saved-color-remove:focus-visible {
+		opacity: 1;
+	}
+
+	/* Cards */
+	.feature-card {
+		background: var(--color-canvas-elevated);
+		border: 1px solid var(--color-hairline);
+		color: var(--color-ink);
+		border-radius: var(--radius-md);
+		padding: var(--spacing-lg);
+	}
+	.code-block {
+		background: var(--color-canvas-elevated);
+		color: var(--color-ink);
+		border: 1px solid var(--color-hairline);
+		font-family: var(--font-mono);
+		font-size: 14px;
+		line-height: 20px;
+		border-radius: var(--radius-md);
+		padding: var(--spacing-md);
+		overflow-x: auto;
+	}
+}
+
+/* Hero mesh gradient — the single decorative flourish in the whole system. */
+@utility mesh-gradient {
+	background-image:
+		radial-gradient(at 15% 20%, var(--gradient-develop-start) 0px, transparent 55%),
+		radial-gradient(at 80% 10%, var(--gradient-preview-end) 0px, transparent 50%),
+		radial-gradient(at 70% 60%, var(--gradient-preview-start) 0px, transparent 55%),
+		radial-gradient(at 20% 70%, var(--gradient-develop-end) 0px, transparent 50%),
+		radial-gradient(at 90% 90%, var(--gradient-ship-end) 0px, transparent 45%);
+	filter: blur(60px) saturate(130%);
+	opacity: 0.5;
+}

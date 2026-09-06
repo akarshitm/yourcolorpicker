@@ -1,0 +1,80 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout
+	title={t.randomColorTool.title}
+	description={t.randomColorTool.description}
+	path="/random-color-generator"
+	lang={lang}
+	helpTitle={t.randomColorTool.help.title}
+	helpSteps={t.randomColorTool.help.steps}
+>
+	<PageHeader eyebrow={t.randomColorTool.eyebrow} heading={t.randomColorTool.heading} intro={t.randomColorTool.intro} icon="random" />
+	<section class="mx-auto max-w-[700px] px-lg pb-3xl md:pb-4xl">
+		<div class="feature-card flex flex-col gap-lg">
+			<div id="rc-swatch" class="h-[140px] w-full rounded-md border" style="border-color: var(--color-hairline);" aria-hidden="true"></div>
+
+			<div class="flex flex-col gap-xs">
+				<div class="value-item">
+					<label class="type-body-sm text-mute w-14 shrink-0">HEX</label>
+					<code id="rc-hex" class="type-code flex-1 min-w-0 truncate">—</code>
+					<button type="button" class="btn-ghost-sm" data-copy-target="rc-hex">{t.tool.copy}</button>
+				</div>
+				<div class="value-item">
+					<label class="type-body-sm text-mute w-14 shrink-0">RGB</label>
+					<code id="rc-rgb" class="type-code flex-1 min-w-0 truncate">—</code>
+					<button type="button" class="btn-ghost-sm" data-copy-target="rc-rgb">{t.tool.copy}</button>
+				</div>
+				<div class="value-item">
+					<label class="type-body-sm text-mute w-14 shrink-0">HSL</label>
+					<code id="rc-hsl" class="type-code flex-1 min-w-0 truncate">—</code>
+					<button type="button" class="btn-ghost-sm" data-copy-target="rc-hsl">{t.tool.copy}</button>
+				</div>
+			</div>
+
+			<button type="button" id="rc-generate-btn" class="btn-primary self-start">{t.randomColorTool.generate}</button>
+
+			<div>
+				<p class="type-label-sm text-mute mb-xs">{t.tool.goesWellWith}</p>
+				<div class="flex flex-col gap-sm">
+					<div>
+						<p class="type-label-sm text-mute mb-xxs">{t.tool.complementary}</p>
+						<div id="rc-harmony-complementary" class="flex gap-xs"></div>
+					</div>
+					<div>
+						<p class="type-label-sm text-mute mb-xxs">{t.tool.analogous}</p>
+						<div id="rc-harmony-analogous" class="flex gap-xs"></div>
+					</div>
+					<div>
+						<p class="type-label-sm text-mute mb-xxs">{t.tool.triadic}</p>
+						<div id="rc-harmony-triadic" class="flex gap-xs"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.value-item {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			padding: 9px 10px;
+		}
+	</style>
+
+	<script src="../../scripts/randomColorGeneratorPage.ts"></script>
+</PageLayout>

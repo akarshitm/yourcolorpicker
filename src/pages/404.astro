@@ -1,0 +1,41 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { useTranslations } from "../i18n/utils";
+
+const t = useTranslations("en");
+---
+
+<PageLayout title={t.notFound.title} description={t.notFound.description} path="/404" lang="en" noindex>
+	<PageHeader eyebrow={t.notFound.eyebrow} heading={t.notFound.heading} intro={t.notFound.intro} />
+	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
+		<div class="flex flex-col gap-lg">
+			<div>
+				<a href="/" class="btn-primary">{t.notFound.homeButton}</a>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.notFound.tryHeading}</h2>
+				<div class="flex flex-col gap-xs">
+					<a href="/#tool" class="footer-link-lg">{t.notFound.tryTool}</a>
+					<a href="/faq" class="footer-link-lg">{t.notFound.tryFaq}</a>
+					<a href="/about" class="footer-link-lg">{t.notFound.tryAbout}</a>
+					<a href="/contact" class="footer-link-lg">{t.notFound.tryContact}</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</PageLayout>
+
+<style>
+	.footer-link-lg {
+		color: var(--color-link);
+		font-family: var(--font-sans);
+		font-size: 16px;
+		line-height: 24px;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+	.footer-link-lg:hover {
+		color: var(--color-link-deep);
+	}
+</style>

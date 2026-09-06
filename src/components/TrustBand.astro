@@ -1,0 +1,26 @@
+---
+import type { Locale } from "../i18n/config";
+import { useTranslations } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="border-y" style="background: var(--color-canvas); border-color: var(--color-hairline);">
+	<div class="mx-auto flex max-w-[1200px] flex-wrap items-center justify-center gap-lg px-lg py-xl">
+		{
+			t.trust.points.map((point) => (
+				<p class="type-body-md text-mute flex items-center gap-xs">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+					{point}
+				</p>
+			))
+		}
+	</div>
+</section>

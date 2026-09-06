@@ -1,0 +1,55 @@
+---
+import type { Locale } from "../i18n/config";
+import { useTranslations, localizePath } from "../i18n/utils";
+import TransLink from "./TransLink.astro";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer id="privacy" class="border-t scroll-mt-24" style="background: var(--color-canvas); border-color: var(--color-hairline);">
+	<div class="mx-auto max-w-[1200px] px-lg py-3xl">
+		<div class="mb-lg max-w-[64ch]">
+			<h2 class="type-heading-md mb-xs">{t.footer.privacyHeading}</h2>
+			<p class="type-body-md text-body">
+				{t.footer.privacyBlurb}{" "}
+				<TransLink text={t.footer.readFullPolicy} href={localizePath(lang, "/privacy-policy")} label={t.footer.privacyPolicyLabel} />
+			</p>
+		</div>
+		<nav
+			class="mb-lg flex flex-wrap items-center gap-x-lg gap-y-xs border-t pt-lg"
+			style="border-color: var(--color-hairline);"
+			aria-label="Site pages"
+		>
+			<a href={localizePath(lang, "/about")} class="footer-link">{t.footer.aboutUs}</a>
+			<a href={localizePath(lang, "/tools")} class="footer-link">{t.footer.tools}</a>
+			<a href={localizePath(lang, "/faq")} class="footer-link">{t.footer.faq}</a>
+			<a href={localizePath(lang, "/contact")} class="footer-link">{t.footer.contactUs}</a>
+			<a href={localizePath(lang, "/privacy-policy")} class="footer-link">{t.footer.privacyPolicy}</a>
+			<a href={localizePath(lang, "/terms-and-conditions")} class="footer-link">{t.footer.termsAndConditions}</a>
+		</nav>
+		<div class="flex flex-wrap items-center justify-between gap-lg border-t pt-lg" style="border-color: var(--color-hairline);">
+			<p class="type-label-sm text-ink">{t.brandName}</p>
+			<p class="type-body-sm text-mute">© {year} {t.footer.copyrightSuffix}</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer-link {
+		color: var(--color-body);
+		font-family: var(--font-sans);
+		font-size: 14px;
+		line-height: 20px;
+		text-decoration: none;
+	}
+	.footer-link:hover {
+		color: var(--color-ink);
+		text-decoration: underline;
+	}
+</style>

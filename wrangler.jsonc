@@ -1,0 +1,16 @@
+{
+	"name": "your-color-picker",
+	"compatibility_date": "2025-06-01",
+	"main": "worker.ts",
+	"assets": {
+		"directory": "./dist",
+		"binding": "ASSETS",
+		"not_found_handling": "404-page",
+		"html_handling": "drop-trailing-slash",
+		"run_worker_first": true
+	},
+	"routes": [
+		{ "pattern": "www.yourcolorpicker.com", "custom_domain": true },
+		{ "pattern": "yourcolorpicker.com", "custom_domain": true }
+	]
+}

@@ -1,0 +1,45 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import TransLink from "../TransLink.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations, localizePath } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const contactEmail = "knightfury13849@gmail.com";
+---
+
+<PageLayout title={t.contact.title} description={t.contact.description} path="/contact" lang={lang}>
+	<PageHeader eyebrow={t.contact.eyebrow} heading={t.contact.heading} intro={t.contact.intro} />
+	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
+		<div class="flex flex-col gap-lg">
+			<div class="feature-card flex flex-wrap items-center justify-between gap-md">
+				<div>
+					<h2 class="type-heading-md mb-xs">{t.contact.emailHeading}</h2>
+					<p class="type-body-md text-body">
+						<a href={`mailto:${contactEmail}`} class="underline">{contactEmail}</a>
+					</p>
+				</div>
+				<a href={`mailto:${contactEmail}`} class="btn-primary-sm">{t.contact.sendEmailButton}</a>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.contact.includeHeading}</h2>
+				<p class="type-body-md text-body">{t.contact.includeBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.contact.beforeHeading}</h2>
+				<p class="type-body-md text-body">
+					<TransLink text={t.contact.beforeFaqBody} href={localizePath(lang, "/faq")} label={t.contact.beforeFaqLinkLabel} />
+				</p>
+				<p class="type-body-md text-body mt-xs">
+					<TransLink text={t.contact.beforePrivacyBody} href={localizePath(lang, "/privacy-policy")} label={t.contact.beforePrivacyLinkLabel} />
+				</p>
+			</div>
+		</div>
+	</section>
+</PageLayout>

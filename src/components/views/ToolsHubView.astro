@@ -1,0 +1,64 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import ToolIcon, { type ToolIconName } from "../ToolIcon.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const hrefs = [
+	"/#tool",
+	"/color-converter",
+	"/gradient-maker",
+	"/contrast-checker",
+	"/color-blindness-simulator",
+	"/color-mixer",
+	"/shades-and-tints-generator",
+	"/random-color-generator",
+	"/color-names",
+	"/palette-generator",
+];
+const icons: ToolIconName[] = ["picker", "converter", "gradient", "contrast", "blindness", "mixer", "shadesTints", "random", "names", "palette"];
+const tools = t.toolsHub.items.map((item, i) => ({ ...item, href: hrefs[i], icon: icons[i] }));
+---
+
+<PageLayout title={t.toolsHub.title} description={t.toolsHub.description} path="/tools" lang={lang}>
+	<PageHeader eyebrow={t.toolsHub.eyebrow} heading={t.toolsHub.heading} intro={t.toolsHub.intro} />
+	<section class="mx-auto max-w-[1100px] px-lg pb-3xl md:pb-4xl">
+		<div class="grid gap-md sm:grid-cols-2 lg:grid-cols-3">
+			{
+				tools.map((tool) => (
+					<a href={tool.href} class="feature-card flex gap-sm no-underline hover-pop">
+						<span class="tool-card-icon">
+							<ToolIcon name={tool.icon} />
+						</span>
+						<span>
+							<h2 class="type-heading-md mb-xs text-ink">{tool.title}</h2>
+							<p class="type-body-md text-body">{tool.body}</p>
+						</span>
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<style>
+		.tool-card-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			flex-shrink: 0;
+			border-radius: var(--radius-md);
+			background: var(--color-hairline-soft);
+			color: var(--color-ink);
+		}
+	</style>
+</PageLayout>

@@ -1,0 +1,55 @@
+---
+import type { Locale } from "../i18n/config";
+import { useTranslations, localizePath } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+	limit?: number;
+	showHeading?: boolean;
+}
+
+const { lang, limit, showHeading = true } = Astro.props;
+const t = useTranslations(lang);
+const allFaqs = t.faq.items;
+const faqs = limit ? allFaqs.slice(0, limit) : allFaqs;
+const isTeaser = limit !== undefined && limit < allFaqs.length;
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqs.map((f) => ({
+		"@type": "Question",
+		name: f.q,
+		acceptedAnswer: { "@type": "Answer", text: f.a },
+	})),
+};
+---
+
+<section id="faq" class="mx-auto max-w-[1200px] px-lg py-3xl md:py-4xl scroll-mt-24">
+	{
+		showHeading && (
+			<div class="mx-auto mb-xl max-w-[60ch] text-center">
+				<h2 class="type-heading-lg">{t.faq.sectionHeading}</h2>
+			</div>
+		)
+	}
+	<div class="mx-auto flex max-w-[760px] flex-col gap-md">
+		{
+			faqs.map((f) => (
+				<div class="feature-card">
+					<h3 class="type-heading-md mb-xs">{f.q}</h3>
+					<p class="type-body-md text-body">{f.a}</p>
+				</div>
+			))
+		}
+		{
+			isTeaser && (
+				<a href={localizePath(lang, "/faq")} class="btn-secondary mx-auto mt-xs">
+					{t.faq.viewAll}
+				</a>
+			)
+		}
+	</div>
+</section>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

@@ -1,0 +1,27 @@
+---
+import type { Locale } from "../i18n/config";
+import { useTranslations } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="why-different" class="mx-auto max-w-[1200px] px-lg py-3xl md:py-section scroll-mt-24">
+	<div class="mx-auto mb-2xl max-w-[60ch] text-center">
+		<h2 class="type-heading-lg">{t.features.heading}</h2>
+	</div>
+	<div class="grid gap-md sm:grid-cols-2 lg:grid-cols-3">
+		{
+			t.features.items.map((f) => (
+				<div class="feature-card">
+					<h3 class="type-heading-md mb-xs">{f.title}</h3>
+					<p class="type-body-md text-body">{f.body}</p>
+				</div>
+			))
+		}
+	</div>
+</section>

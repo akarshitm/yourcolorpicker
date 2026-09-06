@@ -1,0 +1,46 @@
+---
+import ToolIcon, { type ToolIconName } from "./ToolIcon.astro";
+
+interface Props {
+	eyebrow?: string;
+	heading: string;
+	intro?: string;
+	icon?: ToolIconName;
+}
+
+const { eyebrow, heading, intro, icon } = Astro.props;
+---
+
+<section class="relative overflow-hidden" style="background: var(--color-canvas);">
+	<div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
+	<div class="relative mx-auto max-w-[800px] px-lg pt-3xl pb-lg md:pt-4xl">
+		{eyebrow && <p class="type-mono-eyebrow text-mute mb-xs">{eyebrow}</p>}
+		<div class="flex items-center gap-sm mb-md">
+			{
+				icon && (
+					<span class="page-header-icon">
+						<ToolIcon name={icon} size={22} />
+					</span>
+				)
+			}
+			<h1 class="type-display-xl">{heading}</h1>
+		</div>
+		{intro && <p class="type-body-lg text-body max-w-[64ch]">{intro}</p>}
+	</div>
+</section>
+<div class="h-lg md:h-2xl" style="background: var(--color-canvas);"></div>
+
+<style>
+	.page-header-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		flex-shrink: 0;
+		border-radius: var(--radius-md);
+		background: var(--color-canvas-elevated);
+		border: 1px solid var(--color-hairline);
+		color: var(--color-ink);
+	}
+</style>

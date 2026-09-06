@@ -1,0 +1,108 @@
+---
+import type { Locale } from "../i18n/config";
+import { useTranslations, localizePath } from "../i18n/utils";
+import TransLink from "./TransLink.astro";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div id="cookie-consent" class="cookie-consent" hidden role="region" aria-label={t.cookieConsent.linkLabel}>
+	<p class="type-body-sm text-body cookie-consent-text">
+		<TransLink text={t.cookieConsent.message} href={localizePath(lang, "/privacy-policy")} label={t.cookieConsent.linkLabel} />
+	</p>
+	<div class="cookie-consent-actions">
+		<button type="button" id="cookie-consent-decline" class="btn-ghost-sm">{t.cookieConsent.decline}</button>
+		<button type="button" id="cookie-consent-accept" class="btn-primary-sm">{t.cookieConsent.accept}</button>
+	</div>
+</div>
+
+<script is:inline data-ga-id="G-XBPR070LSJ">
+	(function () {
+		var CONSENT_KEY = "rcf:cookie-consent";
+		var script = document.currentScript;
+		var GA_ID = script && script.getAttribute("data-ga-id");
+
+		function loadGA() {
+			if (window.__gaLoaded || !GA_ID) return;
+			window.__gaLoaded = true;
+			var s = document.createElement("script");
+			s.async = true;
+			s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+			document.head.appendChild(s);
+			window.dataLayer = window.dataLayer || [];
+			window.gtag = function () {
+				window.dataLayer.push(arguments);
+			};
+			window.gtag("js", new Date());
+			window.gtag("config", GA_ID);
+		}
+
+		function getConsent() {
+			try {
+				return localStorage.getItem(CONSENT_KEY);
+			} catch (e) {
+				return null;
+			}
+		}
+
+		function setConsent(value) {
+			try {
+				localStorage.setItem(CONSENT_KEY, value);
+			} catch (e) {
+				// localStorage unavailable — consent just won't persist across visits.
+			}
+		}
+
+		var banner = document.getElementById("cookie-consent");
+		var consent = getConsent();
+
+		if (consent === "granted") {
+			loadGA();
+		} else if (consent !== "denied" && banner) {
+			banner.hidden = false;
+		}
+
+		document.getElementById("cookie-consent-accept")?.addEventListener("click", function () {
+			setConsent("granted");
+			if (banner) banner.hidden = true;
+			loadGA();
+		});
+		document.getElementById("cookie-consent-decline")?.addEventListener("click", function () {
+			setConsent("denied");
+			if (banner) banner.hidden = true;
+		});
+	})();
+</script>
+
+<style>
+	.cookie-consent {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 60;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--spacing-sm);
+		padding: var(--spacing-sm) var(--spacing-lg);
+		background: var(--color-canvas-elevated);
+		border-top: 1px solid var(--color-hairline);
+		box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.12);
+	}
+	.cookie-consent-text {
+		flex: 1 1 320px;
+		min-width: 0;
+	}
+	.cookie-consent-actions {
+		display: flex;
+		gap: var(--spacing-xs);
+		flex-shrink: 0;
+	}
+</style>

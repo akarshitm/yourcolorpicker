@@ -1,0 +1,15 @@
+---
+// Renders a translated sentence containing one "{{link}}" token as an inline
+// link, so translators can place the link wherever their language's word
+// order needs it while the href stays correctly localized.
+interface Props {
+	text: string;
+	href: string;
+	label: string;
+}
+
+const { text, href, label } = Astro.props;
+const [before, after] = text.split("{{link}}");
+---
+
+{before}<a href={href} class="underline">{label}</a>{after}

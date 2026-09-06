@@ -1,0 +1,70 @@
+---
+interface Step {
+	title: string;
+	body: string;
+}
+
+interface Props {
+	title: string;
+	steps: Step[];
+	done: string;
+	close: string;
+}
+
+const { title, steps, done, close } = Astro.props;
+---
+
+<dialog id="help-dialog" aria-labelledby="help-dialog-title">
+	<div class="flex items-start justify-between gap-md mb-md">
+		<h2 id="help-dialog-title" class="type-heading-lg">{title}</h2>
+		<button type="button" id="help-dialog-close" class="icon-btn" aria-label={close}>
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+				<path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"></path>
+			</svg>
+		</button>
+	</div>
+	<div class="flex flex-col gap-md">
+		{
+			steps.map((step) => (
+				<div>
+					<p class="type-label-sm text-ink mb-xxs">{step.title}</p>
+					<p class="type-body-md text-body">{step.body}</p>
+				</div>
+			))
+		}
+	</div>
+	<div class="mt-lg flex justify-end">
+		<button type="button" id="help-dialog-done" class="btn-primary-sm">{done}</button>
+	</div>
+</dialog>
+
+<script>
+	const dialog = document.getElementById("help-dialog") as HTMLDialogElement;
+	const openBtn = document.getElementById("help-btn");
+	const closeBtn = document.getElementById("help-dialog-close");
+	const doneBtn = document.getElementById("help-dialog-done");
+
+	openBtn?.addEventListener("click", () => dialog.showModal());
+	closeBtn?.addEventListener("click", () => dialog.close());
+	doneBtn?.addEventListener("click", () => dialog.close());
+	dialog.addEventListener("click", (e) => {
+		if (e.target === dialog) dialog.close(); // click on the ::backdrop
+	});
+</script>
+
+<style>
+	#help-dialog {
+		max-width: 560px;
+		width: calc(100vw - 48px);
+		max-height: calc(100vh - 96px);
+		overflow-y: auto;
+		border: 1px solid var(--color-hairline);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-xl);
+		background: var(--color-canvas-elevated);
+		color: var(--color-ink);
+	}
+	#help-dialog::backdrop {
+		background: rgba(0, 0, 0, 0.4);
+	}
+</style>

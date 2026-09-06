@@ -1,0 +1,98 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout
+	title={t.colorMixerTool.title}
+	description={t.colorMixerTool.description}
+	path="/color-mixer"
+	lang={lang}
+	helpTitle={t.colorMixerTool.help.title}
+	helpSteps={t.colorMixerTool.help.steps}
+>
+	<PageHeader eyebrow={t.colorMixerTool.eyebrow} heading={t.colorMixerTool.heading} intro={t.colorMixerTool.intro} icon="mixer" />
+	<section class="mx-auto max-w-[700px] px-lg pb-3xl md:pb-4xl">
+		<div class="feature-card flex flex-col gap-lg">
+			<div class="grid grid-cols-2 gap-sm">
+				<div class="gradient-stop">
+					<input type="color" id="mix-a-picker" value="#3B82F6" aria-label={t.colorMixerTool.colorA} />
+					<input type="text" id="mix-a" class="field-input flex-1 min-w-0 type-code" value="#3B82F6" aria-label={t.colorMixerTool.colorA} />
+				</div>
+				<div class="gradient-stop">
+					<input type="color" id="mix-b-picker" value="#EC4899" aria-label={t.colorMixerTool.colorB} />
+					<input type="text" id="mix-b" class="field-input flex-1 min-w-0 type-code" value="#EC4899" aria-label={t.colorMixerTool.colorB} />
+				</div>
+			</div>
+			<div class="flex justify-between type-body-sm text-mute">
+				<span>{t.colorMixerTool.colorA}</span>
+				<span>{t.colorMixerTool.colorB}</span>
+			</div>
+
+			<label class="type-body-sm text-body flex items-center gap-sm">
+				{t.colorMixerTool.blendRatio}
+				<input type="range" id="mix-ratio" min="0" max="100" value="50" class="flex-1 accent-[var(--color-ink)]" />
+				<span id="mix-ratio-label" class="type-code w-10 text-right">50%</span>
+			</label>
+
+			<div id="mix-result-swatch" class="h-[110px] w-full rounded-md border" style="border-color: var(--color-hairline);" aria-hidden="true"></div>
+
+			<div class="flex flex-col gap-xs">
+				<div class="value-item">
+					<label class="type-body-sm text-mute w-14 shrink-0">HEX</label>
+					<code id="mix-result-hex" class="type-code flex-1 min-w-0 truncate">—</code>
+					<button type="button" class="btn-ghost-sm" data-copy-target="mix-result-hex">{t.tool.copy}</button>
+				</div>
+				<div class="value-item">
+					<label class="type-body-sm text-mute w-14 shrink-0">RGB</label>
+					<code id="mix-result-rgb" class="type-code flex-1 min-w-0 truncate">—</code>
+					<button type="button" class="btn-ghost-sm" data-copy-target="mix-result-rgb">{t.tool.copy}</button>
+				</div>
+				<div class="value-item">
+					<label class="type-body-sm text-mute w-14 shrink-0">HSL</label>
+					<code id="mix-result-hsl" class="type-code flex-1 min-w-0 truncate">—</code>
+					<button type="button" class="btn-ghost-sm" data-copy-target="mix-result-hsl">{t.tool.copy}</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.value-item {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			padding: 9px 10px;
+		}
+		.gradient-stop {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			padding: 8px 10px;
+		}
+		.gradient-stop input[type="color"] {
+			width: 36px;
+			height: 36px;
+			padding: 0;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			background: none;
+			flex-shrink: 0;
+		}
+	</style>
+
+	<script src="../../scripts/colorMixer.ts"></script>
+</PageLayout>

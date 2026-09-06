@@ -1,0 +1,72 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations, localizePath } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const lastUpdated = "September 5, 2026";
+const contactEmail = "knightfury13849@gmail.com";
+
+const [beforeEmail, afterEmail] = t.privacy.contactBody.split("{{email}}");
+const [beforeLink, afterLink] = afterEmail.split("{{link}}");
+
+const [beforeOptout, afterOptout] = t.privacy.cookiesBody.split("{{optout}}");
+const [beforePrivacyLink, afterPrivacyLink] = afterOptout.split("{{privacy}}");
+---
+
+<PageLayout title={t.privacy.title} description={t.privacy.description} path="/privacy-policy" lang={lang}>
+	<PageHeader eyebrow={t.privacy.eyebrow} heading={t.privacy.heading} intro={`${t.privacy.lastUpdatedPrefix} ${lastUpdated}`} />
+	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
+		<div class="flex flex-col gap-lg">
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.privacy.shortHeading}</h2>
+				<p class="type-body-md text-body">{t.privacy.shortBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.privacy.imagesHeading}</h2>
+				<p class="type-body-md text-body">{t.privacy.imagesBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.privacy.storageHeading}</h2>
+				<p class="type-body-md text-body">{t.privacy.storageBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.privacy.cookiesHeading}</h2>
+				<p class="type-body-md text-body">
+					{beforeOptout}<a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="underline"
+						>{t.privacy.cookiesOptoutLabel}</a
+					>{beforePrivacyLink}<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="underline"
+						>{t.privacy.cookiesGooglePrivacyLabel}</a
+					>{afterPrivacyLink}
+				</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.privacy.hostingHeading}</h2>
+				<p class="type-body-md text-body">{t.privacy.hostingBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.privacy.childrenHeading}</h2>
+				<p class="type-body-md text-body">{t.privacy.childrenBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.privacy.changesHeading}</h2>
+				<p class="type-body-md text-body">{t.privacy.changesBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.privacy.contactHeading}</h2>
+				<p class="type-body-md text-body">
+					{beforeEmail}<a href={`mailto:${contactEmail}`} class="underline">{contactEmail}</a>{beforeLink}<a
+						href={localizePath(lang, "/contact")}
+						class="underline">{t.privacy.contactLinkLabel}</a
+					>{afterLink}
+				</p>
+			</div>
+		</div>
+	</section>
+</PageLayout>

@@ -1,0 +1,49 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import TransLink from "../TransLink.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations, localizePath } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout title={t.about.title} description={t.about.description} path="/about" lang={lang}>
+	<PageHeader eyebrow={t.about.eyebrow} heading={t.about.heading} intro={t.about.intro} />
+	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
+		<div class="flex flex-col gap-lg">
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.about.whatHeading}</h2>
+				<p class="type-body-md text-body">{t.about.whatBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.about.whyHeading}</h2>
+				<p class="type-body-md text-body">{t.about.whyBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.about.howHeading}</h2>
+				<p class="type-body-md text-body">
+					<TransLink text={t.about.howBody} href={localizePath(lang, "/privacy-policy")} label={t.about.howLinkLabel} />
+				</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.about.whoHeading}</h2>
+				<p class="type-body-md text-body">{t.about.whoBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.about.questionsHeading}</h2>
+				<p class="type-body-md text-body">
+					<TransLink text={t.about.questionsFaqBody} href={localizePath(lang, "/faq")} label={t.about.questionsFaqLinkLabel} />
+				</p>
+				<p class="type-body-md text-body mt-xs">
+					<TransLink text={t.about.questionsContactBody} href={localizePath(lang, "/contact")} label={t.about.questionsContactLinkLabel} />
+				</p>
+			</div>
+		</div>
+	</section>
+</PageLayout>

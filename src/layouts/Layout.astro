@@ -1,0 +1,124 @@
+---
+import "../styles/global.css";
+import { locales, defaultLocale, localeTags, localeDirs, type Locale } from "../i18n/config";
+import { localizePath } from "../i18n/utils";
+import CookieConsent from "../components/CookieConsent.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	path?: string;
+	lang?: Locale;
+	noindex?: boolean;
+}
+
+const {
+	title = "Your Color Picker — Color Finder From Image (HEX, RGB, HSL)",
+	description = "Free color picker and color finder from image — get instant HEX, RGB, and HSL codes, a complementary color finder, and a random color picker. 100% private, nothing is ever uploaded.",
+	path = "/",
+	lang = defaultLocale,
+	noindex = false,
+} = Astro.props;
+
+const siteUrl = "https://www.yourcolorpicker.com/";
+const pageUrl = new URL(localizePath(lang, path), siteUrl).toString();
+const ogImage = new URL("/web-app-manifest-512x512.png", siteUrl).toString();
+
+const ogLocales: Record<Locale, string> = {
+	en: "en_US",
+	es: "es_ES",
+	fr: "fr_FR",
+	hi: "hi_IN",
+	de: "de_DE",
+	ja: "ja_JP",
+	it: "it_IT",
+	ar: "ar_AR",
+};
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "WebApplication",
+	name: "Your Color Picker",
+	url: siteUrl,
+	description,
+	applicationCategory: "DesignApplication",
+	operatingSystem: "Any (runs in the browser)",
+	offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+	featureList: [
+		"Color picker from image",
+		"Color finder from image",
+		"HEX color finder",
+		"HEX code color picker",
+		"RGB color finder",
+		"Complementary color finder",
+		"Random color picker",
+		"WCAG contrast checker",
+	],
+};
+---
+
+<!doctype html>
+<html lang={localeTags[lang]} dir={localeDirs[lang]}>
+	<head>
+		<meta charset="utf-8" />
+		<script is:inline>
+			// Runs before first paint so the correct theme applies with zero flash.
+			// Kept in sync at runtime by src/scripts/theme.ts.
+			(function () {
+				try {
+					var stored = localStorage.getItem("rcf:theme");
+					var theme =
+						stored === "light" || stored === "dark"
+							? stored
+							: window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+								? "dark"
+								: "light";
+					document.documentElement.setAttribute("data-theme", theme);
+				} catch (e) {}
+			})();
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="YourColorPicker" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
+		<link rel="canonical" href={pageUrl} />
+		{
+			locales.map((locale) => (
+				<link rel="alternate" hreflang={localeTags[locale]} href={new URL(localizePath(locale, path), siteUrl).toString()} />
+			))
+		}
+		<link rel="alternate" hreflang="x-default" href={new URL(localizePath(defaultLocale, path), siteUrl).toString()} />
+		<meta name="theme-color" content="#fafafa" id="theme-color-meta" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={pageUrl} />
+		<meta property="og:locale" content={ogLocales[lang]} />
+		<meta property="og:site_name" content="Your Color Picker" />
+		<meta property="og:image" content={ogImage} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<title>{title}</title>
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body>
+		<slot />
+		<CookieConsent lang={lang} />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+	}
+</style>

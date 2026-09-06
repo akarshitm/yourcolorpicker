@@ -1,0 +1,27 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import Hero from "../Hero.astro";
+import ColorTool from "../ColorTool.astro";
+import TrustBand from "../TrustBand.astro";
+import FeatureGrid from "../FeatureGrid.astro";
+import Faq from "../Faq.astro";
+import CtaBand from "../CtaBand.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout title={t.hero.metaTitle} description={t.hero.subhead} path="/" lang={lang}>
+	<Hero lang={lang} />
+	<ColorTool lang={lang} />
+	<TrustBand lang={lang} />
+	<FeatureGrid lang={lang} />
+	<Faq lang={lang} limit={5} />
+	<CtaBand lang={lang} />
+</PageLayout>

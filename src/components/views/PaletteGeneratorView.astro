@@ -1,0 +1,95 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout
+	title={t.paletteGeneratorTool.title}
+	description={t.paletteGeneratorTool.description}
+	path="/palette-generator"
+	lang={lang}
+	helpTitle={t.paletteGeneratorTool.help.title}
+	helpSteps={t.paletteGeneratorTool.help.steps}
+>
+	<PageHeader
+		eyebrow={t.paletteGeneratorTool.eyebrow}
+		heading={t.paletteGeneratorTool.heading}
+		intro={t.paletteGeneratorTool.intro}
+		icon="palette"
+	/>
+	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
+		<div class="feature-card flex flex-col gap-lg">
+			<div class="gradient-stop max-w-[260px]">
+				<input type="color" id="pg-picker" value="#3B82F6" aria-label={t.paletteGeneratorTool.baseColorLabel} />
+				<input
+					type="text"
+					id="pg-hex"
+					class="field-input flex-1 min-w-0 type-code"
+					value="#3B82F6"
+					aria-label={t.paletteGeneratorTool.baseColorLabel}
+				/>
+			</div>
+			<button type="button" id="pg-randomize-btn" class="btn-ghost-sm self-start">{t.paletteGeneratorTool.randomize}</button>
+
+			<div>
+				<p class="type-label-sm text-mute mb-xxs">{t.tool.complementary}</p>
+				<div id="pg-harmony-complementary" class="flex flex-wrap gap-xs"></div>
+			</div>
+			<div>
+				<p class="type-label-sm text-mute mb-xxs">{t.tool.analogous}</p>
+				<div id="pg-harmony-analogous" class="flex flex-wrap gap-xs"></div>
+			</div>
+			<div>
+				<p class="type-label-sm text-mute mb-xxs">{t.tool.triadic}</p>
+				<div id="pg-harmony-triadic" class="flex flex-wrap gap-xs"></div>
+			</div>
+			<div>
+				<p class="type-label-sm text-mute mb-xxs">{t.tool.monochromatic}</p>
+				<div id="pg-harmony-monochromatic" class="flex flex-wrap gap-xs"></div>
+			</div>
+
+			<div>
+				<div class="mb-xs flex items-center justify-between">
+					<h3 class="type-heading-md">{t.paletteGeneratorTool.exportHeading}</h3>
+				</div>
+				<div class="flex flex-wrap gap-xs">
+					<button type="button" class="btn-ghost-sm" data-pg-export="css">{t.tool.exportCss}</button>
+					<button type="button" class="btn-ghost-sm" data-pg-export="tailwind">{t.tool.exportTailwind}</button>
+					<button type="button" class="btn-ghost-sm" data-pg-export="json">{t.tool.exportJson}</button>
+				</div>
+				<pre id="pg-export-preview" class="code-block mt-sm hidden max-h-40 overflow-y-auto"></pre>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.gradient-stop {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			padding: 8px 10px;
+		}
+		.gradient-stop input[type="color"] {
+			width: 36px;
+			height: 36px;
+			padding: 0;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			background: none;
+			flex-shrink: 0;
+		}
+	</style>
+
+	<script src="../../scripts/paletteGenerator.ts"></script>
+</PageLayout>

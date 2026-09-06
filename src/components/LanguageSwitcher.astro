@@ -1,0 +1,107 @@
+---
+import { locales, localeNames, type Locale } from "../i18n/config";
+import { localizePath } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+	path: string;
+	label: string;
+}
+
+const { lang, path, label } = Astro.props;
+---
+
+<details class="lang-switch">
+	<summary class="lang-switch-btn" aria-label={label} title={label}>
+		<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+			<circle cx="12" cy="12" r="10"></circle>
+			<path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" stroke-linecap="round"></path>
+		</svg>
+		<span class="lang-switch-code">{lang.toUpperCase()}</span>
+	</summary>
+	<div class="lang-switch-menu" role="menu">
+		{
+			locales.map((locale) => (
+				<a href={localizePath(locale, path)} role="menuitem" class="lang-switch-item" aria-current={locale === lang ? "true" : undefined}>
+					{localeNames[locale]}
+				</a>
+			))
+		}
+	</div>
+</details>
+
+<script>
+	// Close any open language menu when clicking outside it or pressing Escape.
+	document.addEventListener("click", (e) => {
+		document.querySelectorAll("details.lang-switch[open]").forEach((el) => {
+			if (!(el as HTMLElement).contains(e.target as Node)) el.removeAttribute("open");
+		});
+	});
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") {
+			document.querySelectorAll("details.lang-switch[open]").forEach((el) => el.removeAttribute("open"));
+		}
+	});
+</script>
+
+<style>
+	.lang-switch {
+		position: relative;
+	}
+	.lang-switch-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		height: 36px;
+		padding: 0 10px;
+		border-radius: var(--radius-sm);
+		color: var(--color-ink);
+		cursor: pointer;
+		list-style: none;
+	}
+	.lang-switch-btn::-webkit-details-marker {
+		display: none;
+	}
+	.lang-switch-btn:hover {
+		background: var(--color-hairline-soft);
+	}
+	.lang-switch-code {
+		font-family: var(--font-sans);
+		font-size: 12px;
+		font-weight: 500;
+		letter-spacing: -0.2px;
+	}
+	.lang-switch-menu {
+		position: absolute;
+		top: calc(100% + 6px);
+		right: 0;
+		z-index: 20;
+		min-width: 140px;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		padding: 6px;
+		border: 1px solid var(--color-hairline);
+		border-radius: var(--radius-md);
+		background: var(--color-canvas-elevated);
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+	}
+	.lang-switch-item {
+		display: block;
+		padding: 8px 10px;
+		border-radius: var(--radius-sm);
+		color: var(--color-body);
+		font-family: var(--font-sans);
+		font-size: 14px;
+		line-height: 20px;
+		text-decoration: none;
+	}
+	.lang-switch-item:hover {
+		background: var(--color-hairline-soft);
+		color: var(--color-ink);
+	}
+	.lang-switch-item[aria-current="true"] {
+		color: var(--color-ink);
+		font-weight: 500;
+	}
+</style>

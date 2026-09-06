@@ -1,0 +1,84 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout
+	title={t.colorConverterTool.title}
+	description={t.colorConverterTool.description}
+	path="/color-converter"
+	lang={lang}
+	helpTitle={t.colorConverterTool.help.title}
+	helpSteps={t.colorConverterTool.help.steps}
+>
+	<PageHeader eyebrow={t.colorConverterTool.eyebrow} heading={t.colorConverterTool.heading} intro={t.colorConverterTool.intro} icon="converter" />
+	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
+		<div class="feature-card flex flex-col gap-lg">
+			<div id="converter-swatch" class="h-[110px] w-full rounded-md border" style="border-color: var(--color-hairline); background: #3B82F6;" aria-hidden="true">
+			</div>
+
+			<div class="value-item">
+				<label for="conv-hex" class="type-body-sm text-mute w-14 shrink-0">HEX</label>
+				<input type="text" id="conv-hex" class="field-input flex-1 min-w-0 type-code" value="#3B82F6" />
+				<button type="button" class="btn-ghost-sm" data-copy="hex">{t.tool.copy}</button>
+			</div>
+
+			<div class="flex flex-col gap-xs">
+				<div class="flex items-center gap-xs">
+					<label class="type-body-sm text-mute w-14 shrink-0">RGB</label>
+					<input type="number" id="conv-r" min="0" max="255" class="field-input w-full" aria-label="Red" />
+					<input type="number" id="conv-g" min="0" max="255" class="field-input w-full" aria-label="Green" />
+					<input type="number" id="conv-b" min="0" max="255" class="field-input w-full" aria-label="Blue" />
+					<button type="button" class="btn-ghost-sm shrink-0" data-copy="rgb">{t.tool.copy}</button>
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-xs">
+				<div class="flex items-center gap-xs">
+					<label class="type-body-sm text-mute w-14 shrink-0">HSL</label>
+					<input type="number" id="conv-hsl-h" min="0" max="360" class="field-input w-full" aria-label="Hue" />
+					<input type="number" id="conv-hsl-s" min="0" max="100" class="field-input w-full" aria-label="Saturation" />
+					<input type="number" id="conv-hsl-l" min="0" max="100" class="field-input w-full" aria-label="Lightness" />
+					<button type="button" class="btn-ghost-sm shrink-0" data-copy="hsl">{t.tool.copy}</button>
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-xs">
+				<div class="flex items-center gap-xs">
+					<label class="type-body-sm text-mute w-14 shrink-0">HSV</label>
+					<input type="number" id="conv-hsv-h" min="0" max="360" class="field-input w-full" aria-label="Hue" />
+					<input type="number" id="conv-hsv-s" min="0" max="100" class="field-input w-full" aria-label="Saturation" />
+					<input type="number" id="conv-hsv-v" min="0" max="100" class="field-input w-full" aria-label="Value" />
+					<button type="button" class="btn-ghost-sm shrink-0" data-copy="hsv">{t.tool.copy}</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-lg">
+			<h2 class="type-heading-md mb-xs">{t.colorConverterTool.explainerHeading}</h2>
+			<p class="type-body-md text-body">{t.colorConverterTool.explainerBody}</p>
+		</div>
+	</section>
+
+	<style>
+		.value-item {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			padding: 9px 10px;
+		}
+	</style>
+
+	<script src="../../scripts/colorConverter.ts"></script>
+</PageLayout>

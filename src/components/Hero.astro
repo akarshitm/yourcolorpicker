@@ -1,0 +1,27 @@
+---
+import type { Locale } from "../i18n/config";
+import { useTranslations } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="relative overflow-hidden" style="background: var(--color-canvas);">
+	<div class="mesh-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
+	<div class="relative mx-auto max-w-[1200px] px-lg py-3xl md:py-section text-center">
+		<p class="type-mono-eyebrow text-mute mb-md">{t.hero.eyebrow}</p>
+		<h1 class="type-display-xl mx-auto max-w-[18ch]">{t.hero.heading}</h1>
+		<p class="type-body-lg text-body mx-auto mt-md max-w-[60ch]">
+			{t.hero.subhead}
+		</p>
+		<div class="mt-lg flex flex-wrap items-center justify-center gap-sm">
+			<a href="#tool" class="btn-primary">{t.hero.ctaPrimary}</a>
+			<a href="#why-different" class="btn-secondary">{t.hero.ctaSecondary}</a>
+		</div>
+	</div>
+</section>
+<div class="h-lg md:h-2xl" style="background: var(--color-canvas);"></div>

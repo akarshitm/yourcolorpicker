@@ -1,0 +1,20 @@
+---
+import type { Locale } from "../i18n/config";
+import { useTranslations } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section style="background: var(--color-canvas);">
+	<div class="mx-auto max-w-[1200px] px-lg py-2xl md:py-4xl text-center">
+		<h2 class="type-display-xl mx-auto max-w-[18ch]">{t.cta.heading}</h2>
+		<div class="mt-lg">
+			<a href="#tool" class="btn-primary">{t.hero.ctaPrimary}</a>
+		</div>
+	</div>
+</section>

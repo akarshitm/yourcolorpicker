@@ -1,0 +1,257 @@
+---
+import type { Locale } from "../i18n/config";
+import { useTranslations } from "../i18n/utils";
+import ToolIcon from "./ToolIcon.astro";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="tool" class="mx-auto max-w-[1200px] px-lg py-2xl md:py-4xl scroll-mt-24">
+	<div class="mb-xl">
+		<p class="type-mono-eyebrow text-mute mb-xs">{t.tool.eyebrow}</p>
+		<div class="flex items-center gap-sm mb-xs">
+			<span class="tool-section-icon">
+				<ToolIcon name="picker" size={22} />
+			</span>
+			<h2 class="type-heading-lg">{t.tool.heading}</h2>
+		</div>
+		<p class="type-body-lg text-body mt-xs max-w-[60ch]">
+			{t.tool.intro}
+		</p>
+	</div>
+
+	<div class="grid gap-xl lg:grid-cols-[1.35fr_1fr]">
+		<!-- Left: canvas panel (+ magnifier), quality, contrast -->
+		<div class="flex flex-col gap-lg min-w-0">
+			<div class="feature-card">
+				<div id="dropzone" class="dropzone relative flex min-h-[220px] items-center justify-center overflow-hidden rounded-sm border-[1.5px] border-dashed sm:min-h-[340px]">
+					<div id="canvas-wrap" class="relative inline-block leading-none">
+						<canvas
+							id="image-canvas"
+							class="block cursor-crosshair touch-none"
+							style="max-width: 100%; height: auto;"
+							tabindex="0"
+							aria-label={t.tool.canvasAriaLabel}></canvas>
+						<canvas id="select-overlay" class="pointer-events-none absolute inset-0 h-full w-full"></canvas>
+					</div>
+					<div id="magnifier" hidden class="loupe">
+						<canvas id="magnifier-canvas" width="120" height="120"></canvas>
+					</div>
+				</div>
+				<div class="mt-sm flex flex-wrap items-center gap-sm">
+					<button type="button" id="upload-btn" class="btn-ghost-sm">{t.tool.uploadButton}</button>
+					<button type="button" id="pick-screen-btn" class="btn-ghost-sm">{t.tool.pickFromScreen}</button>
+					<button type="button" id="capture-screenshot-btn" class="btn-ghost-sm">{t.tool.captureScreenshot}</button>
+					<button type="button" id="mini-picker-btn" class="btn-ghost-sm">{t.tool.miniPicker}</button>
+					<input type="file" id="file-input" accept="image/*" class="sr-only" aria-hidden="true" tabindex="-1" />
+					<span class="type-body-sm text-faint">{t.tool.dragHint}</span>
+				</div>
+				<p id="upload-error" class="type-body-sm text-error mt-xs hidden" role="alert"></p>
+			</div>
+
+			<!-- Image quality — its own standalone area -->
+			<div class="feature-card">
+				<div class="mb-sm flex items-center justify-between gap-sm">
+					<h3 class="type-heading-md">{t.tool.qualityHeading}</h3>
+					<span id="quality-badge" class="btn-ghost-sm pointer-events-none">—</span>
+				</div>
+				<div class="grid grid-cols-4 gap-xxs" aria-hidden="true">
+					<div id="quality-tier-low" class="quality-tier-bar"></div>
+					<div id="quality-tier-medium" class="quality-tier-bar"></div>
+					<div id="quality-tier-high" class="quality-tier-bar"></div>
+					<div id="quality-tier-hd" class="quality-tier-bar"></div>
+				</div>
+				<div class="mt-xxs grid grid-cols-4 gap-xxs type-body-sm text-faint text-center">
+					<span>{t.tool.qualityLow}</span><span>{t.tool.qualityMedium}</span><span>{t.tool.qualityHigh}</span><span>{t.tool.qualityHD}</span>
+				</div>
+				<ul id="quality-warnings" class="type-body-sm text-body mt-sm flex flex-col gap-xxs list-disc pl-md"></ul>
+			</div>
+
+			<!-- Contrast checker, below the image -->
+			<div class="feature-card">
+				<h3 class="type-heading-md mb-sm">{t.tool.contrastHeading}</h3>
+				<div class="grid grid-cols-2 gap-sm">
+					<label class="type-body-sm text-body">{t.tool.colorA}<input type="text" id="contrast-a" class="field-input mt-xxs w-full" placeholder="#171717" /></label>
+					<label class="type-body-sm text-body">{t.tool.colorB}<input type="text" id="contrast-b" class="field-input mt-xxs w-full" placeholder="#FAFAFA" /></label>
+				</div>
+				<div id="contrast-result" class="type-body-sm text-body mt-sm">{t.tool.contrastPlaceholder}</div>
+			</div>
+		</div>
+
+		<!-- Right: live readout, palette, saved colors, export, history -->
+		<aside class="flex min-w-0 flex-col gap-lg">
+			<div class="feature-card">
+				<div class="mb-sm flex items-center justify-between gap-sm">
+					<h3 class="type-heading-md">{t.tool.pickerHeading}</h3>
+					<button type="button" id="random-color-btn" class="btn-ghost-sm">{t.tool.randomColor}</button>
+				</div>
+				<div id="readout-swatch" class="h-[110px] w-full rounded-md border" style="border-color: var(--color-hairline); background: var(--color-hairline-soft);" aria-hidden="true"></div>
+				<div class="mt-sm flex flex-col gap-xs">
+					<div class="value-item">
+						<label class="type-body-sm text-mute">{t.tool.hex}</label>
+						<code id="readout-hex" class="type-code flex-1 min-w-0 truncate">—</code>
+						<button type="button" class="btn-ghost-sm" data-copy-target="readout-hex">{t.tool.copy}</button>
+					</div>
+					<div class="value-item">
+						<label class="type-body-sm text-mute">{t.tool.rgb}</label>
+						<code id="readout-rgb" class="type-code flex-1 min-w-0 truncate">—</code>
+						<button type="button" class="btn-ghost-sm" data-copy-target="readout-rgb">{t.tool.copy}</button>
+					</div>
+					<div class="value-item">
+						<label class="type-body-sm text-mute">{t.tool.hsl}</label>
+						<code id="readout-hsl" class="type-code flex-1 min-w-0 truncate">—</code>
+						<button type="button" class="btn-ghost-sm" data-copy-target="readout-hsl">{t.tool.copy}</button>
+					</div>
+				</div>
+				<button type="button" id="pin-color-btn" class="btn-ghost-sm mt-sm w-full" disabled>{t.tool.saveColor}</button>
+			</div>
+
+			<div class="feature-card">
+				<h3 class="type-heading-md mb-xs">{t.tool.goesWellWith}</h3>
+				<p class="type-body-sm text-faint mb-sm">{t.tool.goesWellWithSub}</p>
+				<div class="flex flex-col gap-sm">
+					<div>
+						<p class="type-label-sm text-mute mb-xxs">{t.tool.complementary}</p>
+						<div id="harmony-complementary" class="flex gap-xs"></div>
+					</div>
+					<div>
+						<p class="type-label-sm text-mute mb-xxs">{t.tool.analogous}</p>
+						<div id="harmony-analogous" class="flex gap-xs"></div>
+					</div>
+					<div>
+						<p class="type-label-sm text-mute mb-xxs">{t.tool.triadic}</p>
+						<div id="harmony-triadic" class="flex gap-xs"></div>
+					</div>
+					<div>
+						<p class="type-label-sm text-mute mb-xxs">{t.tool.monochromatic}</p>
+						<div id="harmony-mono" class="flex gap-xs"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="feature-card">
+				<div class="mb-sm flex flex-wrap items-center justify-between gap-sm">
+					<h3 class="type-heading-md">{t.tool.dominantColors}</h3>
+					<label class="type-body-sm text-mute flex items-center gap-xs">
+						<span id="palette-count-label">6</span> {t.tool.colorsUnit}
+						<input type="range" id="palette-count" min="4" max="12" value="6" class="w-20 accent-[var(--color-ink)]" aria-label={t.tool.paletteCountAriaLabel} />
+					</label>
+				</div>
+				<div id="palette-grid" class="grid grid-cols-3 gap-xs"></div>
+			</div>
+
+			<div class="feature-card">
+				<h3 class="type-heading-md mb-xs">{t.tool.savedColors}</h3>
+				<p class="type-body-sm text-faint mb-sm">{t.tool.savedColorsSub}</p>
+				<div id="saved-colors" class="flex flex-wrap gap-md"></div>
+			</div>
+
+			<div class="feature-card">
+				<h3 class="type-heading-md mb-sm">{t.tool.exportHeading}</h3>
+				<div class="flex flex-wrap gap-xs">
+					<button type="button" class="btn-ghost-sm" data-export="css">{t.tool.exportCss}</button>
+					<button type="button" class="btn-ghost-sm" data-export="tailwind">{t.tool.exportTailwind}</button>
+					<button type="button" class="btn-ghost-sm" data-export="json">{t.tool.exportJson}</button>
+					<button type="button" class="btn-ghost-sm" id="export-png">{t.tool.exportPng}</button>
+				</div>
+				<pre id="export-preview" class="code-block mt-sm hidden max-h-40 overflow-y-auto"></pre>
+			</div>
+
+			<div class="feature-card">
+				<h3 class="type-heading-md mb-sm">{t.tool.historyHeading}</h3>
+				<div class="flex flex-wrap gap-xs">
+					<input type="text" id="save-name" class="field-input min-w-0 flex-1" placeholder={t.tool.paletteNamePlaceholder} />
+					<button type="button" id="save-palette-btn" class="btn-ghost-sm">{t.tool.save}</button>
+					<button type="button" id="share-btn" class="btn-ghost-sm">{t.tool.copyLink}</button>
+				</div>
+				<div id="saved-palettes" class="mt-sm flex flex-col gap-xs"></div>
+			</div>
+		</aside>
+	</div>
+</section>
+
+<style>
+	.tool-section-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		flex-shrink: 0;
+		border-radius: var(--radius-md);
+		background: var(--color-hairline-soft);
+		color: var(--color-ink);
+	}
+
+	/* Each value sits in its own full-width row (label, code, Copy button) so
+	   its height never depends on how long the current HEX/RGB/HSL text is —
+	   that's what was making the whole sidebar shake on every hover move when
+	   these were laid out as a wrapping row instead. */
+	.value-item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		border: 1px solid var(--color-hairline);
+		border-radius: var(--radius-sm);
+		padding: 9px 10px;
+	}
+	.value-item label {
+		width: 34px;
+		flex-shrink: 0;
+	}
+
+	.dropzone {
+		border-color: var(--color-hairline);
+		background: var(--color-hairline-soft);
+		transition: border-color 0.15s ease, background 0.15s ease;
+	}
+	.dropzone.drag-active {
+		border-color: var(--color-link);
+		background: var(--color-link-soft);
+	}
+	.quality-tier-bar {
+		height: 6px;
+		border-radius: 9999px;
+		background: var(--color-hairline-soft);
+	}
+	.quality-tier-bar.active {
+		background: var(--tier-color, var(--color-link));
+	}
+
+	.loupe {
+		position: absolute;
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		border: 2px solid var(--color-canvas-elevated);
+		box-shadow:
+			0 0 0 1px var(--color-hairline),
+			0 6px 18px rgba(0, 0, 0, 0.22);
+		overflow: hidden;
+		pointer-events: none;
+		z-index: 5;
+	}
+	.loupe canvas {
+		display: block;
+		image-rendering: pixelated;
+	}
+	.loupe::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 9px;
+		height: 9px;
+		transform: translate(-50%, -50%);
+		border: 1.5px solid var(--color-link);
+		border-radius: 2px;
+		box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9);
+	}
+</style>
+
+<script src="../scripts/tool.ts"></script>

@@ -1,0 +1,81 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout
+	title={t.colorBlindnessTool.title}
+	description={t.colorBlindnessTool.description}
+	path="/color-blindness-simulator"
+	lang={lang}
+	helpTitle={t.colorBlindnessTool.help.title}
+	helpSteps={t.colorBlindnessTool.help.steps}
+>
+	<PageHeader
+		eyebrow={t.colorBlindnessTool.eyebrow}
+		heading={t.colorBlindnessTool.heading}
+		intro={t.colorBlindnessTool.intro}
+		icon="blindness"
+	/>
+	<section class="mx-auto max-w-[900px] px-lg pb-3xl md:pb-4xl">
+		<div class="feature-card mb-lg">
+			<div id="cb-dropzone" class="dropzone relative flex min-h-[160px] items-center justify-center overflow-hidden rounded-sm border-[1.5px] border-dashed">
+				<p class="type-body-sm text-faint">{t.colorBlindnessTool.dropHint}</p>
+			</div>
+			<div class="mt-sm flex flex-wrap items-center gap-sm">
+				<button type="button" id="cb-upload-btn" class="btn-ghost-sm">{t.tool.uploadButton}</button>
+				<input type="file" id="cb-file-input" accept="image/*" class="sr-only" aria-hidden="true" tabindex="-1" />
+				<span class="type-body-sm text-faint">{t.colorBlindnessTool.uploadNote}</span>
+			</div>
+		</div>
+
+		<div id="cb-results" class="grid gap-md sm:grid-cols-2" hidden>
+			<div class="feature-card">
+				<p class="type-label-sm text-mute mb-xs">{t.colorBlindnessTool.original}</p>
+				<canvas id="cb-canvas-original" class="w-full rounded-sm" style="max-width: 100%; height: auto;"></canvas>
+			</div>
+			<div class="feature-card">
+				<p class="type-label-sm text-mute mb-xs">{t.colorBlindnessTool.protanopia}</p>
+				<canvas id="cb-canvas-protanopia" class="w-full rounded-sm" style="max-width: 100%; height: auto;"></canvas>
+			</div>
+			<div class="feature-card">
+				<p class="type-label-sm text-mute mb-xs">{t.colorBlindnessTool.deuteranopia}</p>
+				<canvas id="cb-canvas-deuteranopia" class="w-full rounded-sm" style="max-width: 100%; height: auto;"></canvas>
+			</div>
+			<div class="feature-card">
+				<p class="type-label-sm text-mute mb-xs">{t.colorBlindnessTool.tritanopia}</p>
+				<canvas id="cb-canvas-tritanopia" class="w-full rounded-sm" style="max-width: 100%; height: auto;"></canvas>
+			</div>
+		</div>
+
+		<div class="mt-lg">
+			<h2 class="type-heading-md mb-xs">{t.colorBlindnessTool.whyHeading}</h2>
+			<p class="type-body-md text-body">{t.colorBlindnessTool.whyBody}</p>
+		</div>
+	</section>
+
+	<style>
+		.dropzone {
+			border-color: var(--color-hairline);
+			background: var(--color-hairline-soft);
+			transition:
+				border-color 0.15s ease,
+				background 0.15s ease;
+		}
+		.dropzone.drag-active {
+			border-color: var(--color-link);
+			background: var(--color-link-soft);
+		}
+	</style>
+
+	<script src="../../scripts/colorBlindness.ts"></script>
+</PageLayout>

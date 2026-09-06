@@ -1,0 +1,66 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import TransLink from "../TransLink.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations, localizePath } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const lastUpdated = "September 5, 2026";
+const contactEmail = "knightfury13849@gmail.com";
+
+const [beforeEmail, afterEmail] = t.terms.contactBody.split("{{email}}");
+const [beforeLink, afterLink] = afterEmail.split("{{link}}");
+---
+
+<PageLayout title={t.terms.title} description={t.terms.description} path="/terms-and-conditions" lang={lang}>
+	<PageHeader eyebrow={t.terms.eyebrow} heading={t.terms.heading} intro={`${t.terms.lastUpdatedPrefix} ${lastUpdated}`} />
+	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
+		<div class="flex flex-col gap-lg">
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.terms.acceptanceHeading}</h2>
+				<p class="type-body-md text-body">{t.terms.acceptanceBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.terms.useHeading}</h2>
+				<p class="type-body-md text-body">{t.terms.useBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.terms.contentHeading}</h2>
+				<p class="type-body-md text-body">
+					<TransLink text={t.terms.contentBody} href={localizePath(lang, "/privacy-policy")} label={t.terms.contentLinkLabel} />
+				</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.terms.warrantyHeading}</h2>
+				<p class="type-body-md text-body">{t.terms.warrantyBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.terms.liabilityHeading}</h2>
+				<p class="type-body-md text-body">{t.terms.liabilityBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.terms.linksHeading}</h2>
+				<p class="type-body-md text-body">{t.terms.linksBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.terms.changesHeading}</h2>
+				<p class="type-body-md text-body">{t.terms.changesBody}</p>
+			</div>
+			<div>
+				<h2 class="type-heading-md mb-xs">{t.terms.contactHeading}</h2>
+				<p class="type-body-md text-body">
+					{beforeEmail}<a href={`mailto:${contactEmail}`} class="underline">{contactEmail}</a>{beforeLink}<a
+						href={localizePath(lang, "/contact")}
+						class="underline">{t.terms.contactLinkLabel}</a
+					>{afterLink}
+				</p>
+			</div>
+		</div>
+	</section>
+</PageLayout>

@@ -1,0 +1,90 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout
+	title={t.contrastCheckerTool.title}
+	description={t.contrastCheckerTool.description}
+	path="/contrast-checker"
+	lang={lang}
+	helpTitle={t.contrastCheckerTool.help.title}
+	helpSteps={t.contrastCheckerTool.help.steps}
+>
+	<PageHeader
+		eyebrow={t.contrastCheckerTool.eyebrow}
+		heading={t.contrastCheckerTool.heading}
+		intro={t.contrastCheckerTool.intro}
+		icon="contrast"
+	/>
+	<section class="mx-auto max-w-[700px] px-lg pb-3xl md:pb-4xl">
+		<div class="feature-card flex flex-col gap-lg">
+			<div class="grid grid-cols-2 gap-sm">
+				<div class="gradient-stop">
+					<input type="color" id="cc-a-picker" value="#171717" aria-label={t.contrastCheckerTool.textLabel} />
+					<input type="text" id="cc-a" class="field-input flex-1 min-w-0 type-code" value="#171717" aria-label={t.contrastCheckerTool.textLabel} />
+				</div>
+				<div class="gradient-stop">
+					<input type="color" id="cc-b-picker" value="#FAFAFA" aria-label={t.contrastCheckerTool.backgroundLabel} />
+					<input
+						type="text"
+						id="cc-b"
+						class="field-input flex-1 min-w-0 type-code"
+						value="#FAFAFA"
+						aria-label={t.contrastCheckerTool.backgroundLabel}
+					/>
+				</div>
+			</div>
+			<div class="flex justify-between type-body-sm text-mute">
+				<span>{t.contrastCheckerTool.textLabel}</span>
+				<span>{t.contrastCheckerTool.backgroundLabel}</span>
+			</div>
+
+			<div id="cc-preview" class="rounded-md border p-lg" style="border-color: var(--color-hairline);">
+				<p id="cc-preview-large" style="font-size: 24px; font-weight: 600; margin: 0 0 8px;">{t.contrastCheckerTool.largeSample}</p>
+				<p id="cc-preview-normal" style="font-size: 14px; margin: 0;">{t.contrastCheckerTool.normalSample}</p>
+			</div>
+
+			<div
+				id="cc-result"
+				data-enter-valid={t.contrastCheckerTool.enterValid}
+				data-normal-label={t.contrastCheckerTool.normalTextRow}
+				data-large-label={t.contrastCheckerTool.largeTextRow}
+				data-pass={t.contrastCheckerTool.pass}
+				data-fail={t.contrastCheckerTool.fail}
+			>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.gradient-stop {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			padding: 8px 10px;
+		}
+		.gradient-stop input[type="color"] {
+			width: 36px;
+			height: 36px;
+			padding: 0;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			background: none;
+			flex-shrink: 0;
+		}
+	</style>
+
+	<script src="../../scripts/contrastCheckerPage.ts"></script>
+</PageLayout>

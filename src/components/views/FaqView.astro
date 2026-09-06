@@ -1,0 +1,19 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import Faq from "../Faq.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout title={t.faq.pageHeading + " — " + t.brandName} description={t.faq.pageIntro} path="/faq" lang={lang}>
+	<PageHeader eyebrow={t.faq.pageEyebrow} heading={t.faq.pageHeading} intro={t.faq.pageIntro} />
+	<Faq lang={lang} showHeading={false} />
+</PageLayout>

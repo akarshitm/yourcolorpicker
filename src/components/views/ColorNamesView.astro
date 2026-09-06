@@ -1,0 +1,71 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import { getAllNamedColors } from "../../scripts/colorNames";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const colors = getAllNamedColors();
+const intro = `${t.colorNamesTool.introPrefix}${colors.length}${t.colorNamesTool.introSuffix}`;
+---
+
+<PageLayout
+	title={t.colorNamesTool.title}
+	description={t.colorNamesTool.description}
+	path="/color-names"
+	lang={lang}
+	helpTitle={t.colorNamesTool.help.title}
+	helpSteps={t.colorNamesTool.help.steps}
+>
+	<PageHeader eyebrow={t.colorNamesTool.eyebrow} heading={t.colorNamesTool.heading} intro={intro} icon="names" />
+	<section class="mx-auto max-w-[1100px] px-lg pb-3xl md:pb-4xl">
+		<input
+			type="text"
+			id="color-search"
+			class="field-input mb-lg w-full max-w-[320px]"
+			placeholder={t.colorNamesTool.searchPlaceholder}
+			aria-label={t.colorNamesTool.searchPlaceholder}
+		/>
+		<div id="color-grid" class="grid grid-cols-2 gap-sm sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+			{
+				colors.map((c) => (
+					<button type="button" class="color-swatch-card" data-name={c.name.toLowerCase()} data-hex={c.hex}>
+						<span class="color-swatch-block" style={`background:${c.hex}`} />
+						<span class="type-body-sm text-ink">{c.name}</span>
+						<span class="type-code text-mute">{c.hex}</span>
+					</button>
+				))
+			}
+		</div>
+		<p id="color-empty" class="type-body-md text-faint mt-lg hidden">{t.colorNamesTool.empty}</p>
+	</section>
+
+	<style>
+		.color-swatch-card {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 4px;
+			padding: 10px;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-md);
+			background: var(--color-canvas-elevated);
+			text-align: left;
+		}
+		.color-swatch-block {
+			display: block;
+			width: 100%;
+			height: 56px;
+			border-radius: var(--radius-sm);
+			border: 1px solid var(--color-hairline);
+		}
+	</style>
+
+	<script src="../../scripts/colorNamesPage.ts"></script>
+</PageLayout>

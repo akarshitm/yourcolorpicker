@@ -1,0 +1,79 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PageLayout
+	title={t.shadesTintsTool.title}
+	description={t.shadesTintsTool.description}
+	path="/shades-and-tints-generator"
+	lang={lang}
+	helpTitle={t.shadesTintsTool.help.title}
+	helpSteps={t.shadesTintsTool.help.steps}
+>
+	<PageHeader eyebrow={t.shadesTintsTool.eyebrow} heading={t.shadesTintsTool.heading} intro={t.shadesTintsTool.intro} icon="shadesTints" />
+	<section class="mx-auto max-w-[900px] px-lg pb-3xl md:pb-4xl">
+		<div class="feature-card flex flex-col gap-lg">
+			<div class="gradient-stop max-w-[260px]">
+				<input type="color" id="st-picker" value="#3B82F6" aria-label={t.shadesTintsTool.base} />
+				<input type="text" id="st-hex" class="field-input flex-1 min-w-0 type-code" value="#3B82F6" aria-label={t.shadesTintsTool.base} />
+			</div>
+
+			<div>
+				<p class="type-label-sm text-mute mb-xs">{t.shadesTintsTool.tints}</p>
+				<div id="st-tints" class="grid grid-cols-5 gap-xs"></div>
+			</div>
+			<div>
+				<p class="type-label-sm text-mute mb-xs">{t.shadesTintsTool.base}</p>
+				<div id="st-base" class="grid grid-cols-5 gap-xs"></div>
+			</div>
+			<div>
+				<p class="type-label-sm text-mute mb-xs">{t.shadesTintsTool.shades}</p>
+				<div id="st-shades" class="grid grid-cols-5 gap-xs"></div>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.gradient-stop {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			padding: 8px 10px;
+		}
+		.gradient-stop input[type="color"] {
+			width: 36px;
+			height: 36px;
+			padding: 0;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			background: none;
+			flex-shrink: 0;
+		}
+		.ramp-swatch {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 4px;
+		}
+		.ramp-swatch-block {
+			width: 100%;
+			height: 56px;
+			border-radius: var(--radius-sm);
+			border: 1px solid var(--color-hairline);
+		}
+	</style>
+
+	<script src="../../scripts/shadesTints.ts"></script>
+</PageLayout>
