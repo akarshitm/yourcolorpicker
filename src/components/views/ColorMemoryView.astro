@@ -1,0 +1,269 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import MoreGames from "../MoreGames.astro";
+import MoreToolsBanner from "../MoreToolsBanner.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const m = t.games.memory;
+const c = t.games.common;
+
+const strings = JSON.stringify({
+	round: m.round,
+	memorize: m.memorize,
+	recreate: m.recreate,
+	roundScore: m.roundScore,
+	final: m.final,
+	bestScore: m.bestScore,
+	dailyDone: m.dailyDone,
+	copied: c.copied,
+	shareTitle: m.heading,
+	dailyMode: m.dailyMode,
+});
+---
+
+<PageLayout
+	title={m.title}
+	description={m.description}
+	path="/games/color-memory"
+	lang={lang}
+	helpTitle={m.help.title}
+	helpSteps={m.help.steps}
+	breadcrumbName={m.heading}
+	breadcrumbParent={{ name: t.games.hub.heading, path: "/games" }}
+>
+	<PageHeader eyebrow={m.eyebrow} heading={m.heading} intro={m.intro} gameIcon="memory" />
+	<section class="mx-auto max-w-[700px] px-lg pb-3xl md:pb-4xl">
+		<div id="cm-root" class="feature-card flex flex-col gap-lg" data-strings={strings}>
+			<div class="flex flex-wrap items-center justify-between gap-sm">
+				<div class="cm-modes" role="tablist">
+					<button type="button" class="cm-mode" data-mode="daily" role="tab" aria-selected="true">{m.dailyMode}</button>
+					<button type="button" class="cm-mode" data-mode="practice" role="tab" aria-selected="false">{m.practiceMode}</button>
+				</div>
+				<p id="cm-best" class="type-body-sm text-mute"></p>
+			</div>
+
+			<div class="flex items-center justify-between gap-sm">
+				<p id="cm-round" class="type-mono-eyebrow text-mute"></p>
+				<p id="cm-phase" class="type-body-sm text-body" aria-live="polite"></p>
+			</div>
+
+			<div class="cm-panel-wrap">
+				<div id="cm-panel" class="cm-panel"></div>
+				<div id="cm-timer" class="cm-timer"></div>
+				<div id="cm-compare" class="cm-compare hidden">
+					<div id="cm-compare-target"><span>{m.target}</span></div>
+					<div id="cm-compare-yours"><span>{m.yours}</span></div>
+				</div>
+				<div id="cm-start" class="cm-overlay">
+					<button type="button" id="cm-start-btn" class="btn-primary">{c.start}</button>
+					<p id="cm-start-note" class="type-body-sm text-body text-center"></p>
+				</div>
+			</div>
+
+			<div id="cm-controls" class="cm-controls">
+				<label class="cm-slider">
+					<span class="type-body-sm text-body">{m.hue}</span>
+					<input type="range" id="cm-h" min="0" max="360" value="180" class="cm-range cm-range-hue" />
+				</label>
+				<label class="cm-slider">
+					<span class="type-body-sm text-body">{m.saturation}</span>
+					<input type="range" id="cm-s" min="0" max="100" value="50" class="cm-range" />
+				</label>
+				<label class="cm-slider">
+					<span class="type-body-sm text-body">{m.lightness}</span>
+					<input type="range" id="cm-l" min="0" max="100" value="50" class="cm-range" />
+				</label>
+				<button type="button" id="cm-submit" class="btn-primary self-start">{m.submit}</button>
+			</div>
+
+			<div id="cm-round-result" class="cm-round-result hidden">
+				<p id="cm-round-score" class="cm-score"></p>
+				<button type="button" id="cm-next" class="btn-primary">{m.next}</button>
+			</div>
+
+			<div id="cm-final" class="cm-final hidden">
+				<p id="cm-final-msg" class="type-heading-lg"></p>
+				<div id="cm-final-rounds" class="flex flex-wrap gap-xs"></div>
+				<div class="flex flex-wrap gap-xs">
+					<button type="button" id="cm-share" class="btn-primary">{c.share}</button>
+					<button type="button" id="cm-again" class="btn-secondary">{c.playAgain}</button>
+				</div>
+			</div>
+		</div>
+
+		<MoreGames lang={lang} current="memory" />
+
+		<div class="mt-xl">
+			<h2 class="type-heading-md mb-xs">{m.explainerHeading}</h2>
+			<p class="type-body-md text-body">{m.explainerBody}</p>
+		</div>
+
+		<MoreToolsBanner lang={lang} />
+	</section>
+
+	<style>
+		.cm-modes {
+			display: inline-flex;
+			padding: 3px;
+			border-radius: var(--radius-pill);
+			background: var(--color-hairline-soft);
+			border: 1px solid var(--color-hairline);
+		}
+		.cm-mode {
+			border: 0;
+			background: none;
+			padding: 6px 14px;
+			border-radius: var(--radius-pill);
+			font-family: var(--font-sans);
+			font-size: 14px;
+			font-weight: 500;
+			color: var(--color-body);
+			cursor: pointer;
+		}
+		.cm-mode[aria-selected="true"] {
+			background: var(--color-canvas-elevated);
+			color: var(--color-ink);
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+		}
+		.cm-panel-wrap {
+			position: relative;
+			height: 220px;
+			border-radius: var(--radius-md);
+			overflow: hidden;
+			border: 1px solid var(--color-hairline);
+		}
+		.cm-panel {
+			position: absolute;
+			inset: 0;
+			background: var(--color-hairline-soft);
+		}
+		.cm-timer {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			height: 6px;
+			width: 0;
+			background: linear-gradient(90deg, var(--color-link), var(--color-violet), var(--color-pink));
+		}
+		.cm-compare {
+			position: absolute;
+			inset: 0;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+		.cm-compare div {
+			display: flex;
+			align-items: flex-end;
+			padding: var(--spacing-sm);
+		}
+		.cm-compare span {
+			font-family: var(--font-sans);
+			font-size: 12px;
+			font-weight: 600;
+			padding: 3px 10px;
+			border-radius: var(--radius-pill);
+			background: rgba(0, 0, 0, 0.55);
+			color: #fff;
+		}
+		.cm-overlay {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: var(--spacing-sm);
+			padding: var(--spacing-lg);
+			background:
+				radial-gradient(circle at 25% 30%, color-mix(in srgb, var(--color-link) 22%, transparent), transparent 60%),
+				radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--color-pink) 20%, transparent), transparent 60%),
+				var(--color-canvas-elevated);
+		}
+		.cm-controls {
+			display: flex;
+			flex-direction: column;
+			gap: var(--spacing-md);
+		}
+		.cm-slider {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+		}
+		.cm-range {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 100%;
+			height: 14px;
+			border-radius: var(--radius-pill);
+			border: 1px solid var(--color-hairline);
+			background: var(--track, var(--color-hairline-soft));
+			cursor: pointer;
+		}
+		.cm-range-hue {
+			--track: linear-gradient(90deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+		}
+		.cm-range::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: #fff;
+			border: 2px solid #171717;
+			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+		}
+		.cm-range::-moz-range-thumb {
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			background: #fff;
+			border: 2px solid #171717;
+			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+		}
+		.cm-range:focus-visible {
+			outline: 2px solid var(--color-link);
+			outline-offset: 3px;
+		}
+		.cm-round-result,
+		.cm-final {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: var(--spacing-md);
+		}
+		.cm-score {
+			font-family: var(--font-sans);
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 1.1;
+		}
+		.hidden {
+			display: none !important;
+		}
+		:global(.cm-round-chip) {
+			font-family: var(--font-mono);
+			font-size: 13px;
+			padding: 4px 10px;
+			border-radius: var(--radius-pill);
+			border: 1px solid var(--color-hairline);
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+		}
+		:global(.cm-round-chip i) {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			display: inline-block;
+		}
+	</style>
+
+	<script src="../../scripts/colorMemoryGame.ts"></script>
+</PageLayout>

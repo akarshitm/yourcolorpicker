@@ -2,6 +2,8 @@
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHeader from "../PageHeader.astro";
 import RelatedTools from "../RelatedTools.astro";
+import MoreToolsBanner from "../MoreToolsBanner.astro";
+import PlayGamesBanner from "../PlayGamesBanner.astro";
 import { getAllNamedColors } from "../../scripts/colorNames";
 import type { Locale } from "../../i18n/config";
 import { useTranslations } from "../../i18n/utils";
@@ -47,6 +49,9 @@ const intro = `${t.colorNamesTool.introPrefix}${colors.length}${t.colorNamesTool
 			}
 		</div>
 		<p id="color-empty" class="type-body-md text-faint mt-lg hidden">{t.colorNamesTool.empty}</p>
+
+		<MoreToolsBanner lang={lang} />
+		<PlayGamesBanner lang={lang} />
 
 		<RelatedTools lang={lang} current="/color-names" picks={["/color-converter", "/contrast-checker", "/random-color-generator"]} />
 	</section>

@@ -1,0 +1,310 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import GameIcon from "../GameIcon.astro";
+import MoreGames from "../MoreGames.astro";
+import MoreToolsBanner from "../MoreToolsBanner.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const r = t.games.runner;
+const c = t.games.common;
+
+const strings = JSON.stringify({
+	runOn: r.runOn,
+	next: r.next,
+	goldActive: r.goldActive,
+	distance: r.distance,
+	best: r.best,
+	newBest: r.newBest,
+	overColor: r.overColor,
+	overBarrier: r.overBarrier,
+	final: r.final,
+	colors: r.colors,
+	copied: c.copied,
+	shareTitle: r.heading,
+});
+---
+
+<PageLayout
+	title={r.title}
+	description={r.description}
+	path="/games/color-runner"
+	lang={lang}
+	helpTitle={r.help.title}
+	helpSteps={r.help.steps}
+	breadcrumbName={r.heading}
+	breadcrumbParent={{ name: t.games.hub.heading, path: "/games" }}
+>
+	<PageHeader eyebrow={r.eyebrow} heading={r.heading} intro={r.intro} gameIcon="runner" />
+	<section class="mx-auto max-w-[700px] px-lg pb-3xl md:pb-4xl">
+		<div id="cr-root" class="feature-card flex flex-col gap-md" data-strings={strings}>
+			<div id="cr-stage" class="cr-stage">
+				<canvas id="cr-canvas" class="cr-canvas" width="160" height="240" aria-label={r.heading}></canvas>
+
+				<div class="cr-hud" aria-live="polite">
+					<div class="cr-hud-top">
+						<span id="cr-score" class="cr-chip">0 m</span>
+						<span id="cr-gold" class="cr-chip cr-chip-gold cr-hidden">✨ 10</span>
+					</div>
+					<div id="cr-target" class="cr-target">
+						<span class="cr-target-label">{r.runOn}</span>
+						<span id="cr-target-word" class="cr-target-word"></span>
+					</div>
+					<div id="cr-next" class="cr-next cr-hidden">
+						<span>{r.next} ▸</span>
+						<span id="cr-next-word" class="cr-next-word"></span>
+						<span id="cr-next-count" class="cr-next-count"></span>
+					</div>
+				</div>
+
+				<div id="cr-start" class="cr-overlay">
+					<GameIcon name="runner" size={64} />
+					<p class="cr-overlay-title">{r.heading}</p>
+					<p class="cr-overlay-text">{r.controls}</p>
+					<button type="button" id="cr-start-btn" class="btn-primary">{c.start}</button>
+					<p id="cr-start-best" class="cr-overlay-text"></p>
+				</div>
+
+				<div id="cr-pause" class="cr-overlay cr-hidden">
+					<button type="button" id="cr-resume-btn" class="btn-primary">▶ {r.resume}</button>
+				</div>
+
+				<div id="cr-over" class="cr-overlay cr-hidden">
+					<p id="cr-over-reason" class="cr-overlay-text"></p>
+					<p id="cr-over-distance" class="cr-overlay-title"></p>
+					<p id="cr-over-best" class="cr-overlay-best"></p>
+					<div class="flex flex-wrap justify-center gap-xs">
+						<button type="button" id="cr-share" class="btn-primary">{c.share}</button>
+						<button type="button" id="cr-again" class="btn-secondary">{c.playAgain}</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="cr-controls" dir="ltr">
+				<button type="button" id="cr-left" class="cr-control" aria-label={r.left}>◀</button>
+				<button type="button" id="cr-jump" class="cr-control" aria-label={r.jump}>▲</button>
+				<button type="button" id="cr-right" class="cr-control" aria-label={r.right}>▶</button>
+			</div>
+			<p class="type-body-sm text-mute text-center">{r.controls}</p>
+		</div>
+
+		<MoreGames lang={lang} current="runner" />
+
+		<div class="mt-xl">
+			<h2 class="type-heading-md mb-xs">{r.explainerHeading}</h2>
+			<p class="type-body-md text-body">{r.explainerBody}</p>
+		</div>
+
+		<MoreToolsBanner lang={lang} />
+	</section>
+
+	<style>
+		.cr-stage {
+			position: relative;
+			width: 100%;
+			max-width: 420px;
+			margin-inline: auto;
+			aspect-ratio: 2 / 3;
+			border-radius: var(--radius-md);
+			overflow: hidden;
+			border: 1px solid var(--color-hairline);
+			touch-action: none;
+			user-select: none;
+			-webkit-user-select: none;
+			background: #2a1e50;
+		}
+		.cr-stage.cr-shake {
+			animation: cr-shake 0.4s ease;
+		}
+		.cr-stage.cr-danger {
+			box-shadow: inset 0 0 0 4px #ff3b3b;
+		}
+		.cr-stage.cr-golden {
+			box-shadow: inset 0 0 0 4px #ffc107;
+		}
+		.cr-canvas {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			image-rendering: pixelated;
+		}
+		.cr-hud {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 6px;
+			padding: 10px;
+			pointer-events: none;
+		}
+		.cr-hud-top {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
+		.cr-chip {
+			font-family: var(--font-mono);
+			font-size: 13px;
+			font-weight: 700;
+			padding: 3px 9px;
+			border-radius: 6px;
+			color: #fff;
+			background: rgba(16, 12, 40, 0.65);
+		}
+		.cr-chip-gold {
+			color: #3d2a00;
+			background: #ffc107;
+		}
+		.cr-target {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 5px 16px 7px;
+			border-radius: 8px;
+			border: 3px solid rgba(16, 12, 40, 0.85);
+			box-shadow: 0 3px 0 rgba(16, 12, 40, 0.85);
+			transition: background 0.2s ease;
+		}
+		.cr-target-label {
+			font-family: var(--font-mono);
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			opacity: 0.85;
+		}
+		.cr-target-word {
+			font-family: var(--font-mono);
+			font-size: 26px;
+			font-weight: 800;
+			line-height: 1.05;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+		}
+		.cr-next {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			font-family: var(--font-mono);
+			font-size: 13px;
+			font-weight: 700;
+			text-transform: uppercase;
+			color: #fff;
+			padding: 4px 10px;
+			border-radius: 6px;
+			background: rgba(16, 12, 40, 0.75);
+			animation: cr-blink 0.5s steps(1) infinite;
+		}
+		.cr-next-word {
+			padding: 1px 7px;
+			border-radius: 4px;
+		}
+		.cr-next-count {
+			min-width: 1ch;
+		}
+		.cr-overlay {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 12px;
+			padding: 24px;
+			text-align: center;
+			color: #fff;
+			background: rgba(16, 12, 40, 0.72);
+			backdrop-filter: blur(3px);
+		}
+		.cr-overlay-title {
+			font-family: var(--font-mono);
+			font-size: 26px;
+			font-weight: 800;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
+		}
+		.cr-overlay-text {
+			font-family: var(--font-sans);
+			font-size: 14px;
+			line-height: 1.45;
+			color: rgba(255, 255, 255, 0.85);
+			max-width: 30ch;
+		}
+		.cr-overlay-text:empty {
+			display: none;
+		}
+		.cr-overlay-best {
+			font-family: var(--font-mono);
+			font-size: 13px;
+			font-weight: 700;
+			padding: 4px 12px;
+			border-radius: var(--radius-pill);
+			color: #3d2a00;
+			background: #ffc107;
+		}
+		.cr-hidden {
+			display: none !important;
+		}
+		.cr-controls {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: var(--spacing-xs);
+			width: 100%;
+			max-width: 420px;
+			margin-inline: auto;
+		}
+		.cr-control {
+			height: 52px;
+			border-radius: var(--radius-md);
+			border: 1px solid var(--color-hairline);
+			background: var(--color-hairline-soft);
+			color: var(--color-ink);
+			font-size: 20px;
+			cursor: pointer;
+			touch-action: manipulation;
+		}
+		.cr-control:active {
+			background: var(--color-hairline);
+		}
+		@keyframes cr-blink {
+			50% {
+				opacity: 0.35;
+			}
+		}
+		@keyframes cr-shake {
+			0%,
+			100% {
+				transform: translateX(0);
+			}
+			20% {
+				transform: translateX(-8px);
+			}
+			40% {
+				transform: translateX(7px);
+			}
+			60% {
+				transform: translateX(-5px);
+			}
+			80% {
+				transform: translateX(3px);
+			}
+		}
+		@media (prefers-reduced-motion: reduce) {
+			.cr-next,
+			.cr-stage.cr-shake {
+				animation: none;
+			}
+		}
+	</style>
+
+	<script src="../../scripts/colorRunnerGame.ts"></script>
+</PageLayout>

@@ -22,6 +22,11 @@ const pages: { path: string; changefreq: string; priority: string }[] = [
 	{ path: "/palette-generator", changefreq: "monthly", priority: "0.6" },
 	{ path: "/eyedropper-tool", changefreq: "monthly", priority: "0.6" },
 	{ path: "/hex-code-from-image", changefreq: "monthly", priority: "0.6" },
+	{ path: "/games", changefreq: "weekly", priority: "0.8" },
+	{ path: "/games/color-runner", changefreq: "monthly", priority: "0.7" },
+	{ path: "/games/daily-color", changefreq: "daily", priority: "0.7" },
+	{ path: "/games/odd-color-out", changefreq: "monthly", priority: "0.7" },
+	{ path: "/games/color-memory", changefreq: "monthly", priority: "0.7" },
 	{ path: "/privacy-policy", changefreq: "monthly", priority: "0.3" },
 	{ path: "/terms-and-conditions", changefreq: "monthly", priority: "0.3" },
 ];

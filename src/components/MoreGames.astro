@@ -1,0 +1,25 @@
+---
+import GameCard from "./GameCard.astro";
+import { gameList, type GameKey } from "./gameList";
+import type { Locale } from "../i18n/config";
+import { useTranslations, localizePath } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+	current: GameKey;
+}
+
+const { lang, current } = Astro.props;
+const t = useTranslations(lang);
+const others = gameList.filter((g) => g.key !== current).slice(0, 2);
+---
+
+<div class="mt-xl">
+	<div class="mb-md flex items-baseline justify-between gap-md">
+		<h2 class="type-heading-md">{t.games.common.moreGames}</h2>
+		<a href={localizePath(lang, "/games")} class="type-body-sm text-link">{t.games.common.allGames}</a>
+	</div>
+	<div class="grid gap-md sm:grid-cols-2">
+		{others.map((g) => <GameCard lang={lang} game={g.key} headingLevel="h3" />)}
+	</div>
+</div>

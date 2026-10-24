@@ -1,0 +1,185 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import MoreGames from "../MoreGames.astro";
+import MoreToolsBanner from "../MoreToolsBanner.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const o = t.games.odd;
+const c = t.games.common;
+
+const strings = JSON.stringify({
+	tileLabel: o.tileLabel,
+	gameOver: o.gameOver,
+	rankLabel: o.rankLabel,
+	ranks: o.ranks,
+	bestLevel: o.bestLevel,
+	copied: c.copied,
+	shareTitle: o.heading,
+});
+---
+
+<PageLayout
+	title={o.title}
+	description={o.description}
+	path="/games/odd-color-out"
+	lang={lang}
+	helpTitle={o.help.title}
+	helpSteps={o.help.steps}
+	breadcrumbName={o.heading}
+	breadcrumbParent={{ name: t.games.hub.heading, path: "/games" }}
+>
+	<PageHeader eyebrow={o.eyebrow} heading={o.heading} intro={o.intro} gameIcon="odd" />
+	<section class="mx-auto max-w-[700px] px-lg pb-3xl md:pb-4xl">
+		<div id="oo-root" class="feature-card flex flex-col gap-lg" data-strings={strings}>
+			<div class="oo-hud">
+				<p class="type-body-sm text-body">{o.level} <strong id="oo-level" class="oo-hud-value">1</strong></p>
+				<p class="type-body-sm text-body">
+					{o.lives}
+					<span id="oo-lives" class="oo-lives" aria-live="polite"></span>
+				</p>
+				<p id="oo-best" class="type-body-sm text-mute"></p>
+			</div>
+
+			<div class="oo-stage">
+				<div id="oo-board" class="oo-board" role="group" aria-label={o.heading}></div>
+				<div id="oo-start" class="oo-overlay">
+					<button type="button" id="oo-start-btn" class="btn-primary">{c.start}</button>
+				</div>
+				<div id="oo-over" class="oo-overlay oo-over hidden">
+					<p id="oo-over-msg" class="type-heading-md text-center"></p>
+					<p id="oo-rank" class="oo-rank"></p>
+					<div class="flex flex-wrap justify-center gap-xs">
+						<button type="button" id="oo-share" class="btn-primary">{c.share}</button>
+						<button type="button" id="oo-again" class="btn-secondary">{c.playAgain}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<MoreGames lang={lang} current="odd" />
+
+		<div class="mt-xl">
+			<h2 class="type-heading-md mb-xs">{o.explainerHeading}</h2>
+			<p class="type-body-md text-body">{o.explainerBody}</p>
+		</div>
+
+		<MoreToolsBanner lang={lang} />
+	</section>
+
+	<style>
+		.oo-hud {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: var(--spacing-sm);
+			flex-wrap: wrap;
+		}
+		.oo-hud-value {
+			font-size: 20px;
+			color: var(--color-ink);
+			margin-inline-start: 4px;
+		}
+		.oo-lives {
+			margin-inline-start: 4px;
+			letter-spacing: 2px;
+		}
+		.oo-stage {
+			position: relative;
+			width: 100%;
+			max-width: 480px;
+			margin-inline: auto;
+			aspect-ratio: 1;
+		}
+		.oo-board {
+			display: grid;
+			width: 100%;
+			height: 100%;
+			gap: 6px;
+		}
+		.oo-overlay {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: var(--spacing-md);
+			padding: var(--spacing-lg);
+			border-radius: var(--radius-md);
+			background: color-mix(in srgb, var(--color-canvas-elevated) 82%, transparent);
+			backdrop-filter: blur(6px);
+		}
+		.oo-overlay.hidden {
+			display: none;
+		}
+		.oo-rank {
+			font-family: var(--font-sans);
+			font-size: 15px;
+			font-weight: 600;
+			padding: 6px 14px;
+			border-radius: var(--radius-pill);
+			color: #fff;
+			background: linear-gradient(90deg, var(--color-link), var(--color-violet), var(--color-pink));
+		}
+		:global(.oo-tile) {
+			border: 0;
+			padding: 0;
+			border-radius: clamp(4px, 1.5vw, 10px);
+			cursor: pointer;
+		}
+		:global(.oo-tile:focus-visible) {
+			outline: 3px solid var(--color-link);
+			outline-offset: 2px;
+		}
+		:global(.oo-tile-reveal) {
+			outline: 3px solid var(--color-ink);
+			outline-offset: 2px;
+		}
+		@media (prefers-reduced-motion: no-preference) {
+			:global(.oo-tile) {
+				transition: transform 0.1s ease;
+			}
+			:global(.oo-tile:hover) {
+				transform: scale(1.04);
+			}
+			:global(.oo-board-in .oo-tile) {
+				animation: oo-pop 0.25s ease both;
+			}
+			:global(.oo-shake) {
+				animation: oo-shake 0.35s ease;
+			}
+		}
+		@keyframes oo-pop {
+			from {
+				transform: scale(0.85);
+				opacity: 0.4;
+			}
+			to {
+				transform: scale(1);
+				opacity: 1;
+			}
+		}
+		@keyframes oo-shake {
+			0%,
+			100% {
+				transform: translateX(0);
+			}
+			25% {
+				transform: translateX(-6px);
+			}
+			75% {
+				transform: translateX(6px);
+			}
+		}
+	</style>
+
+	<script src="../../scripts/oddColorOutGame.ts"></script>
+</PageLayout>

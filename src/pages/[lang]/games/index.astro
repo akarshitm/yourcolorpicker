@@ -1,0 +1,12 @@
+---
+import GamesHubView from "../../../components/views/GamesHubView.astro";
+import { locales, defaultLocale } from "../../../i18n/config";
+
+export function getStaticPaths() {
+	return locales.filter((l) => l !== defaultLocale).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Exclude<(typeof locales)[number], typeof defaultLocale> };
+---
+
+<GamesHubView lang={lang} />

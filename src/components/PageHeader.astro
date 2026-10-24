@@ -1,14 +1,16 @@
 ---
 import ToolIcon, { type ToolIconName } from "./ToolIcon.astro";
+import GameIcon, { type GameIconName } from "./GameIcon.astro";
 
 interface Props {
 	eyebrow?: string;
 	heading: string;
 	intro?: string;
 	icon?: ToolIconName;
+	gameIcon?: GameIconName;
 }
 
-const { eyebrow, heading, intro, icon } = Astro.props;
+const { eyebrow, heading, intro, icon, gameIcon } = Astro.props;
 ---
 
 <section class="relative overflow-hidden" style="background: var(--color-canvas);">
@@ -20,6 +22,13 @@ const { eyebrow, heading, intro, icon } = Astro.props;
 				icon && (
 					<span class="page-header-icon">
 						<ToolIcon name={icon} size={22} />
+					</span>
+				)
+			}
+			{
+				gameIcon && (
+					<span class="page-header-icon">
+						<GameIcon name={gameIcon} size={30} />
 					</span>
 				)
 			}

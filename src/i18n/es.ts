@@ -14,6 +14,7 @@ export const es: Dictionary = {
 		openMenu: "Abrir menú",
 		uploadImage: "Subir imagen",
 		language: "Idioma",
+		games: "Juegos",
 	},
 	footer: {
 		privacyHeading: "Privacidad",
@@ -408,6 +409,216 @@ export const es: Dictionary = {
 				body: "Crea una paleta de colores completa — complementaria, análoga, triádica y monocromática — a partir de un color base, lista para exportar.",
 			},
 		],
+	},
+	games: {
+		hub: {
+			title: "Juegos de colores gratis — Pon a prueba tu visión del color | Your Color Picker",
+			description: "Juega gratis: Color Runner, un reto diario de códigos hex, un test de visión para encontrar el color distinto y un desafío de memoria de color. Sin registro, en tu navegador.",
+			eyebrow: "Juegos",
+			heading: "Juegos de colores",
+			intro: "Juegos rápidos y gratuitos que entrenan tu ojo para el color. Vuelve cada día para nuevos retos y mantén tu racha.",
+			play: "Jugar",
+			newBadge: "Nuevo",
+			dailyBadge: "Diario"
+		},
+		banner: {
+			heading: "Juega a juegos de colores gratis",
+			body: "Color Runner, un reto hex diario, un test para encontrar el color distinto y memoria de color: ¿qué tan fino es tu ojo?",
+			cta: "Jugar ahora"
+		},
+		common: {
+			share: "Compartir resultado",
+			copied: "¡Copiado! Pégalo donde quieras.",
+			playAgain: "Jugar otra vez",
+			start: "Empezar",
+			streak: "Racha",
+			maxStreak: "Racha máx.",
+			played: "Jugadas",
+			winRate: "% victorias",
+			best: "Mejor",
+			nextPuzzle: "Siguiente reto en",
+			moreGames: "Más juegos de colores",
+			allGames: "Todos los juegos"
+		},
+		daily: {
+			title: "Color diario — Adivina el código hex | Your Color Picker",
+			description: "Un color nuevo cada día: adivina su código hex en 6 intentos con pistas de más/menos para rojo, verde y azul. Comparte tu resultado y mantén tu racha.",
+			eyebrow: "Juego diario",
+			heading: "Color diario",
+			intro: "Un color al día. Adivina su código hex en seis intentos: cada intento te dice si el rojo, el verde y el azul deben subir o bajar.",
+			cardBody: "Adivina el código hex del color de hoy en 6 intentos con pistas de más/menos. Comparte tu cuadrícula y mantén tu racha.",
+			puzzleLabel: "Reto n.º {n}",
+			targetLabel: "El color de hoy",
+			guessLabel: "Tu intento",
+			guess: "Adivinar",
+			invalid: "Escribe un código hex de 6 dígitos, como #3A7BD5.",
+			win: "¡Resuelto en {n}/6! 🎉",
+			lose: "Sin intentos: el color de hoy era {hex}.",
+			legend: "🟩 a 12 o menos · 🟨 a 40 o menos · ⬆️⬇️ sube o baja",
+			red: "Rojo",
+			green: "Verde",
+			blue: "Azul",
+			solvedToday: "Resuelto hoy ✓",
+			notPlayed: "El reto de hoy te espera",
+			help: {
+				title: "Cómo jugar a Color diario",
+				steps: [
+					{
+						title: "Mira el color de hoy",
+						body: "Todos reciben el mismo color cada día. Tu tarea es descubrir su código hex."
+					},
+					{
+						title: "Haz un intento",
+						body: "Escribe un código hex o usa el selector de color y pulsa Adivinar. Tienes seis intentos."
+					},
+					{
+						title: "Sigue las pistas",
+						body: "Cada intento puntúa rojo, verde y azul: 🟩 a 12 o menos, 🟨 a 40 o menos, y las flechas indican si subir o bajar. Pon los tres en verde para ganar."
+					}
+				]
+			},
+			explainerHeading: "Cómo funcionan los códigos hex",
+			explainerBody: "Un código hex como #3A7BD5 son tres pares de dígitos en base 16 para rojo, verde y azul, cada uno de 00 (nada) a FF (255, máximo). Subir un par añade esa luz: más rojo calienta el color, más azul lo enfría y subir los tres lo aclara. Leer esos pares es justo lo que entrena este reto."
+		},
+		odd: {
+			title: "Color distinto — Juego gratis de visión del color | Your Color Picker",
+			description: "Encuentra la única casilla con un tono ligeramente distinto. En cada nivel la cuadrícula crece y la diferencia se reduce: ¿hasta dónde llega tu vista?",
+			eyebrow: "Juego",
+			heading: "Color distinto",
+			intro: "Toca la casilla que no encaja. En cada nivel la cuadrícula crece y la diferencia es menor. Tienes tres vidas.",
+			cardBody: "Encuentra la casilla con un tono ligeramente distinto. Los niveles se complican hasta que solo sobreviven los ojos más finos.",
+			level: "Nivel",
+			lives: "Vidas",
+			tileLabel: "Casilla {n}",
+			gameOver: "Fin de la partida: llegaste al nivel {n}.",
+			rankLabel: "Tu ojo: {rank}",
+			ranks: [
+				"Principiante",
+				"Buen ojo",
+				"Ojo agudo",
+				"Ojo de águila",
+				"Halcón del color",
+				"Sobrehumano"
+			],
+			bestLevel: "Mejor: nivel {n}",
+			help: {
+				title: "Cómo jugar a Color distinto",
+				steps: [
+					{
+						title: "Encuentra la casilla distinta",
+						body: "Una casilla tiene un tono ligeramente diferente al resto. Tócala para pasar de nivel."
+					},
+					{
+						title: "Cada vez más difícil",
+						body: "Cada nivel añade casillas y reduce la diferencia."
+					},
+					{
+						title: "Tres vidas",
+						body: "Un toque erróneo cuesta una vida y te muestra dónde estaba la casilla. Si pierdes las tres, termina la partida."
+					}
+				]
+			},
+			explainerHeading: "Qué mide este juego",
+			explainerBody: "La casilla distinta solo cambia en luminosidad, algo que casi todo el mundo percibe, incluidas las personas con deficiencias en la visión del color. Los niveles altos ponen a prueba la diferencia más pequeña que puedes notar. El brillo de la pantalla, los reflejos y la calidad del monitor influyen, así que tómalo como un reto divertido, no como un examen médico."
+		},
+		runner: {
+			title: "Color Runner — Juego pixelado gratis de correr por colores | Your Color Picker",
+			description: "¡Corre por el color correcto! Un juego de carreras infinito en pixel art: cambia entre tres carriles de colores, quédate en el color indicado, salta barreras y atrapa cubos dorados.",
+			eyebrow: "Juego arcade",
+			heading: "Color Runner",
+			intro: "Corre, cambia de carril y quédate siempre en el color escrito arriba. Los carriles cambian sin parar y el ritmo sube: atrapa un cubo dorado para 10 segundos de protección.",
+			cardBody: "Un corredor infinito pixelado: quédate en el carril del color indicado, salta barreras y atrapa cubos dorados. ¿Hasta dónde llegarás?",
+			runOn: "Corre por",
+			next: "Siguiente",
+			goldActive: "¡Dorado!",
+			distance: "{n} m",
+			best: "Mejor: {n} m",
+			newBest: "¡Nuevo récord! 🎉",
+			controls: "← → cambia de carril · ↑ o Espacio para saltar · en el móvil, desliza",
+			overColor: "¡Te saliste del camino {color}!",
+			overBarrier: "¡Chocaste con una barrera!",
+			final: "Corriste {n} m",
+			left: "Mover a la izquierda",
+			right: "Mover a la derecha",
+			jump: "Saltar",
+			resume: "Continuar",
+			colors: {
+				red: "Rojo",
+				blue: "Azul",
+				yellow: "Amarillo",
+				green: "Verde",
+				pink: "Rosa",
+				orange: "Naranja",
+				purple: "Morado"
+			},
+			help: {
+				title: "Cómo jugar a Color Runner",
+				steps: [
+					{
+						title: "Sigue el color",
+						body: "El color de arriba te dice por qué carril correr. Si te sales más de un instante, la carrera termina."
+					},
+					{
+						title: "Atento a los cambios",
+						body: "Los colores de los carriles cambian mientras corres, y un aviso SIGUIENTE parpadea antes de que cambie el color objetivo. Muévete con tiempo."
+					},
+					{
+						title: "Salta y atrapa el oro",
+						body: "Pulsa ↑ o Espacio (o desliza hacia arriba) para saltar barreras. Atrapa un cubo dorado y todos los carriles serán dorados durante 10 segundos: mientras dure, no puedes perder."
+					}
+				]
+			},
+			explainerHeading: "Por qué cuesta cambiar de color",
+			explainerBody: "Leer el nombre de un color y emparejarlo con el color real exige esfuerzo mental, sobre todo cuando los colores alrededor no paran de cambiar; es primo del famoso efecto Stroop. La velocidad lo complica: el cerebro tiene menos tiempo para comparar la palabra con los carriles, así que el juego entrena un reconocimiento del color rápido y preciso."
+		},
+		memory: {
+			title: "Memoria de color — Recrea el color de memoria | Your Color Picker",
+			description: "Mira un color durante 3 segundos y recréalo de memoria con controles de tono, saturación y luminosidad. Cinco rondas, puntuadas sobre 100.",
+			eyebrow: "Juego",
+			heading: "Memoria de color",
+			intro: "Observa un color durante tres segundos y reconstrúyelo de memoria con controles de tono, saturación y luminosidad. Cinco rondas, puntuadas sobre 100.",
+			cardBody: "Mira un color 3 segundos y recréalo de memoria. Cinco rondas: ¿llegarás a 90?",
+			dailyMode: "Diario",
+			practiceMode: "Práctica",
+			dailyDone: "Ya jugaste la ronda diaria de hoy: prueba el modo Práctica o vuelve mañana.",
+			round: "Ronda {n}/5",
+			memorize: "Memoriza este color",
+			recreate: "Ahora recréalo",
+			hue: "Tono",
+			saturation: "Saturación",
+			lightness: "Luminosidad",
+			submit: "Enviar",
+			next: "Siguiente ronda",
+			target: "Objetivo",
+			yours: "El tuyo",
+			roundScore: "{score} / 100",
+			final: "Puntuación final: {score} / 100",
+			bestScore: "Mejor: {score}",
+			help: {
+				title: "Cómo jugar a Memoria de color",
+				steps: [
+					{
+						title: "Memoriza",
+						body: "Un color llena el panel durante tres segundos. Obsérvalo bien."
+					},
+					{
+						title: "Recrea",
+						body: "Usa los controles de tono, saturación y luminosidad para reconstruirlo de memoria y pulsa Enviar."
+					},
+					{
+						title: "Puntúa",
+						body: "Cada ronda se puntúa sobre 100 según lo parecido que se vea tu color al original. El modo diario da a todos los mismos cinco colores."
+					}
+				]
+			},
+			explainerHeading: "Por qué cuesta recordar colores",
+			explainerBody: "Recordamos los colores como categorías («azul», «turquesa») más que como valores exactos, así que la memoria tiende a la versión típica de cada color. La puntuación usa el espacio de color CIELAB, que mide la diferencia como la percibe el ojo, por lo que fallar el tono cuesta más que un pequeño error de luminosidad."
+		}
+	},
+	moreTools: {
+		heading: "Prueba más herramientas de color gratis",
+		body: "Conversor, creador de degradados, verificador de contraste, generador de paletas y más: gratis, rápido y 100 % privado.",
+		cta: "Ver todas las herramientas",
 	},
 	relatedTools: {
 		heading: "Herramientas relacionadas",

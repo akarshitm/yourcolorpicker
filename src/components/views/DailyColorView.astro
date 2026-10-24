@@ -1,0 +1,218 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PageHeader from "../PageHeader.astro";
+import MoreGames from "../MoreGames.astro";
+import MoreToolsBanner from "../MoreToolsBanner.astro";
+import type { Locale } from "../../i18n/config";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const d = t.games.daily;
+const c = t.games.common;
+
+const strings = JSON.stringify({
+	puzzleLabel: d.puzzleLabel,
+	invalid: d.invalid,
+	win: d.win,
+	lose: d.lose,
+	channels: [d.red, d.green, d.blue],
+	copied: c.copied,
+	shareTitle: d.heading,
+});
+---
+
+<PageLayout
+	title={d.title}
+	description={d.description}
+	path="/games/daily-color"
+	lang={lang}
+	helpTitle={d.help.title}
+	helpSteps={d.help.steps}
+	breadcrumbName={d.heading}
+	breadcrumbParent={{ name: t.games.hub.heading, path: "/games" }}
+>
+	<PageHeader eyebrow={d.eyebrow} heading={d.heading} intro={d.intro} gameIcon="daily" />
+	<section class="mx-auto max-w-[700px] px-lg pb-3xl md:pb-4xl">
+		<div id="dc-root" class="feature-card flex flex-col gap-lg" data-strings={strings}>
+			<div class="flex items-center justify-between gap-sm">
+				<p id="dc-puzzle" class="type-mono-eyebrow text-mute"></p>
+				<p class="type-body-sm text-body">🔥 {c.streak} <strong id="dc-streak" class="text-ink">0</strong></p>
+			</div>
+
+			<div>
+				<p class="type-body-sm text-mute mb-xs">{d.targetLabel}</p>
+				<div id="dc-target" class="dc-target"></div>
+			</div>
+
+			<ol id="dc-rows" class="dc-rows" aria-live="polite"></ol>
+
+			<form id="dc-form" class="flex flex-wrap items-center gap-xs">
+				<input type="color" id="dc-picker" value="#808080" aria-label={d.guessLabel} class="dc-picker" />
+				<input
+					type="text"
+					id="dc-input"
+					class="field-input type-code min-w-0 flex-1"
+					placeholder="#808080"
+					maxlength="7"
+					autocomplete="off"
+					spellcheck="false"
+					aria-label={d.guessLabel}
+				/>
+				<button type="submit" class="btn-primary">{d.guess}</button>
+			</form>
+			<p id="dc-msg" class="type-body-sm" role="status"></p>
+			<p class="type-body-sm text-mute">{d.legend}</p>
+
+			<div id="dc-result" class="dc-result hidden">
+				<p id="dc-result-msg" class="type-heading-md"></p>
+				<div class="dc-stats">
+					<div><strong id="dc-played">0</strong><span>{c.played}</span></div>
+					<div><strong id="dc-winrate">0</strong><span>{c.winRate}</span></div>
+					<div><strong id="dc-streak2">0</strong><span>{c.streak}</span></div>
+					<div><strong id="dc-max">0</strong><span>{c.maxStreak}</span></div>
+				</div>
+				<div class="flex flex-wrap items-center justify-between gap-sm">
+					<button type="button" id="dc-share" class="btn-primary">{c.share}</button>
+					<p class="type-body-sm text-body">{c.nextPuzzle} <span id="dc-countdown" class="type-code text-ink">--:--:--</span></p>
+				</div>
+			</div>
+		</div>
+
+		<MoreGames lang={lang} current="daily" />
+
+		<div class="mt-xl">
+			<h2 class="type-heading-md mb-xs">{d.explainerHeading}</h2>
+			<p class="type-body-md text-body">{d.explainerBody}</p>
+		</div>
+
+		<MoreToolsBanner lang={lang} />
+	</section>
+
+	<style>
+		.dc-target {
+			height: 140px;
+			border-radius: var(--radius-md);
+			border: 1px solid var(--color-hairline);
+		}
+		.dc-rows {
+			display: flex;
+			flex-direction: column;
+			gap: var(--spacing-xs);
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.dc-picker {
+			width: 44px;
+			height: 40px;
+			padding: 0;
+			border: 1px solid var(--color-hairline);
+			border-radius: var(--radius-sm);
+			background: none;
+			flex-shrink: 0;
+		}
+		.dc-result {
+			display: flex;
+			flex-direction: column;
+			gap: var(--spacing-md);
+			border-top: 1px solid var(--color-hairline);
+			padding-top: var(--spacing-lg);
+		}
+		.dc-result.hidden {
+			display: none;
+		}
+		.dc-stats {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: var(--spacing-xs);
+			text-align: center;
+		}
+		.dc-stats div {
+			display: flex;
+			flex-direction: column;
+			gap: 2px;
+			padding: var(--spacing-sm) var(--spacing-xxs);
+			border-radius: var(--radius-sm);
+			background: var(--color-hairline-soft);
+		}
+		.dc-stats strong {
+			font-size: 22px;
+			line-height: 1.2;
+		}
+		.dc-stats span {
+			font-size: 12px;
+			color: var(--color-mute);
+		}
+		:global(.dc-row) {
+			display: flex;
+			align-items: center;
+			gap: var(--spacing-xs);
+			min-height: 40px;
+		}
+		:global(.dc-row-swatch) {
+			width: 40px;
+			height: 40px;
+			flex-shrink: 0;
+			border-radius: var(--radius-sm);
+			border: 1px solid var(--color-hairline);
+		}
+		:global(.dc-row-empty .dc-row-swatch) {
+			border-style: dashed;
+		}
+		:global(.dc-row-hex) {
+			width: 76px;
+			flex-shrink: 0;
+		}
+		:global(.dc-cell) {
+			flex: 1;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 4px;
+			height: 40px;
+			border-radius: var(--radius-sm);
+			font-size: 13px;
+			font-weight: 600;
+			background: var(--color-hairline-soft);
+			color: var(--color-body);
+		}
+		:global(.dc-cell-far) {
+			border: 1px solid var(--color-hairline);
+			color: var(--color-ink);
+		}
+		:global(.dc-cell-exact) {
+			background: color-mix(in srgb, var(--color-cyan) 35%, var(--color-canvas-elevated));
+			color: var(--color-ink);
+		}
+		:global(.dc-cell-close) {
+			background: color-mix(in srgb, var(--color-warning) 35%, var(--color-canvas-elevated));
+			color: var(--color-ink);
+		}
+		@media (prefers-reduced-motion: no-preference) {
+			:global(.dc-row-new .dc-cell) {
+				animation: dc-flip 0.45s ease both;
+			}
+			:global(.dc-row-new .dc-cell:nth-child(4)) {
+				animation-delay: 0.12s;
+			}
+			:global(.dc-row-new .dc-cell:nth-child(5)) {
+				animation-delay: 0.24s;
+			}
+		}
+		@keyframes dc-flip {
+			from {
+				transform: rotateX(90deg);
+			}
+			to {
+				transform: rotateX(0);
+			}
+		}
+	</style>
+
+	<script src="../../scripts/dailyColorGame.ts"></script>
+</PageLayout>

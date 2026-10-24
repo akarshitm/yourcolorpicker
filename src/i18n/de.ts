@@ -14,6 +14,7 @@ export const de: Dictionary = {
 		openMenu: "Menü öffnen",
 		uploadImage: "Bild hochladen",
 		language: "Sprache",
+		games: "Spiele",
 	},
 	footer: {
 		privacyHeading: "Datenschutz",
@@ -408,6 +409,216 @@ export const de: Dictionary = {
 				body: "Erstelle eine vollständige Farbpalette — komplementär, analog, triadisch und monochromatisch — aus einer Grundfarbe, bereit zum Exportieren.",
 			},
 		],
+	},
+	games: {
+		hub: {
+			title: "Kostenlose Farbspiele — Teste dein Farbsehen | Your Color Picker",
+			description: "Spiele kostenlos: Color Runner, ein tägliches Hex-Farbrätsel, einen Farbsehtest zum Finden der abweichenden Farbe und eine Farbgedächtnis-Challenge. Ohne Anmeldung, direkt im Browser.",
+			eyebrow: "Spiele",
+			heading: "Farbspiele",
+			intro: "Schnelle, kostenlose Spiele, die dein Auge für Farben trainieren. Komm jeden Tag für neue Rätsel wieder und halte deine Serie.",
+			play: "Spielen",
+			newBadge: "Neu",
+			dailyBadge: "Täglich"
+		},
+		banner: {
+			heading: "Kostenlose Farbspiele spielen",
+			body: "Color Runner, ein tägliches Hex-Rätsel, ein Test für die abweichende Farbe und Farbgedächtnis — wie scharf ist dein Auge?",
+			cta: "Jetzt spielen"
+		},
+		common: {
+			share: "Ergebnis teilen",
+			copied: "Kopiert — füge es überall ein!",
+			playAgain: "Nochmal spielen",
+			start: "Start",
+			streak: "Serie",
+			maxStreak: "Beste Serie",
+			played: "Gespielt",
+			winRate: "Siege %",
+			best: "Bestwert",
+			nextPuzzle: "Nächstes Rätsel in",
+			moreGames: "Mehr Farbspiele",
+			allGames: "Alle Spiele"
+		},
+		daily: {
+			title: "Tagesfarbe — Errate den Hex-Code | Your Color Picker",
+			description: "Jeden Tag eine neue Farbe: Errate ihren Hex-Code in 6 Versuchen mit Höher/Tiefer-Hinweisen für Rot, Grün und Blau. Teile dein Ergebnis und halte deine Serie.",
+			eyebrow: "Tägliches Spiel",
+			heading: "Tagesfarbe",
+			intro: "Eine Farbe pro Tag. Errate ihren Hex-Code in sechs Versuchen — jeder Versuch zeigt dir, ob Rot, Grün und Blau höher oder tiefer müssen.",
+			cardBody: "Errate den Hex-Code der heutigen Farbe in 6 Versuchen mit Höher/Tiefer-Hinweisen. Teile dein Raster und halte deine Serie.",
+			puzzleLabel: "Rätsel Nr. {n}",
+			targetLabel: "Die heutige Farbe",
+			guessLabel: "Dein Tipp",
+			guess: "Raten",
+			invalid: "Gib einen 6-stelligen Hex-Code ein, z. B. #3A7BD5.",
+			win: "Gelöst in {n}/6! 🎉",
+			lose: "Keine Versuche mehr — die heutige Farbe war {hex}.",
+			legend: "🟩 bis 12 daneben · 🟨 bis 40 daneben · ⬆️⬇️ höher oder tiefer",
+			red: "Rot",
+			green: "Grün",
+			blue: "Blau",
+			solvedToday: "Heute gelöst ✓",
+			notPlayed: "Das heutige Rätsel wartet",
+			help: {
+				title: "So spielst du Tagesfarbe",
+				steps: [
+					{
+						title: "Sieh dir die heutige Farbe an",
+						body: "Alle bekommen jeden Tag dieselbe Farbe. Deine Aufgabe ist es, ihren Hex-Code herauszufinden."
+					},
+					{
+						title: "Rate",
+						body: "Gib einen Hex-Code ein oder nutze den Farbwähler und tippe auf Raten. Du hast sechs Versuche."
+					},
+					{
+						title: "Folge den Hinweisen",
+						body: "Jeder Versuch bewertet Rot, Grün und Blau: 🟩 bis 12 daneben, 🟨 bis 40 daneben, und Pfeile zeigen höher oder tiefer. Alle drei grün heißt gewonnen."
+					}
+				]
+			},
+			explainerHeading: "So funktionieren Hex-Codes",
+			explainerBody: "Ein Hex-Code wie #3A7BD5 besteht aus drei Paaren von Hexadezimalziffern für Rot, Grün und Blau, jeweils von 00 (nichts) bis FF (255, voll). Ein höheres Paar fügt dieses Licht hinzu: Mehr Rot macht eine Farbe wärmer, mehr Blau kühler, und alle drei höher machen sie heller. Genau das Lesen dieser Paare trainiert dieses Rätsel."
+		},
+		odd: {
+			title: "Farbe raus — Kostenloses Farbsehtest-Spiel | Your Color Picker",
+			description: "Finde das eine Feld mit einem leicht anderen Farbton. Mit jedem Level wächst das Raster und der Unterschied schrumpft — wie weit kommt dein Farbsehen?",
+			eyebrow: "Spiel",
+			heading: "Farbe raus",
+			intro: "Tippe auf das Feld, das nicht passt. Mit jedem Level wächst das Raster und der Unterschied wird kleiner — du hast drei Leben.",
+			cardBody: "Finde das Feld mit einem leicht anderen Farbton. Die Level werden schwerer, bis nur die schärfsten Augen bestehen.",
+			level: "Level",
+			lives: "Leben",
+			tileLabel: "Feld {n}",
+			gameOver: "Spiel vorbei — du hast Level {n} erreicht.",
+			rankLabel: "Dein Auge: {rank}",
+			ranks: [
+				"Einsteiger",
+				"Gutes Auge",
+				"Scharfes Auge",
+				"Adlerauge",
+				"Farbfalke",
+				"Übermenschlich"
+			],
+			bestLevel: "Bestwert: Level {n}",
+			help: {
+				title: "So spielst du Farbe raus",
+				steps: [
+					{
+						title: "Finde das andere Feld",
+						body: "Ein Feld hat einen leicht anderen Farbton als der Rest. Tippe darauf, um ins nächste Level zu kommen."
+					},
+					{
+						title: "Es wird schwerer",
+						body: "Jedes Level bringt mehr Felder und einen kleineren Unterschied."
+					},
+					{
+						title: "Drei Leben",
+						body: "Ein falscher Tipp kostet ein Leben und zeigt dir, wo das Feld war. Sind alle drei weg, endet das Spiel."
+					}
+				]
+			},
+			explainerHeading: "Was dieses Spiel misst",
+			explainerBody: "Das abweichende Feld unterscheidet sich nur in der Helligkeit, die fast alle wahrnehmen können — auch Menschen mit Farbsehschwäche. Höhere Level testen, wie kleine Unterschiede deine Augen erkennen. Bildschirmhelligkeit, Spiegelungen und Displayqualität beeinflussen das Ergebnis, also sieh es als Spaß-Challenge, nicht als medizinischen Sehtest."
+		},
+		runner: {
+			title: "Color Runner — Kostenloses Pixel-Laufspiel mit Farben | Your Color Picker",
+			description: "Lauf auf der richtigen Farbe! Ein kostenloser Endlos-Runner im Pixel-Look: Wechsle zwischen drei farbigen Spuren, bleib auf der angezeigten Farbe, spring über Hindernisse und schnapp dir goldene Eimer.",
+			eyebrow: "Arcade-Spiel",
+			heading: "Color Runner",
+			intro: "Lauf, wechsle die Spur und bleib immer auf der Farbe, die oben steht. Die Spuren ändern sich ständig und das Tempo steigt — schnapp dir einen goldenen Eimer für 10 Sekunden Schutz.",
+			cardBody: "Ein Pixel-Endlos-Runner: Bleib auf der Spur der angezeigten Farbe, spring über Hindernisse und sammle goldene Eimer. Wie weit kommst du?",
+			runOn: "Lauf auf",
+			next: "Gleich",
+			goldActive: "Gold!",
+			distance: "{n} m",
+			best: "Bestwert: {n} m",
+			newBest: "Neuer Rekord! 🎉",
+			controls: "← → Spur wechseln · ↑ oder Leertaste zum Springen · am Handy wischen",
+			overColor: "Du hast den Weg {color} verlassen!",
+			overBarrier: "Du bist gegen ein Hindernis gelaufen!",
+			final: "Du bist {n} m gelaufen",
+			left: "Nach links",
+			right: "Nach rechts",
+			jump: "Springen",
+			resume: "Weiter",
+			colors: {
+				red: "Rot",
+				blue: "Blau",
+				yellow: "Gelb",
+				green: "Grün",
+				pink: "Rosa",
+				orange: "Orange",
+				purple: "Lila"
+			},
+			help: {
+				title: "So spielst du Color Runner",
+				steps: [
+					{
+						title: "Folge der Farbe",
+						body: "Die Farbe oben zeigt, auf welcher Spur du laufen musst. Verlässt du sie länger als einen Moment, ist der Lauf vorbei."
+					},
+					{
+						title: "Achte auf Wechsel",
+						body: "Die Spurfarben wechseln beim Laufen, und eine blinkende GLEICH-Warnung erscheint, bevor sich die Zielfarbe ändert. Reagiere früh."
+					},
+					{
+						title: "Springen und Gold sammeln",
+						body: "Drück ↑ oder die Leertaste (oder wisch nach oben), um über Hindernisse zu springen. Ein goldener Eimer macht alle Spuren 10 Sekunden lang golden — so lange kannst du nicht ausscheiden."
+					}
+				]
+			},
+			explainerHeading: "Warum Farbwechsel schwer sind",
+			explainerBody: "Ein Farbwort zu lesen und der echten Farbe zuzuordnen kostet echte Denkarbeit, besonders wenn sich die Farben ringsum ständig ändern — ein Verwandter des berühmten Stroop-Effekts. Tempo macht es schwerer: Dein Gehirn hat weniger Zeit, das Wort mit den Spuren abzugleichen, und so trainiert das Spiel schnelles, genaues Farberkennen."
+		},
+		memory: {
+			title: "Farbgedächtnis — Stelle die Farbe aus dem Gedächtnis nach | Your Color Picker",
+			description: "Sieh dir eine Farbe 3 Sekunden lang an und stelle sie dann mit Reglern für Farbton, Sättigung und Helligkeit nach. Fünf Runden, bewertet von 0 bis 100.",
+			eyebrow: "Spiel",
+			heading: "Farbgedächtnis",
+			intro: "Präge dir eine Farbe drei Sekunden lang ein und baue sie dann mit Reglern für Farbton, Sättigung und Helligkeit aus dem Gedächtnis nach. Fünf Runden, bewertet von 0 bis 100.",
+			cardBody: "Sieh eine Farbe 3 Sekunden lang und stelle sie aus dem Gedächtnis nach. Fünf Runden — schaffst du 90+?",
+			dailyMode: "Täglich",
+			practiceMode: "Training",
+			dailyDone: "Du hast die heutige Tagesrunde gespielt — probier den Trainingsmodus oder komm morgen wieder.",
+			round: "Runde {n}/5",
+			memorize: "Präge dir diese Farbe ein",
+			recreate: "Jetzt nachstellen",
+			hue: "Farbton",
+			saturation: "Sättigung",
+			lightness: "Helligkeit",
+			submit: "Abgeben",
+			next: "Nächste Runde",
+			target: "Ziel",
+			yours: "Deine",
+			roundScore: "{score} / 100",
+			final: "Endergebnis: {score} / 100",
+			bestScore: "Bestwert: {score}",
+			help: {
+				title: "So spielst du Farbgedächtnis",
+				steps: [
+					{
+						title: "Einprägen",
+						body: "Eine Farbe füllt drei Sekunden lang das Feld. Präge sie dir ein."
+					},
+					{
+						title: "Nachstellen",
+						body: "Nutze die Regler für Farbton, Sättigung und Helligkeit, um sie aus dem Gedächtnis nachzubauen, und tippe auf Abgeben."
+					},
+					{
+						title: "Punkte",
+						body: "Jede Runde gibt bis zu 100 Punkte, je nachdem, wie ähnlich deine Farbe dem Original aussieht. Im Tagesmodus bekommen alle dieselben fünf Farben."
+					}
+				]
+			},
+			explainerHeading: "Warum Farbgedächtnis schwer ist",
+			explainerBody: "Wir merken uns Farben eher als Kategorien („Blau“, „Türkis“) als als exakte Werte, deshalb driftet die Erinnerung zur typischen Version jeder Farbe. Die Wertung nutzt den CIELAB-Farbraum, der Unterschiede so misst, wie das Auge sie wahrnimmt — ein Fehler im Farbton kostet daher mehr als ein kleiner Helligkeitsfehler."
+		}
+	},
+	moreTools: {
+		heading: "Weitere kostenlose Farbwerkzeuge testen",
+		body: "Konverter, Verlaufsgenerator, Kontrastprüfer, Palettengenerator und mehr – kostenlos, schnell und zu 100 % privat.",
+		cta: "Alle Werkzeuge ansehen",
 	},
 	relatedTools: {
 		heading: "Verwandte Werkzeuge",
