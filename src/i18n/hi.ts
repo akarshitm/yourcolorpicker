@@ -31,9 +31,9 @@ export const hi: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — इमेज से कलर पिकर और फ़ाइंडर",
+		metaTitle: "कलर पिकर — इमेज से HEX और RGB कोड पाएं | Your Color Picker",
 		metaDescription:
-			"मुफ़्त कलर पिकर और इमेज कलर फाइंडर — तुरंत HEX, RGB और HSL कोड, साथ ही कॉम्प्लीमेंटरी कलर फाइंडर और रैंडम कलर पिकर।",
+			"किसी भी इमेज से ऑनलाइन रंग चुनें — फ़ोटो या स्क्रीनशॉट डालें और तुरंत सटीक HEX, RGB और HSL कोड पाएं। मुफ़्त, बिना साइन-अप, कुछ भी अपलोड नहीं होता।",
 		eyebrow: "मुफ़्त कलर पिकर · कोई साइनअप नहीं · कभी कुछ अपलोड नहीं होता",
 		heading: "वह कलर पिकर जो फोटो में मौजूद किसी भी रंग को ढूँढ लेता है",
 		subhead:

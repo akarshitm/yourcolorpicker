@@ -31,8 +31,8 @@ export const ja: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — 画像から色を探すツール",
-		metaDescription: "無料のカラーピッカー・カラーファインダー。HEX・RGB・HSLコードを瞬時に取得でき、補色検索とランダムカラー生成も内蔵。",
+		metaTitle: "カラーピッカー — 画像から色を抽出（HEX・RGB）| Your Color Picker",
+		metaDescription: "画像から色をオンラインで抽出。写真やスクリーンショットを読み込むだけで、正確なHEX・RGB・HSLコードをすぐに取得。無料・登録不要・アップロードなし。",
 		eyebrow: "無料のカラーピッカー・登録不要・アップロード一切なし",
 		heading: "写真の中のどんな色でも見つけられるカラーピッカー",
 		subhead:

@@ -13,7 +13,7 @@ relatedTool:
 
 Contrast ratio is a single number from 1:1 (identical colors — pure white text on a white background) to 21:1 (maximum contrast — pure black on pure white). It's calculated from the *relative luminance* of the two colors, which is a fancy way of saying "how much light each color reflects," weighted to match how human eyes perceive brightness (we're more sensitive to green than to blue, for instance, so the formula weights channels differently rather than just averaging RGB values).
 
-You don't need to calculate this by hand — every contrast checker does the math for you — but it's worth knowing that the ratio is about *luminance*, not just how different two colors look to you at a glance. Two colors that look quite different can still fail if they're similarly bright (a common trap: medium-gray text on a medium-blue background often looks fine but tests poorly).
+You don't need to calculate this by hand — every [contrast checker](/contrast-checker) does the math for you — but it's worth knowing that the ratio is about *luminance*, not just how different two colors look to you at a glance. Two colors that look quite different can still fail if they're similarly bright (a common trap: medium-gray text on a medium-blue background often looks fine but tests poorly).
 
 ## The actual thresholds
 
@@ -30,7 +30,7 @@ AA is the level referenced by most legal accessibility requirements (including t
 
 ## Why this matters beyond compliance
 
-Low contrast doesn't just fail an audit — it fails real readers. It affects people with low vision or color blindness most acutely, but it also affects anyone reading on a low-quality or glare-lit screen, anyone over 40 (contrast sensitivity declines with age well before most people notice), and honestly, anyone squinting at a phone in direct sunlight. Contrast is one of the rare accessibility requirements that measurably improves the experience for essentially everyone, not just the specific group it was written to protect.
+Low contrast doesn't just fail an audit — it fails real readers. It affects people with low vision or [color blindness](/blog/designing-for-color-blindness) most acutely, but it also affects anyone reading on a low-quality or glare-lit screen, anyone over 40 (contrast sensitivity declines with age well before most people notice), and honestly, anyone squinting at a phone in direct sunlight. Contrast is one of the rare accessibility requirements that measurably improves the experience for essentially everyone, not just the specific group it was written to protect.
 
 ## Common ways contrast fails without anyone noticing
 
@@ -41,9 +41,9 @@ Low contrast doesn't just fail an audit — it fails real readers. It affects pe
 
 ## A simple workflow
 
-1. Pick your text and background colors as you normally would.
+1. Pick your text and background colors as you normally would — if they come from a mockup or screenshot, the [eyedropper tool](/eyedropper-tool) grabs the exact values.
 2. Check the ratio before shipping, not after a complaint or an audit — treat it the same as you would a broken link.
-3. If it fails, adjust *lightness* first (in HSL terms) rather than hue or saturation — it's the fastest way to fix contrast without changing what color something visually reads as.
+3. If it fails, adjust *lightness* first (in [HSL terms](/blog/hex-vs-rgb-vs-hsl)) rather than hue or saturation — it's the fastest way to fix contrast without changing what color something visually reads as.
 4. Recheck dark mode separately if your product has one.
 
 Contrast is one of the few accessibility rules with a hard number attached, which makes it one of the easiest to actually get right — there's no ambiguity once you check the ratio directly instead of eyeballing it.

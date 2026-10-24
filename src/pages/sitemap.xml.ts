@@ -30,7 +30,7 @@ const pages: { path: string; changefreq: string; priority: string }[] = [
 	{ path: "/terms-and-conditions", changefreq: "monthly", priority: "0.3" },
 ];
 
-const lastmod = "2026-09-06";
+const lastmod = "2026-10-24";
 
 function absoluteUrl(locale: (typeof locales)[number], path: string) {
 	return `${siteUrl}${localizePath(locale, path)}`;

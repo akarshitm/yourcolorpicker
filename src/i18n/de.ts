@@ -31,9 +31,9 @@ export const de: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — Farben aus Fotos finden",
+		metaTitle: "Color Picker — Farbe aus Bild bestimmen (HEX, RGB) | Your Color Picker",
 		metaDescription:
-			"Kostenloser Color Picker und Farbfinder aus Bildern — sofort HEX-, RGB- und HSL-Codes, plus Komplementärfarben-Finder und Zufallsfarben-Generator.",
+			"Farbe aus einem Bild online bestimmen: Foto oder Screenshot laden und sofort den exakten HEX-, RGB- und HSL-Code erhalten — kostenlos, ohne Anmeldung, nichts wird hochgeladen.",
 		eyebrow: "Kostenloser Color Picker · Keine Anmeldung · Nichts wird je hochgeladen",
 		heading: "Der Color Picker, der jede Farbe in einem Foto findet",
 		subhead:

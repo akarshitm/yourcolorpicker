@@ -31,9 +31,9 @@ export const es: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — Selector de Color de Imagen",
+		metaTitle: "Selector de color de imagen online — HEX y RGB | Your Color Picker",
 		metaDescription:
-			"Selector de color y buscador de color desde imagen gratis — códigos HEX, RGB y HSL al instante, más un buscador de color complementario y selector aleatorio.",
+			"Obtén el color de una imagen online: sube una foto o captura de pantalla y consigue al instante el código HEX, RGB y HSL exacto — gratis, sin registro, nada se sube.",
 		eyebrow: "Selector de color gratis · Sin registro · Nada se sube nunca",
 		heading: "El selector de color que encuentra cualquier color en una foto",
 		subhead:

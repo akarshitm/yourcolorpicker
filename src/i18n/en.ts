@@ -29,9 +29,9 @@ export const en = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — Color Finder From Any Photo",
+		metaTitle: "Color Picker From Image — Free HEX & RGB Finder | Your Color Picker",
 		metaDescription:
-			"Free color picker and color finder from image — instant HEX, RGB, and HSL codes, plus a complementary color finder and random color picker.",
+			"Pick any color from an image online. Upload a photo or screenshot and get the exact HEX, RGB, and HSL code instantly — free, no signup, nothing uploaded.",
 		eyebrow: "Free color picker · No signup · Nothing ever uploaded",
 		heading: "The color picker that finds any color in a photo",
 		subhead:

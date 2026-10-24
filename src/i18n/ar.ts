@@ -31,9 +31,9 @@ export const ar: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — منتقي لون من الصور",
+		metaTitle: "منتقي الألوان — استخرج كود HEX وRGB من أي صورة | Your Color Picker",
 		metaDescription:
-			"منتقي ألوان وباحث ألوان من الصور مجاني — أكواد HEX وRGB وHSL فورًا، إضافة إلى باحث لون مكمّل ومولّد ألوان عشوائي.",
+			"اختر أي لون من صورة مباشرة في المتصفح. حمّل صورة أو لقطة شاشة واحصل فورًا على كود HEX وRGB وHSL الدقيق — مجاني، بدون تسجيل، ولا يُرفَع أي شيء.",
 		eyebrow: "منتقي ألوان مجاني · بدون تسجيل · لا يُرفَع أي شيء أبدًا",
 		heading: "منتقي الألوان الذي يجد أي لون في أي صورة",
 		subhead:

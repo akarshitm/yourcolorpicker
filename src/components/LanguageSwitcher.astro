@@ -6,13 +6,17 @@ interface Props {
 	lang: Locale;
 	path: string;
 	label: string;
+	// English-only pages (the blog) have no localized copies, so other
+	// languages link to their homepage rather than a /xx/... URL that 404s.
+	singleLocale?: boolean;
 }
 
-const { lang, path, label } = Astro.props;
+const { lang, path, label, singleLocale } = Astro.props;
+const hrefFor = (locale: Locale) => localizePath(locale, singleLocale && locale !== lang ? "/" : path);
 ---
 
 <details class="lang-switch">
-	<summary class="lang-switch-btn" aria-label={label} title={label}>
+	<summary class="lang-switch-btn" aria-label={`${label}: ${lang.toUpperCase()}`} title={label}>
 		<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 			<circle cx="12" cy="12" r="10"></circle>
 			<path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" stroke-linecap="round"></path>
@@ -22,7 +26,7 @@ const { lang, path, label } = Astro.props;
 	<div class="lang-switch-menu" role="menu">
 		{
 			locales.map((locale) => (
-				<a href={localizePath(locale, path)} role="menuitem" class="lang-switch-item" aria-current={locale === lang ? "true" : undefined}>
+				<a href={hrefFor(locale)} role="menuitem" class="lang-switch-item" aria-current={locale === lang ? "true" : undefined}>
 					{localeNames[locale]}
 				</a>
 			))

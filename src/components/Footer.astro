@@ -10,6 +10,28 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const year = new Date().getFullYear();
+
+// Same order as t.toolsHub.items. The image picker (index 0) lives on the
+// homepage, which the brand link already covers, so it's skipped here.
+const toolHrefs = [
+	null,
+	"/color-converter",
+	"/gradient-maker",
+	"/contrast-checker",
+	"/color-blindness-simulator",
+	"/color-mixer",
+	"/shades-and-tints-generator",
+	"/random-color-generator",
+	"/color-names",
+	"/palette-generator",
+];
+// Sitewide links to every tool so each page gets crawled and shares in the
+// homepage's link equity, instead of only being reachable via /tools.
+const toolLinks = [
+	{ title: t.eyedropperGuide.heading, href: "/eyedropper-tool" },
+	{ title: t.hexFromImageGuide.heading, href: "/hex-code-from-image" },
+	...t.toolsHub.items.flatMap((item, i) => (toolHrefs[i] ? [{ title: item.title, href: toolHrefs[i] }] : [])),
+];
 ---
 
 <footer id="privacy" class="border-t scroll-mt-24" style="background: var(--color-canvas); border-color: var(--color-hairline);">
@@ -21,6 +43,20 @@ const year = new Date().getFullYear();
 				<TransLink text={t.footer.readFullPolicy} href={localizePath(lang, "/privacy-policy")} label={t.footer.privacyPolicyLabel} />
 			</p>
 		</div>
+		<nav class="mb-lg border-t pt-lg" style="border-color: var(--color-hairline);" aria-label={t.toolsHub.heading}>
+			<h2 class="type-label-sm text-ink mb-xs">{t.toolsHub.heading}</h2>
+			<ul class="m-0 flex list-none flex-wrap items-center gap-x-lg gap-y-xs p-0">
+				{
+					toolLinks.map((tool) => (
+						<li>
+							<a href={localizePath(lang, tool.href)} class="footer-link">
+								{tool.title}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
 		<nav
 			class="mb-lg flex flex-wrap items-center gap-x-lg gap-y-xs border-t pt-lg"
 			style="border-color: var(--color-hairline);"
