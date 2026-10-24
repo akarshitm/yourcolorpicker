@@ -407,17 +407,17 @@ export const en = {
 	games: {
 		hub: {
 			title: "Free Color Games — Test Your Color Vision | Your Color Picker",
-			description: "Play free color games: Color Runner, a daily hex color puzzle, an odd-color-out vision test, and a color memory challenge. No signup, right in your browser.",
+			description: "Play free color games: Color Runner, an odd-color-out vision test, and a color memory challenge. No signup, right in your browser.",
 			eyebrow: "Games",
 			heading: "Color games",
-			intro: "Quick, free games that train your eye for color. Come back every day for new puzzles and keep your streak alive.",
+			intro: "Quick, free games that train your eye for color. Beat your best and come back daily for a new Color Memory round.",
 			play: "Play",
 			newBadge: "New",
 			dailyBadge: "Daily"
 		},
 		banner: {
 			heading: "Play free color games",
-			body: "Color Runner, a daily hex puzzle, an odd-color-out vision test, and color memory — how sharp is your eye?",
+			body: "Color Runner, an odd-color-out vision test, and color memory — how sharp is your eye?",
 			cta: "Play now"
 		},
 		common: {
@@ -425,54 +425,9 @@ export const en = {
 			copied: "Copied — paste it anywhere!",
 			playAgain: "Play again",
 			start: "Start",
-			streak: "Streak",
-			maxStreak: "Max streak",
-			played: "Played",
-			winRate: "Win %",
 			best: "Best",
-			nextPuzzle: "Next puzzle in",
 			moreGames: "More color games",
 			allGames: "All games"
-		},
-		daily: {
-			title: "Daily Color — Guess the Hex Code Puzzle | Your Color Picker",
-			description: "A new color every day: guess its hex code in 6 tries with higher/lower hints for red, green, and blue. Share your score and keep your streak.",
-			eyebrow: "Daily game",
-			heading: "Daily Color",
-			intro: "One color a day. Guess its hex code in six tries — every guess tells you whether red, green, and blue need to go up or down.",
-			cardBody: "Guess today's color's hex code in 6 tries with higher/lower hints. Share your grid and keep your streak.",
-			puzzleLabel: "Puzzle #{n}",
-			targetLabel: "Today's color",
-			guessLabel: "Your guess",
-			guess: "Guess",
-			invalid: "Enter a 6-digit hex code, like #3A7BD5.",
-			win: "Solved in {n}/6! 🎉",
-			lose: "Out of guesses — today's color was {hex}.",
-			legend: "🟩 within 12 · 🟨 within 40 · ⬆️⬇️ go higher or lower",
-			red: "Red",
-			green: "Green",
-			blue: "Blue",
-			solvedToday: "Solved today ✓",
-			notPlayed: "Today's puzzle is waiting",
-			help: {
-				title: "How to play Daily Color",
-				steps: [
-					{
-						title: "Look at today's color",
-						body: "Everyone gets the same color each day. Your job is to work out its hex code."
-					},
-					{
-						title: "Make a guess",
-						body: "Type a hex code or use the color picker, then press Guess. You have six tries."
-					},
-					{
-						title: "Follow the hints",
-						body: "Each guess scores red, green, and blue: 🟩 within 12, 🟨 within 40, and arrows tell you to go higher or lower. Get all three green to win."
-					}
-				]
-			},
-			explainerHeading: "How hex codes work",
-			explainerBody: "A hex code like #3A7BD5 is three pairs of base-16 digits for red, green, and blue, each from 00 (none) to FF (255, full). Raising a pair adds that light: more red warms a color, more blue cools it, and raising all three makes it lighter. Reading those pairs is exactly the skill this puzzle trains."
 		},
 		odd: {
 			title: "Odd Color Out — Free Color Vision Test Game | Your Color Picker",
@@ -517,11 +472,11 @@ export const en = {
 		},
 		runner: {
 			title: "Color Runner — Free Pixel Color Running Game | Your Color Picker",
-			description: "Run on the right color! A free pixel-art endless runner: switch between three colored lanes, stay on the color shown on screen, jump barriers, and grab golden buckets.",
+			description: "Run on the right color! A free pixel-art endless runner: switch between three colored lanes, stay on the color shown on screen, and grab golden buckets for 10 seconds of safety.",
 			eyebrow: "Arcade game",
 			heading: "Color Runner",
 			intro: "Run, switch lanes, and always stay on the color written at the top. The lanes keep changing and the pace keeps rising — grab a golden bucket for 10 seconds of safety.",
-			cardBody: "A pixel endless runner: stay on the lane of the color shown, jump barriers, and grab golden buckets. How far can you run?",
+			cardBody: "A pixel endless runner: stay on the lane of the color shown and grab golden buckets for 10 seconds of gold. How far can you run?",
 			runOn: "Run on",
 			next: "Next",
 			goldActive: "Golden!",
@@ -530,12 +485,12 @@ export const en = {
 			newBest: "New best! 🎉",
 			controls: "← → switch lanes · ↑ or Space to jump · on phones, swipe",
 			overColor: "You left the {color} path!",
-			overBarrier: "You hit a barrier!",
 			final: "You ran {n} m",
 			left: "Move left",
 			right: "Move right",
 			jump: "Jump",
 			resume: "Resume",
+			sound: "Sound",
 			colors: {
 				red: "Red",
 				blue: "Blue",
@@ -557,8 +512,8 @@ export const en = {
 						body: "Lane colors shuffle as you run, and a flashing NEXT warning appears before the target color changes. Move early."
 					},
 					{
-						title: "Jump and grab gold",
-						body: "Press ↑ or Space (or swipe up) to jump barriers. Grab a golden bucket to turn every lane gold for 10 seconds — you can't be knocked out while it lasts."
+						title: "Grab the gold, jump the seams",
+						body: "Golden buckets appear right on your path — grab one and your runner turns golden for 10 seconds, when you can't be knocked out. Press ↑ or Space (or swipe up) to jump over a short wrong-colored stretch while you switch lanes."
 					}
 				]
 			},

@@ -48,10 +48,21 @@ const RUN_TOP = ["...kkkk...", "..khhhhk..", "..khhhhk..", "...khhk...", "..kwww
 const RUN_A = [...RUN_TOP, "..kbkkbk..", "..kbk.kbk.", "..kbk.kok.", "..kbk.kk..", "..kok.....", "..kkk....."];
 const JUMP = [...RUN_TOP, "..kbkkbk..", ".kbk..kbk.", ".kok..kok.", ".kk....kk.", "..........", ".........."];
 
-export function runnerFrames(): { run: Sprite[]; jump: Sprite } {
+// The same runner cast in gold, shown while a golden bucket is active.
+const GOLD_PALETTE: Palette = {
+	k: "#7a5500",
+	h: "#ffb300",
+	s: "#ffe082",
+	w: "#fff3c4",
+	b: "#ffc107",
+	o: "#ff8f00",
+};
+
+export function runnerFrames(gold = false): { run: Sprite[]; jump: Sprite } {
+	const palette = gold ? GOLD_PALETTE : RUNNER_PALETTE;
 	return {
-		run: [makeSprite(RUN_A, RUNNER_PALETTE), makeSprite(mirror(RUN_A), RUNNER_PALETTE)],
-		jump: makeSprite(JUMP, RUNNER_PALETTE),
+		run: [makeSprite(RUN_A, palette), makeSprite(mirror(RUN_A), palette)],
+		jump: makeSprite(JUMP, palette),
 	};
 }
 
@@ -100,9 +111,5 @@ export function laneSprites() {
 		["..kkkkk..", ".k.....k.", "kYYYYYYYk", "kYyYYYYYk", ".kYYYYYk.", ".kYyYYYk.", ".kYYYYYk.", "..kYYYk..", "..kkkkk.."],
 		{ k: "#8d6e00", Y: "#ffd54f", y: "#fff8e1" },
 	);
-	const barrier = makeSprite(
-		["kkkkkkkkkkkkkk", "kRRwwRRwwRRwwk", "kRRwwRRwwRRwwk", "kkkkkkkkkkkkkk", ".k..........k.", ".k..........k."],
-		{ k: "#212121", R: "#e53935", w: "#fafafa" },
-	);
-	return { bucket, barrier };
+	return { bucket };
 }

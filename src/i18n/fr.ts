@@ -413,17 +413,17 @@ export const fr: Dictionary = {
 	games: {
 		hub: {
 			title: "Jeux de couleurs gratuits — Testez votre vision des couleurs | Your Color Picker",
-			description: "Jouez gratuitement : Color Runner, un défi hex quotidien, un test de vision pour trouver la couleur intruse et un défi de mémoire des couleurs. Sans inscription, dans votre navigateur.",
+			description: "Jouez gratuitement : Color Runner, un test de vision pour trouver la couleur intruse et un défi de mémoire des couleurs. Sans inscription, dans votre navigateur.",
 			eyebrow: "Jeux",
 			heading: "Jeux de couleurs",
-			intro: "Des jeux rapides et gratuits pour entraîner votre œil. Revenez chaque jour pour de nouveaux défis et gardez votre série.",
+			intro: "Des jeux rapides et gratuits pour entraîner votre œil. Battez votre record et revenez chaque jour pour une nouvelle partie de Mémoire des couleurs.",
 			play: "Jouer",
 			newBadge: "Nouveau",
 			dailyBadge: "Quotidien"
 		},
 		banner: {
 			heading: "Jouez à des jeux de couleurs gratuits",
-			body: "Color Runner, un défi hex quotidien, un test de la couleur intruse et la mémoire des couleurs : votre œil est-il affûté ?",
+			body: "Color Runner, un test de la couleur intruse et la mémoire des couleurs : votre œil est-il affûté ?",
 			cta: "Jouer maintenant"
 		},
 		common: {
@@ -431,54 +431,9 @@ export const fr: Dictionary = {
 			copied: "Copié — collez-le où vous voulez !",
 			playAgain: "Rejouer",
 			start: "Commencer",
-			streak: "Série",
-			maxStreak: "Série max",
-			played: "Parties",
-			winRate: "% victoires",
 			best: "Record",
-			nextPuzzle: "Prochain défi dans",
 			moreGames: "Plus de jeux de couleurs",
 			allGames: "Tous les jeux"
-		},
-		daily: {
-			title: "Couleur du jour — Devinez le code hex | Your Color Picker",
-			description: "Une nouvelle couleur chaque jour : devinez son code hex en 6 essais grâce aux indices plus/moins pour le rouge, le vert et le bleu. Partagez votre score et gardez votre série.",
-			eyebrow: "Jeu quotidien",
-			heading: "Couleur du jour",
-			intro: "Une couleur par jour. Devinez son code hex en six essais : chaque essai indique si le rouge, le vert et le bleu doivent monter ou descendre.",
-			cardBody: "Devinez le code hex de la couleur du jour en 6 essais avec des indices plus/moins. Partagez votre grille et gardez votre série.",
-			puzzleLabel: "Défi nº {n}",
-			targetLabel: "La couleur du jour",
-			guessLabel: "Votre essai",
-			guess: "Valider",
-			invalid: "Saisissez un code hex à 6 chiffres, comme #3A7BD5.",
-			win: "Trouvé en {n}/6 ! 🎉",
-			lose: "Plus d'essais — la couleur du jour était {hex}.",
-			legend: "🟩 à 12 près · 🟨 à 40 près · ⬆️⬇️ monter ou descendre",
-			red: "Rouge",
-			green: "Vert",
-			blue: "Bleu",
-			solvedToday: "Trouvé aujourd'hui ✓",
-			notPlayed: "Le défi du jour vous attend",
-			help: {
-				title: "Comment jouer à Couleur du jour",
-				steps: [
-					{
-						title: "Regardez la couleur du jour",
-						body: "Tout le monde a la même couleur chaque jour. À vous de trouver son code hex."
-					},
-					{
-						title: "Faites un essai",
-						body: "Saisissez un code hex ou utilisez le sélecteur, puis appuyez sur Valider. Vous avez six essais."
-					},
-					{
-						title: "Suivez les indices",
-						body: "Chaque essai note le rouge, le vert et le bleu : 🟩 à 12 près, 🟨 à 40 près, et les flèches indiquent s'il faut monter ou descendre. Trois verts pour gagner."
-					}
-				]
-			},
-			explainerHeading: "Comment fonctionnent les codes hex",
-			explainerBody: "Un code hex comme #3A7BD5 se compose de trois paires de chiffres en base 16 pour le rouge, le vert et le bleu, de 00 (rien) à FF (255, maximum). Augmenter une paire ajoute cette lumière : plus de rouge réchauffe la couleur, plus de bleu la refroidit, et augmenter les trois l'éclaircit. Lire ces paires, c'est exactement ce que ce défi entraîne."
 		},
 		odd: {
 			title: "Couleur intruse — Jeu gratuit de vision des couleurs | Your Color Picker",
@@ -523,11 +478,11 @@ export const fr: Dictionary = {
 		},
 		runner: {
 			title: "Color Runner — Jeu de course pixel gratuit sur les couleurs | Your Color Picker",
-			description: "Courez sur la bonne couleur ! Un runner infini en pixel art gratuit : changez entre trois voies colorées, restez sur la couleur affichée, sautez les barrières et attrapez des seaux dorés.",
+			description: "Courez sur la bonne couleur ! Un runner infini en pixel art gratuit : changez entre trois voies colorées, restez sur la couleur affichée et attrapez des seaux dorés pour 10 secondes de sécurité.",
 			eyebrow: "Jeu d'arcade",
 			heading: "Color Runner",
 			intro: "Courez, changez de voie et restez toujours sur la couleur écrite en haut. Les voies changent sans cesse et le rythme s'accélère — attrapez un seau doré pour 10 secondes de sécurité.",
-			cardBody: "Un runner infini en pixels : restez sur la voie de la couleur indiquée, sautez les barrières et attrapez des seaux dorés. Jusqu'où irez-vous ?",
+			cardBody: "Un runner infini en pixels : restez sur la voie de la couleur indiquée et attrapez des seaux dorés pour 10 secondes d'or. Jusqu'où irez-vous ?",
 			runOn: "Courez sur",
 			next: "Ensuite",
 			goldActive: "Doré !",
@@ -536,12 +491,12 @@ export const fr: Dictionary = {
 			newBest: "Nouveau record ! 🎉",
 			controls: "← → changer de voie · ↑ ou Espace pour sauter · sur mobile, glissez",
 			overColor: "Vous avez quitté la voie {color} !",
-			overBarrier: "Vous avez heurté une barrière !",
 			final: "Vous avez couru {n} m",
 			left: "Aller à gauche",
 			right: "Aller à droite",
 			jump: "Sauter",
 			resume: "Reprendre",
+			sound: "Son",
 			colors: {
 				red: "Rouge",
 				blue: "Bleu",
@@ -563,8 +518,8 @@ export const fr: Dictionary = {
 						body: "Les couleurs des voies changent pendant la course, et un avertissement ENSUITE clignote avant que la couleur cible change. Anticipez."
 					},
 					{
-						title: "Sautez et attrapez l'or",
-						body: "Appuyez sur ↑ ou Espace (ou glissez vers le haut) pour sauter les barrières. Attrapez un seau doré : toutes les voies deviennent dorées pendant 10 secondes et vous ne pouvez pas perdre."
+						title: "Attrapez l'or, sautez les transitions",
+						body: "Des seaux dorés apparaissent directement sur votre trajet : attrapez-en un et votre coureur devient doré pendant 10 secondes, sans risque de perdre. Appuyez sur ↑ ou Espace (ou glissez vers le haut) pour sauter un court passage de la mauvaise couleur pendant que vous changez de voie."
 					}
 				]
 			},

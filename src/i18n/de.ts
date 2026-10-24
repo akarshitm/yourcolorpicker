@@ -413,17 +413,17 @@ export const de: Dictionary = {
 	games: {
 		hub: {
 			title: "Kostenlose Farbspiele — Teste dein Farbsehen | Your Color Picker",
-			description: "Spiele kostenlos: Color Runner, ein tägliches Hex-Farbrätsel, einen Farbsehtest zum Finden der abweichenden Farbe und eine Farbgedächtnis-Challenge. Ohne Anmeldung, direkt im Browser.",
+			description: "Spiele kostenlos: Color Runner, einen Farbsehtest zum Finden der abweichenden Farbe und eine Farbgedächtnis-Challenge. Ohne Anmeldung, direkt im Browser.",
 			eyebrow: "Spiele",
 			heading: "Farbspiele",
-			intro: "Schnelle, kostenlose Spiele, die dein Auge für Farben trainieren. Komm jeden Tag für neue Rätsel wieder und halte deine Serie.",
+			intro: "Schnelle, kostenlose Spiele, die dein Auge für Farben trainieren. Knack deinen Bestwert und komm täglich für eine neue Runde Farbgedächtnis wieder.",
 			play: "Spielen",
 			newBadge: "Neu",
 			dailyBadge: "Täglich"
 		},
 		banner: {
 			heading: "Kostenlose Farbspiele spielen",
-			body: "Color Runner, ein tägliches Hex-Rätsel, ein Test für die abweichende Farbe und Farbgedächtnis — wie scharf ist dein Auge?",
+			body: "Color Runner, ein Test für die abweichende Farbe und Farbgedächtnis — wie scharf ist dein Auge?",
 			cta: "Jetzt spielen"
 		},
 		common: {
@@ -431,54 +431,9 @@ export const de: Dictionary = {
 			copied: "Kopiert — füge es überall ein!",
 			playAgain: "Nochmal spielen",
 			start: "Start",
-			streak: "Serie",
-			maxStreak: "Beste Serie",
-			played: "Gespielt",
-			winRate: "Siege %",
 			best: "Bestwert",
-			nextPuzzle: "Nächstes Rätsel in",
 			moreGames: "Mehr Farbspiele",
 			allGames: "Alle Spiele"
-		},
-		daily: {
-			title: "Tagesfarbe — Errate den Hex-Code | Your Color Picker",
-			description: "Jeden Tag eine neue Farbe: Errate ihren Hex-Code in 6 Versuchen mit Höher/Tiefer-Hinweisen für Rot, Grün und Blau. Teile dein Ergebnis und halte deine Serie.",
-			eyebrow: "Tägliches Spiel",
-			heading: "Tagesfarbe",
-			intro: "Eine Farbe pro Tag. Errate ihren Hex-Code in sechs Versuchen — jeder Versuch zeigt dir, ob Rot, Grün und Blau höher oder tiefer müssen.",
-			cardBody: "Errate den Hex-Code der heutigen Farbe in 6 Versuchen mit Höher/Tiefer-Hinweisen. Teile dein Raster und halte deine Serie.",
-			puzzleLabel: "Rätsel Nr. {n}",
-			targetLabel: "Die heutige Farbe",
-			guessLabel: "Dein Tipp",
-			guess: "Raten",
-			invalid: "Gib einen 6-stelligen Hex-Code ein, z. B. #3A7BD5.",
-			win: "Gelöst in {n}/6! 🎉",
-			lose: "Keine Versuche mehr — die heutige Farbe war {hex}.",
-			legend: "🟩 bis 12 daneben · 🟨 bis 40 daneben · ⬆️⬇️ höher oder tiefer",
-			red: "Rot",
-			green: "Grün",
-			blue: "Blau",
-			solvedToday: "Heute gelöst ✓",
-			notPlayed: "Das heutige Rätsel wartet",
-			help: {
-				title: "So spielst du Tagesfarbe",
-				steps: [
-					{
-						title: "Sieh dir die heutige Farbe an",
-						body: "Alle bekommen jeden Tag dieselbe Farbe. Deine Aufgabe ist es, ihren Hex-Code herauszufinden."
-					},
-					{
-						title: "Rate",
-						body: "Gib einen Hex-Code ein oder nutze den Farbwähler und tippe auf Raten. Du hast sechs Versuche."
-					},
-					{
-						title: "Folge den Hinweisen",
-						body: "Jeder Versuch bewertet Rot, Grün und Blau: 🟩 bis 12 daneben, 🟨 bis 40 daneben, und Pfeile zeigen höher oder tiefer. Alle drei grün heißt gewonnen."
-					}
-				]
-			},
-			explainerHeading: "So funktionieren Hex-Codes",
-			explainerBody: "Ein Hex-Code wie #3A7BD5 besteht aus drei Paaren von Hexadezimalziffern für Rot, Grün und Blau, jeweils von 00 (nichts) bis FF (255, voll). Ein höheres Paar fügt dieses Licht hinzu: Mehr Rot macht eine Farbe wärmer, mehr Blau kühler, und alle drei höher machen sie heller. Genau das Lesen dieser Paare trainiert dieses Rätsel."
 		},
 		odd: {
 			title: "Farbe raus — Kostenloses Farbsehtest-Spiel | Your Color Picker",
@@ -523,11 +478,11 @@ export const de: Dictionary = {
 		},
 		runner: {
 			title: "Color Runner — Kostenloses Pixel-Laufspiel mit Farben | Your Color Picker",
-			description: "Lauf auf der richtigen Farbe! Ein kostenloser Endlos-Runner im Pixel-Look: Wechsle zwischen drei farbigen Spuren, bleib auf der angezeigten Farbe, spring über Hindernisse und schnapp dir goldene Eimer.",
+			description: "Lauf auf der richtigen Farbe! Ein kostenloser Endlos-Runner im Pixel-Look: Wechsle zwischen drei farbigen Spuren, bleib auf der angezeigten Farbe und schnapp dir goldene Eimer für 10 Sekunden Schutz.",
 			eyebrow: "Arcade-Spiel",
 			heading: "Color Runner",
 			intro: "Lauf, wechsle die Spur und bleib immer auf der Farbe, die oben steht. Die Spuren ändern sich ständig und das Tempo steigt — schnapp dir einen goldenen Eimer für 10 Sekunden Schutz.",
-			cardBody: "Ein Pixel-Endlos-Runner: Bleib auf der Spur der angezeigten Farbe, spring über Hindernisse und sammle goldene Eimer. Wie weit kommst du?",
+			cardBody: "Ein Pixel-Endlos-Runner: Bleib auf der Spur der angezeigten Farbe und sammle goldene Eimer für 10 Sekunden Gold. Wie weit kommst du?",
 			runOn: "Lauf auf",
 			next: "Gleich",
 			goldActive: "Gold!",
@@ -536,12 +491,12 @@ export const de: Dictionary = {
 			newBest: "Neuer Rekord! 🎉",
 			controls: "← → Spur wechseln · ↑ oder Leertaste zum Springen · am Handy wischen",
 			overColor: "Du hast den Weg {color} verlassen!",
-			overBarrier: "Du bist gegen ein Hindernis gelaufen!",
 			final: "Du bist {n} m gelaufen",
 			left: "Nach links",
 			right: "Nach rechts",
 			jump: "Springen",
 			resume: "Weiter",
+			sound: "Ton",
 			colors: {
 				red: "Rot",
 				blue: "Blau",
@@ -563,8 +518,8 @@ export const de: Dictionary = {
 						body: "Die Spurfarben wechseln beim Laufen, und eine blinkende GLEICH-Warnung erscheint, bevor sich die Zielfarbe ändert. Reagiere früh."
 					},
 					{
-						title: "Springen und Gold sammeln",
-						body: "Drück ↑ oder die Leertaste (oder wisch nach oben), um über Hindernisse zu springen. Ein goldener Eimer macht alle Spuren 10 Sekunden lang golden — so lange kannst du nicht ausscheiden."
+						title: "Gold schnappen, Übergänge überspringen",
+						body: "Goldene Eimer tauchen direkt auf deinem Weg auf — schnapp dir einen, und dein Läufer wird 10 Sekunden lang golden, ohne dass du ausscheiden kannst. Drück ↑ oder die Leertaste (oder wisch nach oben), um beim Spurwechsel über ein kurzes Stück in der falschen Farbe zu springen."
 					}
 				]
 			},

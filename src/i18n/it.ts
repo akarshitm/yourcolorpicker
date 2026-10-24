@@ -416,17 +416,17 @@ export const it: Dictionary = {
 	games: {
 		hub: {
 			title: "Giochi di colori gratis — Metti alla prova la tua vista | Your Color Picker",
-			description: "Gioca gratis: Color Runner, un enigma quotidiano sui codici hex, un test per trovare il colore diverso e una sfida di memoria dei colori. Senza registrazione, nel browser.",
+			description: "Gioca gratis: Color Runner, un test per trovare il colore diverso e una sfida di memoria dei colori. Senza registrazione, nel browser.",
 			eyebrow: "Giochi",
 			heading: "Giochi di colori",
-			intro: "Giochi veloci e gratuiti che allenano il tuo occhio per il colore. Torna ogni giorno per nuove sfide e mantieni la tua serie.",
+			intro: "Giochi veloci e gratuiti che allenano il tuo occhio per il colore. Batti il tuo record e torna ogni giorno per un nuovo round di Memoria dei colori.",
 			play: "Gioca",
 			newBadge: "Nuovo",
 			dailyBadge: "Giornaliero"
 		},
 		banner: {
 			heading: "Gioca gratis con i colori",
-			body: "Color Runner, un enigma hex quotidiano, un test per trovare il colore diverso e la memoria dei colori: quanto è acuto il tuo occhio?",
+			body: "Color Runner, un test per trovare il colore diverso e la memoria dei colori: quanto è acuto il tuo occhio?",
 			cta: "Gioca ora"
 		},
 		common: {
@@ -434,54 +434,9 @@ export const it: Dictionary = {
 			copied: "Copiato: incollalo dove vuoi!",
 			playAgain: "Gioca ancora",
 			start: "Inizia",
-			streak: "Serie",
-			maxStreak: "Serie max",
-			played: "Partite",
-			winRate: "% vittorie",
 			best: "Record",
-			nextPuzzle: "Prossimo enigma tra",
 			moreGames: "Altri giochi di colori",
 			allGames: "Tutti i giochi"
-		},
-		daily: {
-			title: "Colore del giorno — Indovina il codice hex | Your Color Picker",
-			description: "Un colore nuovo ogni giorno: indovina il suo codice hex in 6 tentativi con indizi più/meno per rosso, verde e blu. Condividi il punteggio e mantieni la serie.",
-			eyebrow: "Gioco quotidiano",
-			heading: "Colore del giorno",
-			intro: "Un colore al giorno. Indovina il suo codice hex in sei tentativi: ogni tentativo ti dice se rosso, verde e blu devono salire o scendere.",
-			cardBody: "Indovina il codice hex del colore di oggi in 6 tentativi con indizi più/meno. Condividi la tua griglia e mantieni la serie.",
-			puzzleLabel: "Enigma n. {n}",
-			targetLabel: "Il colore di oggi",
-			guessLabel: "Il tuo tentativo",
-			guess: "Prova",
-			invalid: "Inserisci un codice hex di 6 cifre, come #3A7BD5.",
-			win: "Risolto in {n}/6! 🎉",
-			lose: "Tentativi finiti: il colore di oggi era {hex}.",
-			legend: "🟩 entro 12 · 🟨 entro 40 · ⬆️⬇️ sali o scendi",
-			red: "Rosso",
-			green: "Verde",
-			blue: "Blu",
-			solvedToday: "Risolto oggi ✓",
-			notPlayed: "L'enigma di oggi ti aspetta",
-			help: {
-				title: "Come si gioca a Colore del giorno",
-				steps: [
-					{
-						title: "Guarda il colore di oggi",
-						body: "Ogni giorno tutti ricevono lo stesso colore. Il tuo compito è scoprire il suo codice hex."
-					},
-					{
-						title: "Fai un tentativo",
-						body: "Scrivi un codice hex o usa il selettore, poi premi Prova. Hai sei tentativi."
-					},
-					{
-						title: "Segui gli indizi",
-						body: "Ogni tentativo valuta rosso, verde e blu: 🟩 entro 12, 🟨 entro 40, e le frecce indicano se salire o scendere. Tutti e tre verdi per vincere."
-					}
-				]
-			},
-			explainerHeading: "Come funzionano i codici hex",
-			explainerBody: "Un codice hex come #3A7BD5 è formato da tre coppie di cifre in base 16 per rosso, verde e blu, ciascuna da 00 (niente) a FF (255, massimo). Alzare una coppia aggiunge quella luce: più rosso scalda il colore, più blu lo raffredda e alzarle tutte e tre lo schiarisce. Leggere queste coppie è proprio ciò che allena questo enigma."
 		},
 		odd: {
 			title: "Colore diverso — Gioco gratuito sulla visione dei colori | Your Color Picker",
@@ -526,11 +481,11 @@ export const it: Dictionary = {
 		},
 		runner: {
 			title: "Color Runner — Gioco di corsa pixel gratuito sui colori | Your Color Picker",
-			description: "Corri sul colore giusto! Un endless runner gratuito in pixel art: passa tra tre corsie colorate, resta sul colore indicato, salta le barriere e prendi i secchi d'oro.",
+			description: "Corri sul colore giusto! Un endless runner gratuito in pixel art: passa tra tre corsie colorate, resta sul colore indicato e prendi i secchi d'oro per 10 secondi di sicurezza.",
 			eyebrow: "Gioco arcade",
 			heading: "Color Runner",
 			intro: "Corri, cambia corsia e resta sempre sul colore scritto in alto. Le corsie cambiano di continuo e il ritmo aumenta: prendi un secchio d'oro per 10 secondi di sicurezza.",
-			cardBody: "Un endless runner in pixel: resta sulla corsia del colore indicato, salta le barriere e prendi i secchi d'oro. Fin dove arriverai?",
+			cardBody: "Un endless runner in pixel: resta sulla corsia del colore indicato e prendi i secchi d'oro per 10 secondi dorati. Fin dove arriverai?",
 			runOn: "Corri sul",
 			next: "Prossimo",
 			goldActive: "Oro!",
@@ -539,12 +494,12 @@ export const it: Dictionary = {
 			newBest: "Nuovo record! 🎉",
 			controls: "← → cambia corsia · ↑ o Spazio per saltare · da telefono, scorri",
 			overColor: "Sei uscito dalla corsia {color}!",
-			overBarrier: "Hai colpito una barriera!",
 			final: "Hai corso {n} m",
 			left: "Sposta a sinistra",
 			right: "Sposta a destra",
 			jump: "Salta",
 			resume: "Riprendi",
+			sound: "Audio",
 			colors: {
 				red: "Rosso",
 				blue: "Blu",
@@ -566,8 +521,8 @@ export const it: Dictionary = {
 						body: "I colori delle corsie cambiano mentre corri e un avviso PROSSIMO lampeggia prima che cambi il colore obiettivo. Muoviti in anticipo."
 					},
 					{
-						title: "Salta e prendi l'oro",
-						body: "Premi ↑ o Spazio (o scorri verso l'alto) per saltare le barriere. Prendi un secchio d'oro: tutte le corsie diventano dorate per 10 secondi e non puoi essere eliminato."
+						title: "Prendi l'oro, salta i cambi",
+						body: "I secchi d'oro compaiono proprio sul tuo percorso: prendine uno e il tuo corridore diventa dorato per 10 secondi, senza che tu possa essere eliminato. Premi ↑ o Spazio (o scorri verso l'alto) per saltare un breve tratto del colore sbagliato mentre cambi corsia."
 					}
 				]
 			},

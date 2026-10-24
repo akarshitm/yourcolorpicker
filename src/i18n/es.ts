@@ -413,17 +413,17 @@ export const es: Dictionary = {
 	games: {
 		hub: {
 			title: "Juegos de colores gratis — Pon a prueba tu visión del color | Your Color Picker",
-			description: "Juega gratis: Color Runner, un reto diario de códigos hex, un test de visión para encontrar el color distinto y un desafío de memoria de color. Sin registro, en tu navegador.",
+			description: "Juega gratis: Color Runner, un test de visión para encontrar el color distinto y un desafío de memoria de color. Sin registro, en tu navegador.",
 			eyebrow: "Juegos",
 			heading: "Juegos de colores",
-			intro: "Juegos rápidos y gratuitos que entrenan tu ojo para el color. Vuelve cada día para nuevos retos y mantén tu racha.",
+			intro: "Juegos rápidos y gratuitos que entrenan tu ojo para el color. Supera tu récord y vuelve cada día por una nueva ronda de Memoria de color.",
 			play: "Jugar",
 			newBadge: "Nuevo",
 			dailyBadge: "Diario"
 		},
 		banner: {
 			heading: "Juega a juegos de colores gratis",
-			body: "Color Runner, un reto hex diario, un test para encontrar el color distinto y memoria de color: ¿qué tan fino es tu ojo?",
+			body: "Color Runner, un test para encontrar el color distinto y memoria de color: ¿qué tan fino es tu ojo?",
 			cta: "Jugar ahora"
 		},
 		common: {
@@ -431,54 +431,9 @@ export const es: Dictionary = {
 			copied: "¡Copiado! Pégalo donde quieras.",
 			playAgain: "Jugar otra vez",
 			start: "Empezar",
-			streak: "Racha",
-			maxStreak: "Racha máx.",
-			played: "Jugadas",
-			winRate: "% victorias",
 			best: "Mejor",
-			nextPuzzle: "Siguiente reto en",
 			moreGames: "Más juegos de colores",
 			allGames: "Todos los juegos"
-		},
-		daily: {
-			title: "Color diario — Adivina el código hex | Your Color Picker",
-			description: "Un color nuevo cada día: adivina su código hex en 6 intentos con pistas de más/menos para rojo, verde y azul. Comparte tu resultado y mantén tu racha.",
-			eyebrow: "Juego diario",
-			heading: "Color diario",
-			intro: "Un color al día. Adivina su código hex en seis intentos: cada intento te dice si el rojo, el verde y el azul deben subir o bajar.",
-			cardBody: "Adivina el código hex del color de hoy en 6 intentos con pistas de más/menos. Comparte tu cuadrícula y mantén tu racha.",
-			puzzleLabel: "Reto n.º {n}",
-			targetLabel: "El color de hoy",
-			guessLabel: "Tu intento",
-			guess: "Adivinar",
-			invalid: "Escribe un código hex de 6 dígitos, como #3A7BD5.",
-			win: "¡Resuelto en {n}/6! 🎉",
-			lose: "Sin intentos: el color de hoy era {hex}.",
-			legend: "🟩 a 12 o menos · 🟨 a 40 o menos · ⬆️⬇️ sube o baja",
-			red: "Rojo",
-			green: "Verde",
-			blue: "Azul",
-			solvedToday: "Resuelto hoy ✓",
-			notPlayed: "El reto de hoy te espera",
-			help: {
-				title: "Cómo jugar a Color diario",
-				steps: [
-					{
-						title: "Mira el color de hoy",
-						body: "Todos reciben el mismo color cada día. Tu tarea es descubrir su código hex."
-					},
-					{
-						title: "Haz un intento",
-						body: "Escribe un código hex o usa el selector de color y pulsa Adivinar. Tienes seis intentos."
-					},
-					{
-						title: "Sigue las pistas",
-						body: "Cada intento puntúa rojo, verde y azul: 🟩 a 12 o menos, 🟨 a 40 o menos, y las flechas indican si subir o bajar. Pon los tres en verde para ganar."
-					}
-				]
-			},
-			explainerHeading: "Cómo funcionan los códigos hex",
-			explainerBody: "Un código hex como #3A7BD5 son tres pares de dígitos en base 16 para rojo, verde y azul, cada uno de 00 (nada) a FF (255, máximo). Subir un par añade esa luz: más rojo calienta el color, más azul lo enfría y subir los tres lo aclara. Leer esos pares es justo lo que entrena este reto."
 		},
 		odd: {
 			title: "Color distinto — Juego gratis de visión del color | Your Color Picker",
@@ -523,11 +478,11 @@ export const es: Dictionary = {
 		},
 		runner: {
 			title: "Color Runner — Juego pixelado gratis de correr por colores | Your Color Picker",
-			description: "¡Corre por el color correcto! Un juego de carreras infinito en pixel art: cambia entre tres carriles de colores, quédate en el color indicado, salta barreras y atrapa cubos dorados.",
+			description: "¡Corre por el color correcto! Un juego de carreras infinito en pixel art: cambia entre tres carriles de colores, quédate en el color indicado y atrapa cubos dorados para 10 segundos de protección.",
 			eyebrow: "Juego arcade",
 			heading: "Color Runner",
 			intro: "Corre, cambia de carril y quédate siempre en el color escrito arriba. Los carriles cambian sin parar y el ritmo sube: atrapa un cubo dorado para 10 segundos de protección.",
-			cardBody: "Un corredor infinito pixelado: quédate en el carril del color indicado, salta barreras y atrapa cubos dorados. ¿Hasta dónde llegarás?",
+			cardBody: "Un corredor infinito pixelado: quédate en el carril del color indicado y atrapa cubos dorados para 10 segundos de oro. ¿Hasta dónde llegarás?",
 			runOn: "Corre por",
 			next: "Siguiente",
 			goldActive: "¡Dorado!",
@@ -536,12 +491,12 @@ export const es: Dictionary = {
 			newBest: "¡Nuevo récord! 🎉",
 			controls: "← → cambia de carril · ↑ o Espacio para saltar · en el móvil, desliza",
 			overColor: "¡Te saliste del camino {color}!",
-			overBarrier: "¡Chocaste con una barrera!",
 			final: "Corriste {n} m",
 			left: "Mover a la izquierda",
 			right: "Mover a la derecha",
 			jump: "Saltar",
 			resume: "Continuar",
+			sound: "Sonido",
 			colors: {
 				red: "Rojo",
 				blue: "Azul",
@@ -563,8 +518,8 @@ export const es: Dictionary = {
 						body: "Los colores de los carriles cambian mientras corres, y un aviso SIGUIENTE parpadea antes de que cambie el color objetivo. Muévete con tiempo."
 					},
 					{
-						title: "Salta y atrapa el oro",
-						body: "Pulsa ↑ o Espacio (o desliza hacia arriba) para saltar barreras. Atrapa un cubo dorado y todos los carriles serán dorados durante 10 segundos: mientras dure, no puedes perder."
+						title: "Atrapa el oro y salta los cambios",
+						body: "Los cubos dorados aparecen justo en tu camino: atrapa uno y tu corredor se vuelve dorado durante 10 segundos, sin que puedas perder. Pulsa ↑ o Espacio (o desliza hacia arriba) para saltar un tramo corto del color equivocado mientras cambias de carril."
 					}
 				]
 			},

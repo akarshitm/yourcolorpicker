@@ -18,7 +18,7 @@ const t = useTranslations(lang);
 <PageLayout title={t.games.hub.title} description={t.games.hub.description} path="/games" lang={lang} breadcrumbName={t.games.hub.heading}>
 	<PageHeader eyebrow={t.games.hub.eyebrow} heading={t.games.hub.heading} intro={t.games.hub.intro} gameIcon="runner" />
 	<section class="mx-auto max-w-[1100px] px-lg pb-3xl md:pb-4xl">
-		<div class="grid gap-md sm:grid-cols-2">
+		<div class="grid gap-md sm:grid-cols-2 lg:grid-cols-3">
 			{gameList.map((g) => <GameCard lang={lang} game={g.key} />)}
 		</div>
 		<MoreToolsBanner lang={lang} />

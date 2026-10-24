@@ -1,5 +1,6 @@
 import { el, fill, gameUrl, loadJson, saveJson, shareResult } from "./games";
-import { RUNNER_KEY } from "./gameKeys";
+import { RUNNER_KEY, RUNNER_SOUND_KEY } from "./gameKeys";
+import { RunnerAudio } from "./colorRunnerAudio";
 import { laneSprites, propSprites, runnerFrames, type Sprite } from "./colorRunnerSprites";
 
 // Color Runner: a pseudo-3D pixel endless runner. The road is a list of
@@ -20,8 +21,6 @@ const PALETTE: Record<ColorKey, RGB> = {
 	purple: [142, 36, 170],
 };
 const BASE_COLORS: ColorKey[] = ["red", "blue", "yellow", "green", "pink"];
-const GOLD: RGB = [255, 193, 7];
-const GOLD_LIGHT: RGB = [255, 224, 130];
 
 // Screen + camera (internal pixel resolution; CSS scales it up crisply).
 const W = 160;
@@ -41,13 +40,15 @@ const FOG: RGB = [255, 176, 160];
 const JUMP_TIME = 0.62;
 const GOLD_TIME = 10;
 const OFF_COLOR_GRACE = 0.25;
+const BUCKET_AHEAD = 70;
+const BUCKET_GAP = 12;
+const BUCKET_JITTER = 4;
 
 // Difficulty curves, all driven by seconds survived.
 const speedAt = (t: number) => 11 + Math.min(27, t * 0.32);
 const segLenAt = (t: number) => Math.max(11, 34 - t * 0.28);
 const changeIntervalAt = (t: number) => Math.max(4.5, 10 - t * 0.07);
 const keepLaneAt = (t: number) => Math.max(0.2, 0.65 - t * 0.006);
-const barrierAt = (t: number) => (t < 18 ? 0 : Math.min(0.6, 0.25 + (t - 18) * 0.006));
 const paletteAt = (t: number): ColorKey[] => (t < 35 ? BASE_COLORS : t < 70 ? [...BASE_COLORS, "orange"] : [...BASE_COLORS, "orange", "purple"]);
 
 const pick = <T>(list: T[]): T => list[Math.floor(Math.random() * list.length)];
@@ -67,7 +68,6 @@ const strings = JSON.parse(root.dataset.strings || "{}") as {
 	best: string;
 	newBest: string;
 	overColor: string;
-	overBarrier: string;
 	final: string;
 	colors: Record<ColorKey, string>;
 	copied: string;
@@ -89,12 +89,14 @@ const startOverlay = el("cr-start");
 const pauseOverlay = el("cr-pause");
 const overOverlay = el("cr-over");
 const shareBtn = el<HTMLButtonElement>("cr-share");
+const soundBtn = el<HTMLButtonElement>("cr-sound");
 
 const show = (node: HTMLElement, visible: boolean) => node.classList.toggle("cr-hidden", !visible);
 
 // --- Sprites + static sky ------------------------------------------------------
 
 const frames = runnerFrames();
+const goldFrames = runnerFrames(true);
 const props = propSprites();
 const lane = laneSprites();
 
@@ -144,7 +146,7 @@ interface Segment {
 	lanes: ColorKey[];
 }
 interface Thing {
-	kind: "prop" | "barrier" | "bucket";
+	kind: "prop" | "bucket";
 	sprite: Sprite;
 	z: number;
 	x: number;
@@ -179,6 +181,8 @@ let animT = 0;
 let shownTarget: ColorKey | null = null;
 let shownScore = -1;
 let saved = loadJson(RUNNER_KEY, { best: 0 });
+let rockPlaying = false;
+const audio = new RunnerAudio(loadJson(RUNNER_SOUND_KEY, { muted: false }).muted);
 
 function generateSegment(first = false) {
 	const pal = paletteAt(elapsed);
@@ -192,9 +196,6 @@ function generateSegment(first = false) {
 	const others = shuffle(pal.filter((c) => c !== genTarget));
 	const lanes = [0, 1, 2].map((i) => (i === genLane ? genTarget : others.pop()!));
 	segments.push({ z0: genZ, z1: genZ + len, lanes });
-	if (Math.random() < barrierAt(elapsed) && len > 13) {
-		things.push({ kind: "barrier", sprite: lane.barrier, z: genZ + len * (0.4 + Math.random() * 0.25), x: genLane - 1, h: 0.42, lane: genLane });
-	}
 	genZ += len;
 }
 
@@ -219,10 +220,15 @@ function spawnScenery() {
 			nextBuildingZ[side] += 7 + Math.random() * 8;
 		}
 	}
+	// Buckets land mid-segment on the target-colored lane, i.e. right on the
+	// path a player who is following the color will be running.
 	if (elapsed >= nextBucketAt && elapsed >= goldUntil) {
-		const l = Math.floor(Math.random() * 3);
-		things.push({ kind: "bucket", sprite: lane.bucket, z: camZ + MAX_Z - 5, x: l - 1, h: 0.5, lane: l });
-		nextBucketAt = elapsed + 18 + Math.random() * 14;
+		const seg = segmentAt(camZ + BUCKET_AHEAD);
+		const z = Math.max(camZ + BUCKET_AHEAD * 0.75, (seg.z0 + seg.z1) / 2);
+		const l = segmentAt(z).lanes.indexOf(targetAt(z));
+		things.push({ kind: "bucket", sprite: lane.bucket, z, x: l - 1, h: 0.5, lane: l });
+		// Fallback in case the bucket is missed; a pickup reschedules from the end of the gold run.
+		nextBucketAt = elapsed + BUCKET_GAP + Math.random() * BUCKET_JITTER;
 	}
 }
 
@@ -249,7 +255,7 @@ function reset() {
 	nextChangeZ = 9 * speedAt(0);
 	nextPropZ = [2, 4];
 	nextBuildingZ = [0, 3];
-	nextBucketAt = 12 + Math.random() * 6;
+	nextBucketAt = 8 + Math.random() * 2;
 	playerLane = 1;
 	laneTarget = 1;
 	jumpT = -1;
@@ -268,6 +274,10 @@ function reset() {
 function update(dt: number) {
 	elapsed += dt;
 	animT += dt;
+	if (rockPlaying && elapsed >= goldUntil) {
+		rockPlaying = false;
+		audio.playMusic("chip");
+	}
 	speed = speedAt(elapsed);
 	camZ += speed * dt;
 	const feetZ = camZ + FEET_DEPTH;
@@ -289,14 +299,14 @@ function update(dt: number) {
 	const currentLane = Math.round(playerLane);
 
 	for (const t of things) {
-		if (t.kind === "prop" || t.lane !== currentLane || Math.abs(t.z - feetZ) > 0.6) continue;
-		if (t.kind === "bucket") {
-			t.taken = true;
-			goldUntil = elapsed + GOLD_TIME;
-			graceUntil = goldUntil + 0.8;
-		} else if (!airborne && !gold && elapsed > graceUntil) {
-			return gameOver("barrier");
-		}
+		if (t.kind !== "bucket" || t.lane !== currentLane || Math.abs(t.z - feetZ) > 1) continue;
+		t.taken = true;
+		goldUntil = elapsed + GOLD_TIME;
+		graceUntil = goldUntil + 1.2;
+		nextBucketAt = goldUntil + BUCKET_GAP + Math.random() * BUCKET_JITTER;
+		audio.pickup();
+		audio.playMusic("rock");
+		rockPlaying = true;
 	}
 
 	const target = targetAt(feetZ);
@@ -309,7 +319,7 @@ function update(dt: number) {
 		if (onColor) offTime = 0;
 		else {
 			offTime += dt;
-			if (offTime > OFF_COLOR_GRACE) return gameOver("color", target);
+			if (offTime > OFF_COLOR_GRACE) return gameOver(target);
 		}
 	}
 }
@@ -337,7 +347,6 @@ function drawThing(t: Thing) {
 
 function render() {
 	ctx.drawImage(sky, 0, 0);
-	const gold = elapsed < goldUntil;
 	let segIndex = 0;
 	let lastSeg: Segment | null = null;
 
@@ -365,8 +374,7 @@ function render() {
 		for (let i = 0; i < 3; i++) {
 			const x0 = Math.round(CX + (i - ROAD_HALF) * s);
 			const x1 = Math.round(CX + (i - ROAD_HALF + 1) * s);
-			const color = gold ? (Math.floor((wz + animT * 6) / 1.5) % 2 === 0 ? GOLD : GOLD_LIGHT) : PALETTE[seg.lanes[i]];
-			ctx.fillStyle = tone(color, stripe ? 1 : 0.9);
+			ctx.fillStyle = tone(PALETTE[seg.lanes[i]], stripe ? 1 : 0.9);
 			ctx.fillRect(x0, y, x1 - x0, 1);
 		}
 		if (s > 3) {
@@ -374,7 +382,7 @@ function render() {
 			for (const edge of [-1.5, -0.5, 0.5, 1.5]) ctx.fillRect(Math.round(CX + edge * s), y, 1, 1);
 		}
 		// A dark seam where one set of lane colors hands over to the next.
-		if (!gold && lastSeg && lastSeg !== seg) {
+		if (lastSeg && lastSeg !== seg) {
 			ctx.fillStyle = tone([28, 22, 50]);
 			ctx.fillRect(Math.round(CX - ROAD_HALF * s), y, Math.round(ROAD_HALF * 2 * s), s > 20 ? 2 : 1);
 		}
@@ -391,9 +399,29 @@ function render() {
 	ctx.fillStyle = "rgba(20, 12, 40, 0.35)";
 	const shadowW = Math.round(16 - lift / 3);
 	ctx.fillRect(px - shadowW / 2, FEET_Y - 1, shadowW, 3);
-	const sprite = jumpT >= 0 ? frames.jump : frames.run[Math.floor(animT * (4 + speed * 0.25)) % 2];
+	// While golden the runner itself turns gold (blinking in the last 2 seconds
+	// as a warning) and throws off a few sparkles.
+	const goldLeft = goldUntil - elapsed;
+	const golden = goldLeft > 0 && !(goldLeft < 2 && Math.floor(animT * 8) % 2 === 0);
+	const set = golden ? goldFrames : frames;
+	const sprite = jumpT >= 0 ? set.jump : set.run[Math.floor(animT * (4 + speed * 0.25)) % 2];
 	const scale = 2;
-	ctx.drawImage(sprite.canvas, px - (sprite.w * scale) / 2, Math.round(FEET_Y - sprite.h * scale - lift), sprite.w * scale, sprite.h * scale);
+	const top = Math.round(FEET_Y - sprite.h * scale - lift);
+	const left = px - (sprite.w * scale) / 2;
+	if (golden) {
+		// Soft glow: the gold sprite stamped faintly around its own outline.
+		ctx.globalAlpha = 0.4;
+		for (const [dx, dy] of [[-2, 0], [2, 0], [0, -2], [0, 2]]) ctx.drawImage(sprite.canvas, left + dx, top + dy, sprite.w * scale, sprite.h * scale);
+		ctx.globalAlpha = 1;
+	}
+	ctx.drawImage(sprite.canvas, left, top, sprite.w * scale, sprite.h * scale);
+	if (goldLeft > 0) {
+		for (let i = 0; i < 4; i++) {
+			const a = animT * 5 + (i * Math.PI) / 2;
+			ctx.fillStyle = i % 2 ? "#fff8e1" : "#ffd54f";
+			ctx.fillRect(Math.round(px + Math.cos(a) * 15), Math.round(top + 14 + Math.sin(a) * 18), 2, 2);
+		}
+	}
 
 	for (const t of sorted) if (t.z < feetZ) drawThing(t);
 }
@@ -456,11 +484,16 @@ function start() {
 	show(overOverlay, false);
 	show(pauseOverlay, false);
 	stage.classList.remove("cr-shake");
+	rockPlaying = false;
+	audio.stopMusic();
+	audio.playMusic("chip");
 	requestAnimationFrame(frame);
 }
 
-function gameOver(reason: "color" | "barrier", color?: ColorKey) {
+function gameOver(color: ColorKey) {
 	running = false;
+	rockPlaying = false;
+	audio.gameOver();
 	render();
 	updateHud();
 	stage.classList.remove("cr-danger", "cr-golden");
@@ -472,7 +505,7 @@ function gameOver(reason: "color" | "barrier", color?: ColorKey) {
 		saved = { best: distance };
 		saveJson(RUNNER_KEY, saved);
 	}
-	el("cr-over-reason").textContent = reason === "barrier" ? strings.overBarrier : fill(strings.overColor, { color: strings.colors[color!] });
+	el("cr-over-reason").textContent = fill(strings.overColor, { color: strings.colors[color] });
 	el("cr-over-distance").textContent = fill(strings.final, { n: distance });
 	el("cr-over-best").textContent = isBest ? strings.newBest : fill(strings.best, { n: saved.best });
 	shareBtn.dataset.distance = String(distance);
@@ -482,15 +515,31 @@ function gameOver(reason: "color" | "barrier", color?: ColorKey) {
 
 function move(dir: -1 | 1) {
 	if (!running || paused) return;
-	laneTarget = Math.max(0, Math.min(2, laneTarget + dir));
+	const next = Math.max(0, Math.min(2, laneTarget + dir));
+	if (next !== laneTarget) audio.dash();
+	laneTarget = next;
 }
 
 function jump() {
 	if (!running || paused || jumpT >= 0) return;
 	jumpT = 0;
+	audio.jump();
 }
 
+function paintSound() {
+	soundBtn.textContent = audio.muted ? "🔇" : "🔊";
+	soundBtn.setAttribute("aria-pressed", String(!audio.muted));
+}
+function toggleSound() {
+	audio.setMuted(!audio.muted);
+	saveJson(RUNNER_SOUND_KEY, { muted: audio.muted });
+	paintSound();
+}
+soundBtn.addEventListener("click", toggleSound);
+paintSound();
+
 document.addEventListener("keydown", (e) => {
+	if ((e.key === "m" || e.key === "M") && !(e.target instanceof HTMLInputElement)) return toggleSound();
 	if (!running || paused) return;
 	const key = e.key;
 	if (key === "ArrowLeft" || key === "a" || key === "A") move(-1);
@@ -529,12 +578,14 @@ el("cr-again").addEventListener("click", start);
 el("cr-resume-btn").addEventListener("click", () => {
 	paused = false;
 	lastTs = null;
+	audio.resume();
 	show(pauseOverlay, false);
 	requestAnimationFrame(frame);
 });
 document.addEventListener("visibilitychange", () => {
 	if (document.hidden && running && !paused) {
 		paused = true;
+		audio.pause();
 		show(pauseOverlay, true);
 	}
 });

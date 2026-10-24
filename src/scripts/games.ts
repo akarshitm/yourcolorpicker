@@ -17,20 +17,6 @@ export function dayNumber(date = new Date()): number {
 	return Math.round((local.getTime() - EPOCH.getTime()) / 86_400_000) + 1;
 }
 
-export function msUntilMidnight(): number {
-	const now = new Date();
-	const next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-	return next.getTime() - now.getTime();
-}
-
-export function formatCountdown(ms: number): string {
-	const total = Math.max(0, Math.floor(ms / 1000));
-	const h = Math.floor(total / 3600);
-	const m = Math.floor((total % 3600) / 60);
-	const s = total % 60;
-	return [h, m, s].map((n) => String(n).padStart(2, "0")).join(":");
-}
-
 // mulberry32 — tiny deterministic PRNG so a seed always yields the same colors.
 export function seededRandom(seed: number): () => number {
 	let a = seed >>> 0;

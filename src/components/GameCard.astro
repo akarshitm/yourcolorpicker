@@ -16,9 +16,6 @@ const entry = gameList.find((g) => g.key === game)!;
 const copy = t.games[game];
 const Heading = headingLevel;
 const statusLabels = JSON.stringify({
-	solved: t.games.daily.solvedToday,
-	waiting: t.games.daily.notPlayed,
-	streak: t.games.common.streak,
 	oddBest: t.games.odd.bestLevel,
 	memoryBest: t.games.memory.bestScore,
 	runnerBest: t.games.runner.best,

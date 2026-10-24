@@ -2,7 +2,7 @@
 // Colorful, gently animated logos for the color games. Unlike the monochrome
 // ToolIcon glyphs, these use the brand accents so games read as "play" at a
 // glance. Animations only run when the user hasn't asked for reduced motion.
-export type GameIconName = "runner" | "daily" | "odd" | "memory";
+export type GameIconName = "runner" | "odd" | "memory";
 
 interface Props {
 	name: GameIconName;
@@ -19,18 +19,6 @@ const runnerLanes = [
 	"21.33,8 24,8 37,36 25.67,36",
 ];
 
-// Daily Color: a 3x3 board of guess tiles that flip in one after another.
-const dailyTiles = [
-	"var(--color-mute)",
-	"var(--color-warning)",
-	"var(--color-mute)",
-	"var(--color-warning)",
-	"var(--color-cyan)",
-	"var(--color-warning)",
-	"var(--color-cyan)",
-	"var(--color-cyan)",
-	"var(--color-cyan)",
-];
 ---
 
 <svg
@@ -54,21 +42,6 @@ const dailyTiles = [
 				</g>
 			</>
 		)
-	}
-	{
-		name === "daily" &&
-			dailyTiles.map((fill, i) => (
-				<rect
-					class="gi-tile"
-					x={5 + (i % 3) * 10.5}
-					y={5 + Math.floor(i / 3) * 10.5}
-					width="9"
-					height="9"
-					rx="2"
-					fill={fill}
-					style={`animation-delay: ${Math.floor(i / 3) * 0.35 + (i % 3) * 0.12}s;`}
-				/>
-			))
 	}
 	{
 		name === "odd" &&
@@ -110,10 +83,6 @@ const dailyTiles = [
 		flex-shrink: 0;
 		overflow: visible;
 	}
-	.gi-tile {
-		transform-box: fill-box;
-		transform-origin: center;
-	}
 	.gi-dot {
 		opacity: 0.85;
 	}
@@ -132,9 +101,6 @@ const dailyTiles = [
 		}
 		.game-icon-animated .gi-runner {
 			animation: gi-bob 0.36s ease-in-out infinite alternate;
-		}
-		.game-icon-animated .gi-tile {
-			animation: gi-flip 3.2s ease-in-out infinite both;
 		}
 		.game-icon-animated .gi-dot-odd {
 			animation: gi-pulse 1.6s ease-in-out infinite;
@@ -164,22 +130,6 @@ const dailyTiles = [
 		}
 		to {
 			transform: translateY(-1.5px);
-		}
-	}
-	@keyframes gi-flip {
-		0%,
-		8% {
-			transform: scaleY(0.1);
-			opacity: 0.2;
-		}
-		18%,
-		88% {
-			transform: scaleY(1);
-			opacity: 1;
-		}
-		100% {
-			transform: scaleY(0.1);
-			opacity: 0.2;
 		}
 	}
 	@keyframes gi-pulse {
