@@ -2,6 +2,8 @@
 import type { Locale } from "../i18n/config";
 import { useTranslations } from "../i18n/utils";
 import ToolIcon from "./ToolIcon.astro";
+import MoreToolsBanner from "./MoreToolsBanner.astro";
+import PlayGamesBanner from "./PlayGamesBanner.astro";
 
 interface Props {
 	lang: Locale;
@@ -173,6 +175,8 @@ const t = useTranslations(lang);
 			</div>
 		</aside>
 	</div>
+	<MoreToolsBanner lang={lang} />
+	<PlayGamesBanner lang={lang} />
 </section>
 
 <style>

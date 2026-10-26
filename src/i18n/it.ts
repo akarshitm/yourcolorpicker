@@ -14,6 +14,7 @@ export const it: Dictionary = {
 		openMenu: "Apri menu",
 		uploadImage: "Carica immagine",
 		language: "Lingua",
+		games: "Giochi",
 	},
 	footer: {
 		privacyHeading: "Privacy",
@@ -30,9 +31,9 @@ export const it: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — Selettore di Colore da Immagine",
+		metaTitle: "Color Picker — Trova il colore da un'immagine (HEX, RGB)",
 		metaDescription:
-			"Selettore di colore e cerca-colore da immagine gratuito — codici HEX, RGB e HSL istantanei, più un cerca-colore complementare e generatore casuale.",
+			"Trova il colore di un'immagine online: carica una foto o uno screenshot e ottieni subito il codice HEX, RGB e HSL esatto — gratis, senza registrazione, nulla viene caricato.",
 		eyebrow: "Selettore di colore gratuito · Nessuna registrazione · Niente viene mai caricato",
 		heading: "Il selettore di colore che trova qualsiasi colore in una foto",
 		subhead:
@@ -412,6 +413,171 @@ export const it: Dictionary = {
 			},
 		],
 	},
+	games: {
+		hub: {
+			title: "Giochi di colori gratis — Metti alla prova la tua vista | Your Color Picker",
+			description: "Gioca gratis: Color Runner, un test per trovare il colore diverso e una sfida di memoria dei colori. Senza registrazione, nel browser.",
+			eyebrow: "Giochi",
+			heading: "Giochi di colori",
+			intro: "Giochi veloci e gratuiti che allenano il tuo occhio per il colore. Batti il tuo record e torna ogni giorno per un nuovo round di Memoria dei colori.",
+			play: "Gioca",
+			newBadge: "Nuovo",
+			dailyBadge: "Giornaliero"
+		},
+		banner: {
+			heading: "Gioca gratis con i colori",
+			body: "Color Runner, un test per trovare il colore diverso e la memoria dei colori: quanto è acuto il tuo occhio?",
+			cta: "Gioca ora"
+		},
+		common: {
+			share: "Condividi il risultato",
+			copied: "Copiato: incollalo dove vuoi!",
+			playAgain: "Gioca ancora",
+			start: "Inizia",
+			best: "Record",
+			moreGames: "Altri giochi di colori",
+			allGames: "Tutti i giochi"
+		},
+		odd: {
+			title: "Colore diverso — Gioco gratuito sulla visione dei colori | Your Color Picker",
+			description: "Trova l'unica casella con una tonalità leggermente diversa. A ogni livello la griglia cresce e la differenza si riduce: fin dove arriva la tua vista?",
+			eyebrow: "Gioco",
+			heading: "Colore diverso",
+			intro: "Tocca la casella che non corrisponde. A ogni livello la griglia cresce e la differenza diminuisce. Hai tre vite.",
+			cardBody: "Trova la casella con una tonalità leggermente diversa. I livelli si fanno più difficili finché restano solo gli occhi più acuti.",
+			level: "Livello",
+			lives: "Vite",
+			tileLabel: "Casella {n}",
+			gameOver: "Partita finita: hai raggiunto il livello {n}.",
+			rankLabel: "Il tuo occhio: {rank}",
+			ranks: [
+				"Principiante",
+				"Buon occhio",
+				"Occhio acuto",
+				"Occhio d'aquila",
+				"Falco dei colori",
+				"Sovrumano"
+			],
+			bestLevel: "Record: livello {n}",
+			help: {
+				title: "Come si gioca a Colore diverso",
+				steps: [
+					{
+						title: "Trova la casella diversa",
+						body: "Una casella ha una tonalità leggermente diversa dalle altre. Toccala per passare al livello successivo."
+					},
+					{
+						title: "Sempre più difficile",
+						body: "Ogni livello aggiunge caselle e riduce la differenza."
+					},
+					{
+						title: "Tre vite",
+						body: "Un tocco sbagliato costa una vita e mostra dov'era la casella. Perse tutte e tre, la partita finisce."
+					}
+				]
+			},
+			explainerHeading: "Cosa misura questo gioco",
+			explainerBody: "La casella diversa cambia solo nella luminosità, che quasi tutti percepiscono, comprese le persone con deficit nella visione dei colori. I livelli alti mettono alla prova la differenza più piccola che i tuoi occhi notano. Luminosità dello schermo, riflessi e qualità del display influiscono, quindi consideralo una sfida divertente, non un esame medico."
+		},
+		runner: {
+			title: "Color Runner — Gioco di corsa pixel gratuito sui colori | Your Color Picker",
+			description: "Corri sul colore giusto! Un endless runner gratuito in pixel art: passa tra tre corsie colorate, resta sul colore indicato e prendi i secchi d'oro per 10 secondi di sicurezza.",
+			eyebrow: "Gioco arcade",
+			heading: "Color Runner",
+			intro: "Corri, cambia corsia e resta sempre sul colore scritto in alto. Le corsie cambiano di continuo e il ritmo aumenta: prendi un secchio d'oro per 10 secondi di sicurezza.",
+			cardBody: "Un endless runner in pixel: resta sulla corsia del colore indicato e prendi i secchi d'oro per 10 secondi dorati. Fin dove arriverai?",
+			runOn: "Corri sul",
+			next: "Prossimo",
+			goldActive: "Oro!",
+			distance: "{n} m",
+			best: "Record: {n} m",
+			newBest: "Nuovo record! 🎉",
+			controls: "← → cambia corsia · ↑ o Spazio per saltare · da telefono, scorri",
+			overColor: "Sei uscito dalla corsia {color}!",
+			final: "Hai corso {n} m",
+			left: "Sposta a sinistra",
+			right: "Sposta a destra",
+			jump: "Salta",
+			resume: "Riprendi",
+			sound: "Audio",
+			colors: {
+				red: "Rosso",
+				blue: "Blu",
+				yellow: "Giallo",
+				green: "Verde",
+				pink: "Rosa",
+				orange: "Arancione",
+				purple: "Viola"
+			},
+			help: {
+				title: "Come si gioca a Color Runner",
+				steps: [
+					{
+						title: "Segui il colore",
+						body: "Il colore in alto indica su quale corsia correre. Se ne esci per più di un istante, la corsa finisce."
+					},
+					{
+						title: "Occhio ai cambi",
+						body: "I colori delle corsie cambiano mentre corri e un avviso PROSSIMO lampeggia prima che cambi il colore obiettivo. Muoviti in anticipo."
+					},
+					{
+						title: "Prendi l'oro, salta i cambi",
+						body: "I secchi d'oro compaiono proprio sul tuo percorso: prendine uno e il tuo corridore diventa dorato per 10 secondi, senza che tu possa essere eliminato. Premi ↑ o Spazio (o scorri verso l'alto) per saltare un breve tratto del colore sbagliato mentre cambi corsia."
+					}
+				]
+			},
+			explainerHeading: "Perché cambiare colore è difficile",
+			explainerBody: "Leggere il nome di un colore e abbinarlo al colore vero richiede un vero sforzo mentale, soprattutto quando i colori intorno cambiano di continuo: è un parente del famoso effetto Stroop. La velocità complica tutto: il cervello ha meno tempo per confrontare la parola con le corsie, così il gioco allena un riconoscimento dei colori rapido e preciso."
+		},
+		memory: {
+			title: "Memoria dei colori — Ricrea il colore a memoria | Your Color Picker",
+			description: "Guarda un colore per 3 secondi, poi ricrealo a memoria con i cursori di tonalità, saturazione e luminosità. Cinque round con punteggio su 100.",
+			eyebrow: "Gioco",
+			heading: "Memoria dei colori",
+			intro: "Osserva un colore per tre secondi, poi ricostruiscilo a memoria con i cursori di tonalità, saturazione e luminosità. Cinque round con punteggio su 100.",
+			cardBody: "Guarda un colore per 3 secondi e ricrealo a memoria. Cinque round: arriverai a 90?",
+			dailyMode: "Giornaliero",
+			practiceMode: "Allenamento",
+			dailyDone: "Hai già giocato il round di oggi: prova la modalità Allenamento o torna domani.",
+			round: "Round {n}/5",
+			memorize: "Memorizza questo colore",
+			recreate: "Ora ricrealo",
+			hue: "Tonalità",
+			saturation: "Saturazione",
+			lightness: "Luminosità",
+			submit: "Invia",
+			next: "Round successivo",
+			target: "Obiettivo",
+			yours: "Il tuo",
+			roundScore: "{score} / 100",
+			final: "Punteggio finale: {score} / 100",
+			bestScore: "Record: {score}",
+			help: {
+				title: "Come si gioca a Memoria dei colori",
+				steps: [
+					{
+						title: "Memorizza",
+						body: "Un colore riempie il pannello per tre secondi. Osservalo bene."
+					},
+					{
+						title: "Ricrea",
+						body: "Usa i cursori di tonalità, saturazione e luminosità per ricostruirlo a memoria, poi premi Invia."
+					},
+					{
+						title: "Punteggio",
+						body: "Ogni round vale fino a 100 punti in base a quanto il tuo colore somiglia all'originale. La modalità giornaliera dà a tutti gli stessi cinque colori."
+					}
+				]
+			},
+			explainerHeading: "Perché ricordare i colori è difficile",
+			explainerBody: "Ricordiamo i colori come categorie («blu», «turchese») più che come valori esatti, quindi la memoria scivola verso la versione tipica di ogni colore. Il punteggio usa lo spazio colore CIELAB, che misura la differenza come la percepisce l'occhio: sbagliare la tonalità costa più di un piccolo errore di luminosità."
+		}
+	},
+	moreTools: {
+		heading: "Prova altri strumenti colore gratuiti",
+		body: "Convertitore, generatore di sfumature, verifica del contrasto, generatore di palette e altro ancora: gratis, veloce e privato al 100%.",
+		cta: "Scopri tutti gli strumenti",
+	},
 	relatedTools: {
 		heading: "Strumenti correlati",
 	},
@@ -688,6 +854,16 @@ export const it: Dictionary = {
 				a: "No. L'immagine viene decodificata e letta interamente nel tuo browser tramite l'API Canvas — non lascia mai il tuo dispositivo.",
 			},
 		],
+	},
+	blog: {
+		title: "Blog sul Colore — Teoria dei Colori e Design | Your Color Picker",
+		description: "Guide su teoria dei colori, HEX/RGB/HSL, accessibilità e design, con strumenti gratuiti per metterle in pratica.",
+		eyebrow: "Blog",
+		heading: "Il colore, spiegato",
+		intro: "Guide su teoria dei colori, accessibilità e design, con gli strumenti per metterle in pratica.",
+		postTitleSuffix: "Blog di Your Color Picker",
+		readyToTry: "Pronto a provarlo tu stesso?",
+		back: "← Torna al blog",
 	},
 	notFound: {
 		title: "Pagina Non Trovata — Your Color Picker",

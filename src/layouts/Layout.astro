@@ -46,6 +46,7 @@ const ogLocales: Record<Locale, string> = {
 	ja: "ja_JP",
 	it: "it_IT",
 	ar: "ar_AR",
+	pt: "pt_BR",
 };
 
 const jsonLd = {
@@ -68,6 +69,20 @@ const jsonLd = {
 		"WCAG contrast checker",
 	],
 };
+
+// Google reads WebSite markup on the homepage to choose the site name shown
+// above search results; without it the bare domain is often used instead.
+const websiteJsonLd =
+	path === "/"
+		? {
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				name: "Your Color Picker",
+				alternateName: ["YourColorPicker", "yourcolorpicker.com"],
+				url: siteUrl,
+				inLanguage: localeTags[lang],
+			}
+		: null;
 
 const breadcrumbJsonLd = breadcrumbName
 	? {
@@ -170,6 +185,7 @@ const breadcrumbJsonLd = breadcrumbName
 		<meta name="twitter:image" content={ogImage} />
 		<title>{title}</title>
 		<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+		{websiteJsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteJsonLd)} />}
 		{breadcrumbJsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbJsonLd)} />}
 	</head>
 	<body>

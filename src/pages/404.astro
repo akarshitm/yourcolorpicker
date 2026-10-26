@@ -6,7 +6,7 @@ import { useTranslations } from "../i18n/utils";
 const t = useTranslations("en");
 ---
 
-<PageLayout title={t.notFound.title} description={t.notFound.description} path="/404" lang="en" noindex>
+<PageLayout title={t.notFound.title} description={t.notFound.description} path="/404" lang="en" noindex singleLocale>
 	<PageHeader eyebrow={t.notFound.eyebrow} heading={t.notFound.heading} intro={t.notFound.intro} />
 	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
 		<div class="flex flex-col gap-lg">

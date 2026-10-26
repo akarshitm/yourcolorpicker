@@ -1,33 +1,5 @@
 ---
-import { getCollection } from "astro:content";
-import PageLayout from "../../layouts/PageLayout.astro";
-import PageHeader from "../../components/PageHeader.astro";
-
-const posts = (await getCollection("blog")).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+import BlogIndexView from "../../components/views/BlogIndexView.astro";
 ---
 
-<PageLayout
-	title="Blog | Your Color Picker"
-	description="Guides on color theory, HEX/RGB/HSL, accessibility, and design — plus the tools to put them to use."
-	path="/blog"
-	lang="en"
-	breadcrumbName="Blog"
-	singleLocale
->
-	<PageHeader eyebrow="Blog" heading="Color, explained" intro="Guides on color theory, accessibility, and design — with the tools to put them to use." />
-	<section class="mx-auto max-w-[800px] px-lg pb-3xl md:pb-4xl">
-		<div class="flex flex-col gap-lg">
-			{
-				posts.map((post) => (
-					<a href={`/blog/${post.id}`} class="feature-card block no-underline hover-pop">
-						<p class="type-body-sm text-mute mb-xs">
-							{post.data.publishDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-						</p>
-						<h2 class="type-heading-md mb-xs text-ink">{post.data.title}</h2>
-						<p class="type-body-md text-body">{post.data.description}</p>
-					</a>
-				))
-			}
-		</div>
-	</section>
-</PageLayout>
+<BlogIndexView lang="en" />

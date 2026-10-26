@@ -22,53 +22,51 @@ const pages: { path: string; changefreq: string; priority: string }[] = [
 	{ path: "/palette-generator", changefreq: "monthly", priority: "0.6" },
 	{ path: "/eyedropper-tool", changefreq: "monthly", priority: "0.6" },
 	{ path: "/hex-code-from-image", changefreq: "monthly", priority: "0.6" },
+	{ path: "/games", changefreq: "weekly", priority: "0.8" },
+	{ path: "/games/color-runner", changefreq: "monthly", priority: "0.7" },
+	{ path: "/games/odd-color-out", changefreq: "monthly", priority: "0.7" },
+	{ path: "/games/color-memory", changefreq: "monthly", priority: "0.7" },
 	{ path: "/privacy-policy", changefreq: "monthly", priority: "0.3" },
 	{ path: "/terms-and-conditions", changefreq: "monthly", priority: "0.3" },
 ];
 
-const lastmod = "2026-09-06";
+const lastmod = "2026-10-26";
 
 function absoluteUrl(locale: (typeof locales)[number], path: string) {
 	return `${siteUrl}${localizePath(locale, path)}`;
 }
 
-// Blog posts are English-only, so they get a single <url> entry each with no
-// hreflang alternates, unlike the fully-localized pages above.
-function englishOnlyUrl(path: string, changefreq: string, priority: string, lastmodOverride?: string) {
-	return ["\t<url>", `\t\t<loc>${siteUrl}${path}</loc>`, `\t\t<lastmod>${lastmodOverride ?? lastmod}</lastmod>`, `\t\t<changefreq>${changefreq}</changefreq>`, `\t\t<priority>${priority}</priority>`, "\t</url>"].join(
-		"\n",
+// One <url> per locale, each listing every locale (plus x-default) as an
+// hreflang alternate. Blog posts are translated into every locale too.
+function localizedEntries(path: string, changefreq: string, priority: string) {
+	const alternates = locales
+		.map((altLocale) => `\t\t<xhtml:link rel="alternate" hreflang="${localeTags[altLocale]}" href="${absoluteUrl(altLocale, path)}" />`)
+		.join("\n");
+	const xDefault = `\t\t<xhtml:link rel="alternate" hreflang="x-default" href="${absoluteUrl(defaultLocale, path)}" />`;
+	return locales.map((locale) =>
+		[
+			"\t<url>",
+			`\t\t<loc>${absoluteUrl(locale, path)}</loc>`,
+			`\t\t<lastmod>${lastmod}</lastmod>`,
+			`\t\t<changefreq>${changefreq}</changefreq>`,
+			`\t\t<priority>${priority}</priority>`,
+			alternates,
+			xDefault,
+			"\t</url>",
+		].join("\n"),
 	);
 }
 
 export const GET: APIRoute = async () => {
-	const localizedEntries = pages
-		.flatMap((page) =>
-			locales.map((locale) => {
-				const alternates = locales
-					.map((altLocale) => `\t\t<xhtml:link rel="alternate" hreflang="${localeTags[altLocale]}" href="${absoluteUrl(altLocale, page.path)}" />`)
-					.join("\n");
-				const xDefault = `\t\t<xhtml:link rel="alternate" hreflang="x-default" href="${absoluteUrl(defaultLocale, page.path)}" />`;
-				return [
-					"\t<url>",
-					`\t\t<loc>${absoluteUrl(locale, page.path)}</loc>`,
-					`\t\t<lastmod>${lastmod}</lastmod>`,
-					`\t\t<changefreq>${page.changefreq}</changefreq>`,
-					`\t\t<priority>${page.priority}</priority>`,
-					alternates,
-					xDefault,
-					"\t</url>",
-				].join("\n");
-			}),
-		)
-		.join("\n");
-
-	const posts = await getCollection("blog");
-	const blogEntries = [
-		englishOnlyUrl("/blog", "weekly", "0.7"),
-		...posts.map((post) => englishOnlyUrl(`/blog/${post.id}`, "yearly", "0.5", post.data.publishDate.toISOString().slice(0, 10))),
+	// English post ids have no locale prefix; translations share the same slug.
+	const posts = (await getCollection("blog")).filter((post) => !post.id.includes("/"));
+	const entries = [
+		...pages.flatMap((page) => localizedEntries(page.path, page.changefreq, page.priority)),
+		...localizedEntries("/blog", "weekly", "0.7"),
+		...posts.flatMap((post) => localizedEntries(`/blog/${post.id}`, "yearly", "0.5")),
 	].join("\n");
 
-	const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${localizedEntries}\n${blogEntries}\n</urlset>\n`;
+	const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entries}\n</urlset>\n`;
 
 	return new Response(xml, {
 		headers: { "Content-Type": "application/xml; charset=utf-8" },

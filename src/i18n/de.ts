@@ -14,6 +14,7 @@ export const de: Dictionary = {
 		openMenu: "Menü öffnen",
 		uploadImage: "Bild hochladen",
 		language: "Sprache",
+		games: "Spiele",
 	},
 	footer: {
 		privacyHeading: "Datenschutz",
@@ -30,9 +31,9 @@ export const de: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — Farben aus Fotos finden",
+		metaTitle: "Color Picker — Farbe aus Bild bestimmen (HEX, RGB) | Your Color Picker",
 		metaDescription:
-			"Kostenloser Color Picker und Farbfinder aus Bildern — sofort HEX-, RGB- und HSL-Codes, plus Komplementärfarben-Finder und Zufallsfarben-Generator.",
+			"Farbe aus einem Bild online bestimmen: Foto oder Screenshot laden und sofort den exakten HEX-, RGB- und HSL-Code erhalten — kostenlos, ohne Anmeldung, nichts wird hochgeladen.",
 		eyebrow: "Kostenloser Color Picker · Keine Anmeldung · Nichts wird je hochgeladen",
 		heading: "Der Color Picker, der jede Farbe in einem Foto findet",
 		subhead:
@@ -409,6 +410,171 @@ export const de: Dictionary = {
 			},
 		],
 	},
+	games: {
+		hub: {
+			title: "Kostenlose Farbspiele — Teste dein Farbsehen | Your Color Picker",
+			description: "Spiele kostenlos: Color Runner, einen Farbsehtest zum Finden der abweichenden Farbe und eine Farbgedächtnis-Challenge. Ohne Anmeldung, direkt im Browser.",
+			eyebrow: "Spiele",
+			heading: "Farbspiele",
+			intro: "Schnelle, kostenlose Spiele, die dein Auge für Farben trainieren. Knack deinen Bestwert und komm täglich für eine neue Runde Farbgedächtnis wieder.",
+			play: "Spielen",
+			newBadge: "Neu",
+			dailyBadge: "Täglich"
+		},
+		banner: {
+			heading: "Kostenlose Farbspiele spielen",
+			body: "Color Runner, ein Test für die abweichende Farbe und Farbgedächtnis — wie scharf ist dein Auge?",
+			cta: "Jetzt spielen"
+		},
+		common: {
+			share: "Ergebnis teilen",
+			copied: "Kopiert — füge es überall ein!",
+			playAgain: "Nochmal spielen",
+			start: "Start",
+			best: "Bestwert",
+			moreGames: "Mehr Farbspiele",
+			allGames: "Alle Spiele"
+		},
+		odd: {
+			title: "Farbe raus — Kostenloses Farbsehtest-Spiel | Your Color Picker",
+			description: "Finde das eine Feld mit einem leicht anderen Farbton. Mit jedem Level wächst das Raster und der Unterschied schrumpft — wie weit kommt dein Farbsehen?",
+			eyebrow: "Spiel",
+			heading: "Farbe raus",
+			intro: "Tippe auf das Feld, das nicht passt. Mit jedem Level wächst das Raster und der Unterschied wird kleiner — du hast drei Leben.",
+			cardBody: "Finde das Feld mit einem leicht anderen Farbton. Die Level werden schwerer, bis nur die schärfsten Augen bestehen.",
+			level: "Level",
+			lives: "Leben",
+			tileLabel: "Feld {n}",
+			gameOver: "Spiel vorbei — du hast Level {n} erreicht.",
+			rankLabel: "Dein Auge: {rank}",
+			ranks: [
+				"Einsteiger",
+				"Gutes Auge",
+				"Scharfes Auge",
+				"Adlerauge",
+				"Farbfalke",
+				"Übermenschlich"
+			],
+			bestLevel: "Bestwert: Level {n}",
+			help: {
+				title: "So spielst du Farbe raus",
+				steps: [
+					{
+						title: "Finde das andere Feld",
+						body: "Ein Feld hat einen leicht anderen Farbton als der Rest. Tippe darauf, um ins nächste Level zu kommen."
+					},
+					{
+						title: "Es wird schwerer",
+						body: "Jedes Level bringt mehr Felder und einen kleineren Unterschied."
+					},
+					{
+						title: "Drei Leben",
+						body: "Ein falscher Tipp kostet ein Leben und zeigt dir, wo das Feld war. Sind alle drei weg, endet das Spiel."
+					}
+				]
+			},
+			explainerHeading: "Was dieses Spiel misst",
+			explainerBody: "Das abweichende Feld unterscheidet sich nur in der Helligkeit, die fast alle wahrnehmen können — auch Menschen mit Farbsehschwäche. Höhere Level testen, wie kleine Unterschiede deine Augen erkennen. Bildschirmhelligkeit, Spiegelungen und Displayqualität beeinflussen das Ergebnis, also sieh es als Spaß-Challenge, nicht als medizinischen Sehtest."
+		},
+		runner: {
+			title: "Color Runner — Kostenloses Pixel-Laufspiel mit Farben | Your Color Picker",
+			description: "Lauf auf der richtigen Farbe! Ein kostenloser Endlos-Runner im Pixel-Look: Wechsle zwischen drei farbigen Spuren, bleib auf der angezeigten Farbe und schnapp dir goldene Eimer für 10 Sekunden Schutz.",
+			eyebrow: "Arcade-Spiel",
+			heading: "Color Runner",
+			intro: "Lauf, wechsle die Spur und bleib immer auf der Farbe, die oben steht. Die Spuren ändern sich ständig und das Tempo steigt — schnapp dir einen goldenen Eimer für 10 Sekunden Schutz.",
+			cardBody: "Ein Pixel-Endlos-Runner: Bleib auf der Spur der angezeigten Farbe und sammle goldene Eimer für 10 Sekunden Gold. Wie weit kommst du?",
+			runOn: "Lauf auf",
+			next: "Gleich",
+			goldActive: "Gold!",
+			distance: "{n} m",
+			best: "Bestwert: {n} m",
+			newBest: "Neuer Rekord! 🎉",
+			controls: "← → Spur wechseln · ↑ oder Leertaste zum Springen · am Handy wischen",
+			overColor: "Du hast den Weg {color} verlassen!",
+			final: "Du bist {n} m gelaufen",
+			left: "Nach links",
+			right: "Nach rechts",
+			jump: "Springen",
+			resume: "Weiter",
+			sound: "Ton",
+			colors: {
+				red: "Rot",
+				blue: "Blau",
+				yellow: "Gelb",
+				green: "Grün",
+				pink: "Rosa",
+				orange: "Orange",
+				purple: "Lila"
+			},
+			help: {
+				title: "So spielst du Color Runner",
+				steps: [
+					{
+						title: "Folge der Farbe",
+						body: "Die Farbe oben zeigt, auf welcher Spur du laufen musst. Verlässt du sie länger als einen Moment, ist der Lauf vorbei."
+					},
+					{
+						title: "Achte auf Wechsel",
+						body: "Die Spurfarben wechseln beim Laufen, und eine blinkende GLEICH-Warnung erscheint, bevor sich die Zielfarbe ändert. Reagiere früh."
+					},
+					{
+						title: "Gold schnappen, Übergänge überspringen",
+						body: "Goldene Eimer tauchen direkt auf deinem Weg auf — schnapp dir einen, und dein Läufer wird 10 Sekunden lang golden, ohne dass du ausscheiden kannst. Drück ↑ oder die Leertaste (oder wisch nach oben), um beim Spurwechsel über ein kurzes Stück in der falschen Farbe zu springen."
+					}
+				]
+			},
+			explainerHeading: "Warum Farbwechsel schwer sind",
+			explainerBody: "Ein Farbwort zu lesen und der echten Farbe zuzuordnen kostet echte Denkarbeit, besonders wenn sich die Farben ringsum ständig ändern — ein Verwandter des berühmten Stroop-Effekts. Tempo macht es schwerer: Dein Gehirn hat weniger Zeit, das Wort mit den Spuren abzugleichen, und so trainiert das Spiel schnelles, genaues Farberkennen."
+		},
+		memory: {
+			title: "Farbgedächtnis — Stelle die Farbe aus dem Gedächtnis nach | Your Color Picker",
+			description: "Sieh dir eine Farbe 3 Sekunden lang an und stelle sie dann mit Reglern für Farbton, Sättigung und Helligkeit nach. Fünf Runden, bewertet von 0 bis 100.",
+			eyebrow: "Spiel",
+			heading: "Farbgedächtnis",
+			intro: "Präge dir eine Farbe drei Sekunden lang ein und baue sie dann mit Reglern für Farbton, Sättigung und Helligkeit aus dem Gedächtnis nach. Fünf Runden, bewertet von 0 bis 100.",
+			cardBody: "Sieh eine Farbe 3 Sekunden lang und stelle sie aus dem Gedächtnis nach. Fünf Runden — schaffst du 90+?",
+			dailyMode: "Täglich",
+			practiceMode: "Training",
+			dailyDone: "Du hast die heutige Tagesrunde gespielt — probier den Trainingsmodus oder komm morgen wieder.",
+			round: "Runde {n}/5",
+			memorize: "Präge dir diese Farbe ein",
+			recreate: "Jetzt nachstellen",
+			hue: "Farbton",
+			saturation: "Sättigung",
+			lightness: "Helligkeit",
+			submit: "Abgeben",
+			next: "Nächste Runde",
+			target: "Ziel",
+			yours: "Deine",
+			roundScore: "{score} / 100",
+			final: "Endergebnis: {score} / 100",
+			bestScore: "Bestwert: {score}",
+			help: {
+				title: "So spielst du Farbgedächtnis",
+				steps: [
+					{
+						title: "Einprägen",
+						body: "Eine Farbe füllt drei Sekunden lang das Feld. Präge sie dir ein."
+					},
+					{
+						title: "Nachstellen",
+						body: "Nutze die Regler für Farbton, Sättigung und Helligkeit, um sie aus dem Gedächtnis nachzubauen, und tippe auf Abgeben."
+					},
+					{
+						title: "Punkte",
+						body: "Jede Runde gibt bis zu 100 Punkte, je nachdem, wie ähnlich deine Farbe dem Original aussieht. Im Tagesmodus bekommen alle dieselben fünf Farben."
+					}
+				]
+			},
+			explainerHeading: "Warum Farbgedächtnis schwer ist",
+			explainerBody: "Wir merken uns Farben eher als Kategorien („Blau“, „Türkis“) als als exakte Werte, deshalb driftet die Erinnerung zur typischen Version jeder Farbe. Die Wertung nutzt den CIELAB-Farbraum, der Unterschiede so misst, wie das Auge sie wahrnimmt — ein Fehler im Farbton kostet daher mehr als ein kleiner Helligkeitsfehler."
+		}
+	},
+	moreTools: {
+		heading: "Weitere kostenlose Farbwerkzeuge testen",
+		body: "Konverter, Verlaufsgenerator, Kontrastprüfer, Palettengenerator und mehr – kostenlos, schnell und zu 100 % privat.",
+		cta: "Alle Werkzeuge ansehen",
+	},
 	relatedTools: {
 		heading: "Verwandte Werkzeuge",
 	},
@@ -685,6 +851,16 @@ export const de: Dictionary = {
 				a: "Nein. Das Bild wird vollständig in deinem Browser über die Canvas-API dekodiert und gelesen – es verlässt niemals dein Gerät.",
 			},
 		],
+	},
+	blog: {
+		title: "Farb-Blog — Farbenlehre und Design | Your Color Picker",
+		description: "Leitfäden zu Farbenlehre, HEX/RGB/HSL, Barrierefreiheit und Design – mit kostenlosen Tools, um sie direkt anzuwenden.",
+		eyebrow: "Blog",
+		heading: "Farbe, erklärt",
+		intro: "Leitfäden zu Farbenlehre, Barrierefreiheit und Design – mit den passenden Tools zum Ausprobieren.",
+		postTitleSuffix: "Your Color Picker Blog",
+		readyToTry: "Bereit, es selbst auszuprobieren?",
+		back: "← Zurück zum Blog",
 	},
 	notFound: {
 		title: "Seite nicht gefunden — Your Color Picker",

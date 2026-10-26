@@ -1,0 +1,192 @@
+---
+import GameIcon from "./GameIcon.astro";
+import { gameList } from "./gameList";
+import type { Locale } from "../i18n/config";
+import { useTranslations, localizePath } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<a href={localizePath(lang, "/games")} class="play-games-banner no-underline">
+	<span class="play-games-icons" aria-hidden="true">
+		{
+			gameList.map((g) => (
+				<span class="play-games-icon">
+					<GameIcon name={g.icon} size={30} />
+				</span>
+			))
+		}
+	</span>
+	<span class="play-games-text">
+		<span class="play-games-heading">
+			{t.games.banner.heading}
+			<span class="play-games-badge">{t.games.hub.newBadge}</span>
+		</span>
+		<span class="play-games-body">{t.games.banner.body}</span>
+	</span>
+	<span class="btn-primary play-games-cta">
+		{t.games.banner.cta}
+		<svg class="play-games-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+			<path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</span>
+</a>
+
+<style>
+	.play-games-banner {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-lg);
+		margin-top: var(--spacing-md);
+		padding: var(--spacing-lg);
+		border-radius: var(--radius-lg);
+		color: var(--color-ink);
+		overflow: hidden;
+		/* Same gradient-border trick as MoreToolsBanner, but the border colors
+		   travel around so this one reads as "live" and playful. */
+		border: 2px solid transparent;
+		background:
+			linear-gradient(
+					120deg,
+					color-mix(in srgb, var(--color-pink) 8%, var(--color-canvas-elevated)),
+					color-mix(in srgb, var(--color-cyan) 8%, var(--color-canvas-elevated))
+				)
+				padding-box,
+			linear-gradient(90deg, var(--color-pink), var(--color-violet), var(--color-cyan), var(--color-link), var(--color-pink)) border-box;
+		background-size:
+			100% 100%,
+			300% 100%;
+		box-shadow: 0 8px 28px -12px color-mix(in srgb, var(--color-pink) 45%, transparent);
+	}
+	/* A soft light sweep across the card. */
+	.play-games-banner::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background: linear-gradient(105deg, transparent 35%, color-mix(in srgb, #fff 14%, transparent) 50%, transparent 65%);
+		transform: translateX(-120%);
+	}
+	.play-games-icons {
+		display: flex;
+		gap: 6px;
+		flex-shrink: 0;
+	}
+	.play-games-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 46px;
+		height: 46px;
+		border-radius: var(--radius-md);
+		background: var(--color-canvas-elevated);
+		border: 1px solid var(--color-hairline);
+	}
+	.play-games-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xxs);
+		flex: 1;
+		min-width: 0;
+	}
+	.play-games-heading {
+		display: inline-flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--spacing-xs);
+		font-family: var(--font-sans);
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 1.3;
+	}
+	.play-games-badge {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		padding: 2px 8px;
+		border-radius: var(--radius-pill);
+		color: #fff;
+		background: linear-gradient(90deg, var(--color-violet), var(--color-pink));
+	}
+	.play-games-body {
+		font-family: var(--font-sans);
+		font-size: 14.5px;
+		line-height: 1.5;
+		color: var(--color-body);
+	}
+	.play-games-cta {
+		flex-shrink: 0;
+		padding: 12px 20px;
+	}
+	:global([dir="rtl"]) .play-games-arrow {
+		transform: scaleX(-1);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.play-games-banner {
+			animation: play-games-border 6s linear infinite;
+			transition:
+				transform 0.15s ease,
+				box-shadow 0.15s ease;
+		}
+		.play-games-banner::after {
+			animation: play-games-sweep 4.5s ease-in-out infinite;
+		}
+		.play-games-banner:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 14px 36px -12px color-mix(in srgb, var(--color-pink) 60%, transparent);
+		}
+		.play-games-badge {
+			animation: play-games-bob 2s ease-in-out infinite;
+		}
+	}
+	@keyframes play-games-border {
+		from {
+			background-position:
+				0 0,
+				0% 0;
+		}
+		to {
+			background-position:
+				0 0,
+				300% 0;
+		}
+	}
+	@keyframes play-games-sweep {
+		0%,
+		55% {
+			transform: translateX(-120%);
+		}
+		100% {
+			transform: translateX(120%);
+		}
+	}
+	@keyframes play-games-bob {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-2px);
+		}
+	}
+
+	@media (max-width: 640px) {
+		.play-games-banner {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: var(--spacing-md);
+		}
+		.play-games-cta {
+			align-self: stretch;
+		}
+	}
+</style>

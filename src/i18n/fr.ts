@@ -14,6 +14,7 @@ export const fr: Dictionary = {
 		openMenu: "Ouvrir le menu",
 		uploadImage: "Importer une image",
 		language: "Langue",
+		games: "Jeux",
 	},
 	footer: {
 		privacyHeading: "Confidentialité",
@@ -30,9 +31,9 @@ export const fr: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — Sélecteur de Couleur d'Image",
+		metaTitle: "Color Picker — Choisir une couleur à partir d'une image (HEX, RGB)",
 		metaDescription:
-			"Sélecteur et détecteur de couleur à partir d'une image, gratuit — codes HEX, RGB et HSL instantanés, plus un détecteur de couleur complémentaire et un sélecteur aléatoire.",
+			"Choisissez une couleur à partir d'une image en ligne : importez une photo ou une capture d'écran et obtenez le code HEX, RGB et HSL exact — gratuit, sans inscription, rien n'est envoyé.",
 		eyebrow: "Sélecteur de couleur gratuit · Sans inscription · Rien n'est jamais téléversé",
 		heading: "Le sélecteur de couleur qui trouve n'importe quelle couleur dans une photo",
 		subhead:
@@ -409,6 +410,171 @@ export const fr: Dictionary = {
 			},
 		],
 	},
+	games: {
+		hub: {
+			title: "Jeux de couleurs gratuits — Testez votre vision des couleurs | Your Color Picker",
+			description: "Jouez gratuitement : Color Runner, un test de vision pour trouver la couleur intruse et un défi de mémoire des couleurs. Sans inscription, dans votre navigateur.",
+			eyebrow: "Jeux",
+			heading: "Jeux de couleurs",
+			intro: "Des jeux rapides et gratuits pour entraîner votre œil. Battez votre record et revenez chaque jour pour une nouvelle partie de Mémoire des couleurs.",
+			play: "Jouer",
+			newBadge: "Nouveau",
+			dailyBadge: "Quotidien"
+		},
+		banner: {
+			heading: "Jouez à des jeux de couleurs gratuits",
+			body: "Color Runner, un test de la couleur intruse et la mémoire des couleurs : votre œil est-il affûté ?",
+			cta: "Jouer maintenant"
+		},
+		common: {
+			share: "Partager le résultat",
+			copied: "Copié — collez-le où vous voulez !",
+			playAgain: "Rejouer",
+			start: "Commencer",
+			best: "Record",
+			moreGames: "Plus de jeux de couleurs",
+			allGames: "Tous les jeux"
+		},
+		odd: {
+			title: "Couleur intruse — Jeu gratuit de vision des couleurs | Your Color Picker",
+			description: "Trouvez la seule case d'une teinte légèrement différente. À chaque niveau, la grille grandit et l'écart diminue : jusqu'où ira votre vue ?",
+			eyebrow: "Jeu",
+			heading: "Couleur intruse",
+			intro: "Touchez la case qui ne correspond pas. À chaque niveau, la grille grandit et l'écart diminue. Vous avez trois vies.",
+			cardBody: "Repérez la case d'une teinte légèrement différente. Les niveaux se corsent jusqu'à ce que seuls les yeux les plus fins tiennent.",
+			level: "Niveau",
+			lives: "Vies",
+			tileLabel: "Case {n}",
+			gameOver: "Partie terminée — vous avez atteint le niveau {n}.",
+			rankLabel: "Votre œil : {rank}",
+			ranks: [
+				"Débutant",
+				"Bon œil",
+				"Œil affûté",
+				"Œil de lynx",
+				"Faucon des couleurs",
+				"Surhumain"
+			],
+			bestLevel: "Record : niveau {n}",
+			help: {
+				title: "Comment jouer à Couleur intruse",
+				steps: [
+					{
+						title: "Trouvez l'intruse",
+						body: "Une case a une teinte légèrement différente des autres. Touchez-la pour passer au niveau suivant."
+					},
+					{
+						title: "De plus en plus dur",
+						body: "Chaque niveau ajoute des cases et réduit l'écart."
+					},
+					{
+						title: "Trois vies",
+						body: "Une erreur coûte une vie et révèle où était l'intruse. Perdez les trois et la partie s'arrête."
+					}
+				]
+			},
+			explainerHeading: "Ce que mesure ce jeu",
+			explainerBody: "La case intruse ne diffère que par sa luminosité, que presque tout le monde perçoit, y compris les personnes daltoniennes. Les niveaux élevés testent le plus petit écart que vos yeux distinguent. La luminosité de l'écran, les reflets et la qualité de l'affichage jouent, alors voyez-le comme un défi ludique, pas comme un examen médical."
+		},
+		runner: {
+			title: "Color Runner — Jeu de course pixel gratuit sur les couleurs | Your Color Picker",
+			description: "Courez sur la bonne couleur ! Un runner infini en pixel art gratuit : changez entre trois voies colorées, restez sur la couleur affichée et attrapez des seaux dorés pour 10 secondes de sécurité.",
+			eyebrow: "Jeu d'arcade",
+			heading: "Color Runner",
+			intro: "Courez, changez de voie et restez toujours sur la couleur écrite en haut. Les voies changent sans cesse et le rythme s'accélère — attrapez un seau doré pour 10 secondes de sécurité.",
+			cardBody: "Un runner infini en pixels : restez sur la voie de la couleur indiquée et attrapez des seaux dorés pour 10 secondes d'or. Jusqu'où irez-vous ?",
+			runOn: "Courez sur",
+			next: "Ensuite",
+			goldActive: "Doré !",
+			distance: "{n} m",
+			best: "Record : {n} m",
+			newBest: "Nouveau record ! 🎉",
+			controls: "← → changer de voie · ↑ ou Espace pour sauter · sur mobile, glissez",
+			overColor: "Vous avez quitté la voie {color} !",
+			final: "Vous avez couru {n} m",
+			left: "Aller à gauche",
+			right: "Aller à droite",
+			jump: "Sauter",
+			resume: "Reprendre",
+			sound: "Son",
+			colors: {
+				red: "Rouge",
+				blue: "Bleu",
+				yellow: "Jaune",
+				green: "Vert",
+				pink: "Rose",
+				orange: "Orange",
+				purple: "Violet"
+			},
+			help: {
+				title: "Comment jouer à Color Runner",
+				steps: [
+					{
+						title: "Suivez la couleur",
+						body: "La couleur en haut indique sur quelle voie courir. Quittez-la plus d'un instant et la course s'arrête."
+					},
+					{
+						title: "Guettez les changements",
+						body: "Les couleurs des voies changent pendant la course, et un avertissement ENSUITE clignote avant que la couleur cible change. Anticipez."
+					},
+					{
+						title: "Attrapez l'or, sautez les transitions",
+						body: "Des seaux dorés apparaissent directement sur votre trajet : attrapez-en un et votre coureur devient doré pendant 10 secondes, sans risque de perdre. Appuyez sur ↑ ou Espace (ou glissez vers le haut) pour sauter un court passage de la mauvaise couleur pendant que vous changez de voie."
+					}
+				]
+			},
+			explainerHeading: "Pourquoi changer de couleur est difficile",
+			explainerBody: "Lire le nom d'une couleur et l'associer à la vraie couleur demande un réel effort mental, surtout quand les couleurs autour changent sans cesse — un cousin du célèbre effet Stroop. La vitesse complique tout : le cerveau a moins de temps pour comparer le mot aux voies, et le jeu entraîne une reconnaissance des couleurs rapide et précise."
+		},
+		memory: {
+			title: "Mémoire des couleurs — Recréez la couleur de mémoire | Your Color Picker",
+			description: "Regardez une couleur pendant 3 secondes, puis recréez-la de mémoire avec des curseurs de teinte, saturation et luminosité. Cinq manches notées sur 100.",
+			eyebrow: "Jeu",
+			heading: "Mémoire des couleurs",
+			intro: "Observez une couleur pendant trois secondes, puis reconstruisez-la de mémoire avec les curseurs de teinte, saturation et luminosité. Cinq manches notées sur 100.",
+			cardBody: "Regardez une couleur 3 secondes, puis recréez-la de mémoire. Cinq manches : atteindrez-vous 90 ?",
+			dailyMode: "Quotidien",
+			practiceMode: "Entraînement",
+			dailyDone: "Vous avez joué la partie du jour — essayez le mode Entraînement ou revenez demain.",
+			round: "Manche {n}/5",
+			memorize: "Mémorisez cette couleur",
+			recreate: "Recréez-la maintenant",
+			hue: "Teinte",
+			saturation: "Saturation",
+			lightness: "Luminosité",
+			submit: "Valider",
+			next: "Manche suivante",
+			target: "Cible",
+			yours: "La vôtre",
+			roundScore: "{score} / 100",
+			final: "Score final : {score} / 100",
+			bestScore: "Record : {score}",
+			help: {
+				title: "Comment jouer à Mémoire des couleurs",
+				steps: [
+					{
+						title: "Mémorisez",
+						body: "Une couleur remplit le panneau pendant trois secondes. Observez-la bien."
+					},
+					{
+						title: "Recréez",
+						body: "Utilisez les curseurs de teinte, saturation et luminosité pour la reconstruire de mémoire, puis appuyez sur Valider."
+					},
+					{
+						title: "Score",
+						body: "Chaque manche est notée sur 100 selon la ressemblance de votre couleur avec l'originale. Le mode quotidien donne à tous les mêmes cinq couleurs."
+					}
+				]
+			},
+			explainerHeading: "Pourquoi la mémoire des couleurs est difficile",
+			explainerBody: "Nous retenons les couleurs comme des catégories (« bleu », « turquoise ») plus que comme des valeurs exactes, donc la mémoire dérive vers la version typique de chaque couleur. Le score utilise l'espace colorimétrique CIELAB, qui mesure l'écart tel que l'œil le perçoit : une erreur de teinte coûte plus cher qu'un léger écart de luminosité."
+		}
+	},
+	moreTools: {
+		heading: "Essayez d'autres outils couleur gratuits",
+		body: "Convertisseur, créateur de dégradés, vérificateur de contraste, générateur de palettes et plus encore — gratuit, rapide et 100 % privé.",
+		cta: "Voir tous les outils",
+	},
 	relatedTools: {
 		heading: "Outils associés",
 	},
@@ -688,6 +854,16 @@ export const fr: Dictionary = {
 				a: "Non. L'image est décodée et lue entièrement dans votre navigateur via l'API Canvas — elle ne quitte jamais votre appareil.",
 			},
 		],
+	},
+	blog: {
+		title: "Blog Couleur — Théorie des Couleurs et Design | Your Color Picker",
+		description: "Guides sur la théorie des couleurs, HEX/RVB/HSL, l'accessibilité et le design, avec des outils gratuits pour les mettre en pratique.",
+		eyebrow: "Blog",
+		heading: "La couleur, expliquée",
+		intro: "Guides sur la théorie des couleurs, l'accessibilité et le design, avec les outils pour les mettre en pratique.",
+		postTitleSuffix: "Blog Your Color Picker",
+		readyToTry: "Prêt à essayer vous-même ?",
+		back: "← Retour au blog",
 	},
 	notFound: {
 		title: "Page Introuvable — Your Color Picker",

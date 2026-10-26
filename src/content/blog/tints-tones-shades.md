@@ -19,7 +19,7 @@ Tints are what you reach for when you need a lighter version of a color that sti
 
 A shade is the mirror image of a tint — mixing a color with black instead of white, which lowers **lightness** toward zero while (again) keeping hue roughly constant. A shade of the same navy blue gets darker and darker until it's nearly black.
 
-Shades are what you reach for anywhere you need a darker, higher-contrast version of a color: hover and active states on buttons (a common pattern is a slightly darker shade on `:hover` and a darker one still on `:active`), text color derived from a brand color that needs to pass contrast requirements against a light background, or dark-mode surface colors that need to feel related to the light-mode palette.
+Shades are what you reach for anywhere you need a darker, higher-contrast version of a color: hover and active states on buttons (a common pattern is a slightly darker shade on `:hover` and a darker one still on `:active`), text color derived from a brand color that needs to pass [contrast requirements](/blog/wcag-contrast-guide) against a light background, or dark-mode surface colors that need to feel related to the light-mode palette.
 
 ## Tones: mixing with gray
 
@@ -29,10 +29,10 @@ Tones are useful for exactly the situation where a fully saturated brand color f
 
 ## Why this matters more than picking colors by eye
 
-The alternative to generating a ramp systematically is picking each shade by eye, one at a time, which tends to produce two problems: the steps between colors end up uneven (some jumps look drastic, others barely register), and colors drift in hue as they get lighter or darker, so your "family" of blues quietly turns slightly purple at the dark end and slightly green at the light end. Working in HSL and adjusting one channel at a time — lightness for tints and shades, saturation for tones — avoids both problems, because the hue value simply never changes unless you deliberately change it.
+The alternative to generating a ramp systematically is picking each shade by eye, one at a time, which tends to produce two problems: the steps between colors end up uneven (some jumps look drastic, others barely register), and colors drift in hue as they get lighter or darker, so your "family" of blues quietly turns slightly purple at the dark end and slightly green at the light end. Working in [HSL](/blog/hex-vs-rgb-vs-hsl) and adjusting one channel at a time — lightness for tints and shades, saturation for tones — avoids both problems, because the hue value simply never changes unless you deliberately change it.
 
 ## A practical starting ramp
 
 A reasonable general-purpose ramp for a single brand color, in roughly the style of a Tailwind-esque scale, is 8–10 steps: 2–3 tints (light backgrounds, hover states), the base color itself, and 4–5 shades (text, borders, dark-mode surfaces, active states). Very few products need more than that — the goal isn't maximum granularity, it's having a related color ready for every UI state without inventing a new one from scratch each time you need one.
 
-Generating this by hand, one hex code at a time, is exactly the kind of small, repetitive job worth automating rather than eyeballing — pick a base color, generate the full ramp in one pass, and you've got a working palette instead of a pile of slightly-mismatched blues.
+Generating this by hand, one hex code at a time, is exactly the kind of small, repetitive job worth automating rather than eyeballing — pick a base color, generate the full ramp in one pass with a [shades and tints generator](/shades-and-tints-generator), and you've got a working palette instead of a pile of slightly-mismatched blues.

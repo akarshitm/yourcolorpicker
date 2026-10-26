@@ -13,7 +13,7 @@ The color wheel arranges hues (the pure colors — red, orange, yellow, green, b
 
 ## Complementary: colors directly opposite each other
 
-Complementary colors sit exactly across the wheel from each other — red and green, blue and orange, yellow and violet. Because they're as different in hue as two colors can be, pairing them creates the strongest possible contrast and visual "pop." This is why complementary pairs show up constantly in sports branding, calls-to-action, and anywhere something needs to grab attention immediately.
+Complementary colors (try the [color mixer](/color-mixer) to see what happens when you blend two of them) sit exactly across the wheel from each other — red and green, blue and orange, yellow and violet. Because they're as different in hue as two colors can be, pairing them creates the strongest possible contrast and visual "pop." This is why complementary pairs show up constantly in sports branding, calls-to-action, and anywhere something needs to grab attention immediately.
 
 The catch: because the contrast is so strong, complementary pairs can feel aggressive or overwhelming if you use both colors in equal amounts. The usual fix is to let one color dominate (say, 80–90% of the design) and use its complement sparingly, as an accent — a button, an icon, a highlight — rather than splitting the palette evenly.
 
@@ -31,7 +31,7 @@ Triadic palettes tend to feel vibrant and playful, which is why they show up oft
 
 ## Monochromatic: one hue, many lightness values
 
-Technically not a wheel *relationship* since it only uses one hue, but it's worth mentioning alongside the others: a monochromatic palette takes a single color and varies only its lightness and saturation — one blue that ranges from near-white to near-black. It's the lowest-risk way to build a palette that never clashes, because every color shares the same hue. The tradeoff is the opposite of complementary: it's very hard to create strong visual contrast this way, so monochromatic palettes work best when hierarchy is handled through size, spacing, or contrast rather than color alone.
+Technically not a wheel *relationship* since it only uses one hue, but it's worth mentioning alongside the others: a monochromatic palette takes a single color and varies only its lightness and saturation (the [tints, tones, and shades](/blog/tints-tones-shades) of that hue) — one blue that ranges from near-white to near-black. It's the lowest-risk way to build a palette that never clashes, because every color shares the same hue. The tradeoff is the opposite of complementary: it's very hard to create strong visual contrast this way, so monochromatic palettes work best when hierarchy is handled through size, spacing, or contrast rather than color alone.
 
 ## Picking one
 
@@ -42,4 +42,4 @@ None of these are "better" in the abstract — they're suited to different jobs:
 - Need variety without chaos → **triadic**
 - Need a safe, unified look with no risk of clashing → **monochromatic**
 
-The fastest way to see any of these in practice is to start from a base color and generate all four automatically, rather than working them out by eye — that's exactly what a palette generator is for.
+The fastest way to see any of these in practice is to start from a base color and generate all four automatically, rather than working them out by eye — that's exactly what a [palette generator](/palette-generator) is for. If you're starting from a photo instead, the [image color picker](/) pulls the base color and suggests all four schemes at once.

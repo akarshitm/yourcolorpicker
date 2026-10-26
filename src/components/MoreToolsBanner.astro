@@ -1,0 +1,142 @@
+---
+import ToolIcon, { type ToolIconName } from "./ToolIcon.astro";
+import type { Locale } from "../i18n/config";
+import { useTranslations, localizePath } from "../i18n/utils";
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// A few recognizable tool glyphs, each tinted with one of the brand accents.
+const chips: { icon: ToolIconName; accent: string }[] = [
+	{ icon: "converter", accent: "var(--color-link)" },
+	{ icon: "gradient", accent: "var(--color-violet)" },
+	{ icon: "contrast", accent: "var(--color-pink)" },
+	{ icon: "palette", accent: "var(--color-cyan)" },
+];
+---
+
+<a href={localizePath(lang, "/tools")} class="more-tools-banner no-underline">
+	<span class="more-tools-chips" aria-hidden="true">
+		{
+			chips.map((chip) => (
+				<span class="more-tools-chip" style={`--chip-accent: ${chip.accent};`}>
+					<ToolIcon name={chip.icon} size={18} />
+				</span>
+			))
+		}
+	</span>
+	<span class="more-tools-text">
+		<span class="more-tools-heading">{t.moreTools.heading}</span>
+		<span class="more-tools-body">{t.moreTools.body}</span>
+	</span>
+	<span class="btn-primary more-tools-cta">
+		{t.moreTools.cta}
+		<svg class="more-tools-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+			<path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+	</span>
+</a>
+
+<style>
+	.more-tools-banner {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-lg);
+		margin-top: var(--spacing-xl);
+		padding: var(--spacing-lg);
+		border-radius: var(--radius-lg);
+		color: var(--color-ink);
+		/* Gradient border: the elevated canvas fills the padding box, the
+		   accent gradient shows through only in the transparent border. */
+		border: 1.5px solid transparent;
+		background:
+			linear-gradient(
+					120deg,
+					color-mix(in srgb, var(--color-link) 7%, var(--color-canvas-elevated)),
+					color-mix(in srgb, var(--color-pink) 6%, var(--color-canvas-elevated))
+				)
+				padding-box,
+			linear-gradient(120deg, var(--color-link), var(--color-violet), var(--color-pink)) border-box;
+		box-shadow: 0 8px 28px -12px color-mix(in srgb, var(--color-violet) 45%, transparent);
+	}
+	.more-tools-chips {
+		display: flex;
+		flex-shrink: 0;
+	}
+	.more-tools-chip {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		color: var(--chip-accent);
+		background: color-mix(in srgb, var(--chip-accent) 16%, var(--color-canvas-elevated));
+		border: 2px solid var(--color-canvas-elevated);
+	}
+	.more-tools-chip + .more-tools-chip {
+		margin-inline-start: -10px;
+	}
+	.more-tools-text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xxs);
+		flex: 1;
+		min-width: 0;
+	}
+	.more-tools-heading {
+		font-family: var(--font-sans);
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 1.3;
+	}
+	.more-tools-body {
+		font-family: var(--font-sans);
+		font-size: 14.5px;
+		line-height: 1.5;
+		color: var(--color-body);
+	}
+	.more-tools-cta {
+		flex-shrink: 0;
+		padding: 12px 20px;
+	}
+	:global([dir="rtl"]) .more-tools-arrow {
+		transform: scaleX(-1);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.more-tools-banner {
+			transition:
+				transform 0.15s ease,
+				box-shadow 0.15s ease;
+		}
+		.more-tools-banner:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 14px 36px -12px color-mix(in srgb, var(--color-violet) 60%, transparent);
+		}
+		.more-tools-arrow {
+			transition: translate 0.15s ease;
+		}
+		.more-tools-banner:hover .more-tools-arrow {
+			translate: 3px 0;
+		}
+		:global([dir="rtl"]) .more-tools-banner:hover .more-tools-arrow {
+			translate: -3px 0;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.more-tools-banner {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: var(--spacing-md);
+		}
+		.more-tools-cta {
+			align-self: stretch;
+		}
+	}
+</style>

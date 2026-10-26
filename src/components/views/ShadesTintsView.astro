@@ -2,6 +2,8 @@
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHeader from "../PageHeader.astro";
 import RelatedTools from "../RelatedTools.astro";
+import MoreToolsBanner from "../MoreToolsBanner.astro";
+import PlayGamesBanner from "../PlayGamesBanner.astro";
 import type { Locale } from "../../i18n/config";
 import { useTranslations } from "../../i18n/utils";
 
@@ -44,6 +46,9 @@ const t = useTranslations(lang);
 				<div id="st-shades" class="grid grid-cols-5 gap-xs"></div>
 			</div>
 		</div>
+
+		<MoreToolsBanner lang={lang} />
+		<PlayGamesBanner lang={lang} />
 
 		<div class="mt-lg">
 			<h2 class="type-heading-md mb-xs">{t.shadesTintsTool.explainerHeading}</h2>

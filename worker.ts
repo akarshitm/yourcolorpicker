@@ -35,6 +35,13 @@ export default {
 			changed = true;
 		}
 
+		// Retired pages go to their closest replacement instead of 404ing.
+		const retired = url.pathname.match(/^(\/[a-z]{2})?\/games\/daily-color$/);
+		if (retired) {
+			url.pathname = `${retired[1] ?? ""}/games`;
+			changed = true;
+		}
+
 		if (changed) {
 			return Response.redirect(url.toString(), 301);
 		}

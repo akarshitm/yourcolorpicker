@@ -7,9 +7,10 @@ import { de } from "./de";
 import { ja } from "./ja";
 import { it } from "./it";
 import { ar } from "./ar";
+import { pt } from "./pt";
 import type { Dictionary } from "./en";
 
-const dictionaries: Record<Locale, Dictionary> = { en, es, fr, hi, de, ja, it, ar };
+const dictionaries: Record<Locale, Dictionary> = { en, es, fr, hi, de, ja, it, ar, pt };
 
 export function useTranslations(lang: Locale): Dictionary {
 	return dictionaries[lang] ?? en;

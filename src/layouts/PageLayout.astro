@@ -47,7 +47,7 @@ const t = useTranslations(lang);
 	breadcrumbParent={breadcrumbParent}
 	singleLocale={singleLocale}
 >
-	<Nav lang={lang} path={path} />
+	<Nav lang={lang} path={path} singleLocale={singleLocale} />
 	<slot />
 	<Footer lang={lang} />
 	<HelpDialog title={helpTitle ?? t.help.title} steps={helpSteps ?? t.help.steps} done={t.help.done} close={t.help.close} />

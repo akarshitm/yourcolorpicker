@@ -7,7 +7,7 @@ export default defineConfig({
 	site: 'https://www.yourcolorpicker.com',
 	i18n: {
 		defaultLocale: 'en',
-		locales: ['en', 'es', 'fr', 'hi', 'de', 'ja', 'it', 'ar'],
+		locales: ['en', 'es', 'fr', 'hi', 'de', 'ja', 'it', 'ar', 'pt'],
 		routing: {
 			prefixDefaultLocale: false,
 		},

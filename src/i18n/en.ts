@@ -12,6 +12,7 @@ export const en = {
 		openMenu: "Open menu",
 		uploadImage: "Upload image",
 		language: "Language",
+		games: "Games",
 	},
 	footer: {
 		privacyHeading: "Privacy",
@@ -28,9 +29,9 @@ export const en = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Your Color Picker — Color Finder From Any Photo",
+		metaTitle: "Color Picker From Image — Free HEX & RGB Finder | Your Color Picker",
 		metaDescription:
-			"Free color picker and color finder from image — instant HEX, RGB, and HSL codes, plus a complementary color finder and random color picker.",
+			"Pick any color from an image online. Upload a photo or screenshot and get the exact HEX, RGB, and HSL code instantly — free, no signup, nothing uploaded.",
 		eyebrow: "Free color picker · No signup · Nothing ever uploaded",
 		heading: "The color picker that finds any color in a photo",
 		subhead:
@@ -403,6 +404,171 @@ export const en = {
 			},
 		],
 	},
+	games: {
+		hub: {
+			title: "Free Color Games — Test Your Color Vision | Your Color Picker",
+			description: "Play free color games: Color Runner, an odd-color-out vision test, and a color memory challenge. No signup, right in your browser.",
+			eyebrow: "Games",
+			heading: "Color games",
+			intro: "Quick, free games that train your eye for color. Beat your best and come back daily for a new Color Memory round.",
+			play: "Play",
+			newBadge: "New",
+			dailyBadge: "Daily"
+		},
+		banner: {
+			heading: "Play free color games",
+			body: "Color Runner, an odd-color-out vision test, and color memory — how sharp is your eye?",
+			cta: "Play now"
+		},
+		common: {
+			share: "Share result",
+			copied: "Copied — paste it anywhere!",
+			playAgain: "Play again",
+			start: "Start",
+			best: "Best",
+			moreGames: "More color games",
+			allGames: "All games"
+		},
+		odd: {
+			title: "Odd Color Out — Free Color Vision Test Game | Your Color Picker",
+			description: "Find the one tile with a slightly different shade. Every level the grid grows and the difference shrinks — how far can your color vision go?",
+			eyebrow: "Game",
+			heading: "Odd Color Out",
+			intro: "Tap the tile that doesn't match. Every level the grid grows and the difference gets smaller — you have three lives.",
+			cardBody: "Spot the one tile with a slightly different shade. Levels get harder until only the sharpest eyes survive.",
+			level: "Level",
+			lives: "Lives",
+			tileLabel: "Tile {n}",
+			gameOver: "Game over — you reached level {n}.",
+			rankLabel: "Your eye: {rank}",
+			ranks: [
+				"Getting started",
+				"Good eye",
+				"Sharp eye",
+				"Eagle eye",
+				"Color hawk",
+				"Superhuman"
+			],
+			bestLevel: "Best: level {n}",
+			help: {
+				title: "How to play Odd Color Out",
+				steps: [
+					{
+						title: "Find the odd tile",
+						body: "One tile is a slightly different shade from the rest. Tap it to move to the next level."
+					},
+					{
+						title: "It gets harder",
+						body: "Each level adds more tiles and makes the difference smaller."
+					},
+					{
+						title: "Three lives",
+						body: "A wrong tap costs a life and shows you where the odd tile was. Lose all three and the game ends."
+					}
+				]
+			},
+			explainerHeading: "What this game measures",
+			explainerBody: "The odd tile differs only in lightness, which almost everyone can see — including people with color vision deficiencies. Higher levels test how small a difference your eyes can pick out. Screen brightness, glare, and display quality all affect results, so treat it as a fun challenge, not a medical eye test."
+		},
+		runner: {
+			title: "Color Runner — Free Pixel Color Running Game | Your Color Picker",
+			description: "Run on the right color! A free pixel-art endless runner: switch between three colored lanes, stay on the color shown on screen, and grab golden buckets for 10 seconds of safety.",
+			eyebrow: "Arcade game",
+			heading: "Color Runner",
+			intro: "Run, switch lanes, and always stay on the color written at the top. The lanes keep changing and the pace keeps rising — grab a golden bucket for 10 seconds of safety.",
+			cardBody: "A pixel endless runner: stay on the lane of the color shown and grab golden buckets for 10 seconds of gold. How far can you run?",
+			runOn: "Run on",
+			next: "Next",
+			goldActive: "Golden!",
+			distance: "{n} m",
+			best: "Best: {n} m",
+			newBest: "New best! 🎉",
+			controls: "← → switch lanes · ↑ or Space to jump · on phones, swipe",
+			overColor: "You left the {color} path!",
+			final: "You ran {n} m",
+			left: "Move left",
+			right: "Move right",
+			jump: "Jump",
+			resume: "Resume",
+			sound: "Sound",
+			colors: {
+				red: "Red",
+				blue: "Blue",
+				yellow: "Yellow",
+				green: "Green",
+				pink: "Pink",
+				orange: "Orange",
+				purple: "Purple"
+			},
+			help: {
+				title: "How to play Color Runner",
+				steps: [
+					{
+						title: "Follow the color",
+						body: "The color at the top tells you which lane to run on. Step off it for more than a moment and the run ends."
+					},
+					{
+						title: "Watch for changes",
+						body: "Lane colors shuffle as you run, and a flashing NEXT warning appears before the target color changes. Move early."
+					},
+					{
+						title: "Grab the gold, jump the seams",
+						body: "Golden buckets appear right on your path — grab one and your runner turns golden for 10 seconds, when you can't be knocked out. Press ↑ or Space (or swipe up) to jump over a short wrong-colored stretch while you switch lanes."
+					}
+				]
+			},
+			explainerHeading: "Why color switching is hard",
+			explainerBody: "Reading a color word and matching it to a color takes real mental effort, especially when the colors around it keep changing — a cousin of the famous Stroop effect. Speed makes it harder: your brain has less time to check the word against the lanes, so the game trains fast, accurate color recognition."
+		},
+		memory: {
+			title: "Color Memory Game — Recreate the Color From Memory | Your Color Picker",
+			description: "See a color for 3 seconds, then recreate it from memory with hue, saturation, and lightness sliders. Five rounds, scored out of 100.",
+			eyebrow: "Game",
+			heading: "Color Memory",
+			intro: "Study a color for three seconds, then rebuild it from memory with hue, saturation, and lightness sliders. Five rounds, scored out of 100.",
+			cardBody: "See a color for 3 seconds, then recreate it from memory. Five rounds — can you score 90+?",
+			dailyMode: "Daily",
+			practiceMode: "Practice",
+			dailyDone: "You've played today's daily round — try Practice mode, or come back tomorrow.",
+			round: "Round {n}/5",
+			memorize: "Memorize this color",
+			recreate: "Now recreate it",
+			hue: "Hue",
+			saturation: "Saturation",
+			lightness: "Lightness",
+			submit: "Submit",
+			next: "Next round",
+			target: "Target",
+			yours: "Yours",
+			roundScore: "{score} / 100",
+			final: "Final score: {score} / 100",
+			bestScore: "Best: {score}",
+			help: {
+				title: "How to play Color Memory",
+				steps: [
+					{
+						title: "Memorize",
+						body: "A color fills the panel for three seconds. Take it in."
+					},
+					{
+						title: "Recreate",
+						body: "Use the hue, saturation, and lightness sliders to rebuild it from memory, then press Submit."
+					},
+					{
+						title: "Score",
+						body: "Each round is scored out of 100 by how close your color looks to the original. Daily mode gives everyone the same five colors."
+					}
+				]
+			},
+			explainerHeading: "Why color memory is hard",
+			explainerBody: "People remember colors as categories — \"blue\", \"teal\" — more than exact values, so memories drift toward the typical version of each color. Scores here use the CIELAB color space, which measures difference the way eyes perceive it, so a hue mistake costs more than a tiny lightness slip."
+		}
+	},
+	moreTools: {
+		heading: "Try more free color tools",
+		body: "Converter, gradient maker, contrast checker, palette generator and more — free, fast, and 100% private.",
+		cta: "Explore all tools",
+	},
 	relatedTools: {
 		heading: "Related tools",
 	},
@@ -679,6 +845,16 @@ export const en = {
 				a: "No. The image is decoded and read entirely in your browser using the Canvas API — it never leaves your device.",
 			},
 		],
+	},
+	blog: {
+		title: "Blog | Your Color Picker",
+		description: "Guides on color theory, HEX/RGB/HSL, accessibility, and design — plus the tools to put them to use.",
+		eyebrow: "Blog",
+		heading: "Color, explained",
+		intro: "Guides on color theory, accessibility, and design — with the tools to put them to use.",
+		postTitleSuffix: "Your Color Picker Blog",
+		readyToTry: "Ready to try it yourself?",
+		back: "← Back to the blog",
 	},
 	notFound: {
 		title: "Page Not Found — Your Color Picker",
