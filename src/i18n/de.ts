@@ -852,6 +852,16 @@ export const de: Dictionary = {
 			},
 		],
 	},
+	blog: {
+		title: "Farb-Blog — Farbenlehre und Design | Your Color Picker",
+		description: "Leitfäden zu Farbenlehre, HEX/RGB/HSL, Barrierefreiheit und Design – mit kostenlosen Tools, um sie direkt anzuwenden.",
+		eyebrow: "Blog",
+		heading: "Farbe, erklärt",
+		intro: "Leitfäden zu Farbenlehre, Barrierefreiheit und Design – mit den passenden Tools zum Ausprobieren.",
+		postTitleSuffix: "Your Color Picker Blog",
+		readyToTry: "Bereit, es selbst auszuprobieren?",
+		back: "← Zurück zum Blog",
+	},
 	notFound: {
 		title: "Seite nicht gefunden — Your Color Picker",
 		description: "Die gesuchte Seite existiert nicht. Kehre zu Your Color Picker zurück, um HEX-, RGB- und HSL-Farben aus jedem Bild zu finden.",

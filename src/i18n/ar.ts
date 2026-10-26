@@ -843,6 +843,16 @@ export const ar: Dictionary = {
 			},
 		],
 	},
+	blog: {
+		title: "مدونة الألوان — نظرية الألوان والتصميم | Your Color Picker",
+		description: "أدلة عن نظرية الألوان وأكواد HEX وRGB وHSL وإمكانية الوصول والتصميم، مع أدوات مجانية لتطبيقها فورًا.",
+		eyebrow: "المدونة",
+		heading: "الألوان ببساطة",
+		intro: "أدلة عن نظرية الألوان وإمكانية الوصول والتصميم، مع الأدوات اللازمة لتطبيقها.",
+		postTitleSuffix: "مدونة Your Color Picker",
+		readyToTry: "هل أنت مستعد لتجربته بنفسك؟",
+		back: "→ العودة إلى المدونة",
+	},
 	notFound: {
 		title: "الصفحة غير موجودة — Your Color Picker",
 		description: "الصفحة التي تبحث عنها غير موجودة. عد إلى Your Color Picker للعثور على ألوان HEX وRGB وHSL من أي صورة.",

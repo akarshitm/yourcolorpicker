@@ -1,0 +1,18 @@
+---
+import BlogPostView from "../../../components/views/BlogPostView.astro";
+import { locales, defaultLocale } from "../../../i18n/config";
+import { getPosts, type LocalizedPost } from "../../../i18n/blog";
+
+export async function getStaticPaths() {
+	const langs = locales.filter((l) => l !== defaultLocale);
+	const perLang = await Promise.all(
+		langs.map(async (lang) => (await getPosts(lang)).map((post) => ({ params: { lang, slug: post.slug }, props: { post } }))),
+	);
+	return perLang.flat();
+}
+
+const { lang } = Astro.params as { lang: Exclude<(typeof locales)[number], typeof defaultLocale> };
+const { post } = Astro.props as { post: LocalizedPost };
+---
+
+<BlogPostView lang={lang} post={post} />

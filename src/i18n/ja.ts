@@ -813,6 +813,16 @@ export const ja: Dictionary = {
 			},
 		],
 	},
+	blog: {
+		title: "カラーブログ — 色彩理論とデザインの解説 | Your Color Picker",
+		description: "色彩理論、HEX/RGB/HSL、アクセシビリティ、デザインをわかりやすく解説。すぐに試せる無料ツール付き。",
+		eyebrow: "ブログ",
+		heading: "色をわかりやすく",
+		intro: "色彩理論・アクセシビリティ・デザインのガイドと、すぐに使えるツール。",
+		postTitleSuffix: "Your Color Picker ブログ",
+		readyToTry: "実際に試してみませんか？",
+		back: "← ブログに戻る",
+	},
 	notFound: {
 		title: "ページが見つかりません — Your Color Picker",
 		description: "お探しのページは存在しません。Your Color Pickerに戻って、どんな画像からでもHEX・RGB・HSLの色を見つけましょう。",

@@ -855,6 +855,16 @@ export const pt: Dictionary = {
 			},
 		],
 	},
+	blog: {
+		title: "Blog de Cores — Teoria das Cores e Design | Your Color Picker",
+		description: "Guias sobre teoria das cores, HEX/RGB/HSL, acessibilidade e design, com ferramentas grátis para colocar tudo em prática.",
+		eyebrow: "Blog",
+		heading: "Cores, explicadas",
+		intro: "Guias sobre teoria das cores, acessibilidade e design, com as ferramentas para colocar em prática.",
+		postTitleSuffix: "Blog do Your Color Picker",
+		readyToTry: "Pronto para testar você mesmo?",
+		back: "← Voltar ao blog",
+	},
 	notFound: {
 		title: "Página Não Encontrada — Your Color Picker",
 		description: "A página que você procura não existe. Volte ao Your Color Picker para descobrir cores HEX, RGB e HSL em qualquer imagem.",

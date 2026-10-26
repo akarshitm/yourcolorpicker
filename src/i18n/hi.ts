@@ -816,6 +816,16 @@ export const hi: Dictionary = {
 			},
 		],
 	},
+	blog: {
+		title: "रंग ब्लॉग — कलर थ्योरी और डिज़ाइन गाइड | Your Color Picker",
+		description: "कलर थ्योरी, HEX/RGB/HSL, एक्सेसिबिलिटी और डिज़ाइन पर आसान गाइड — साथ में इन्हें आज़माने के लिए मुफ़्त टूल।",
+		eyebrow: "ब्लॉग",
+		heading: "रंग, आसान भाषा में",
+		intro: "कलर थ्योरी, एक्सेसिबिलिटी और डिज़ाइन पर गाइड — साथ में इन्हें इस्तेमाल करने के टूल।",
+		postTitleSuffix: "Your Color Picker ब्लॉग",
+		readyToTry: "ख़ुद आज़माने के लिए तैयार हैं?",
+		back: "← ब्लॉग पर वापस जाएँ",
+	},
 	notFound: {
 		title: "पेज नहीं मिला — Your Color Picker",
 		description: "आप जो पेज ढूँढ रहे हैं वह मौजूद नहीं है। किसी भी इमेज से HEX, RGB और HSL रंग ढूँढने के लिए Your Color Picker पर वापस जाएँ।",

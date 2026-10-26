@@ -846,6 +846,16 @@ export const en = {
 			},
 		],
 	},
+	blog: {
+		title: "Blog | Your Color Picker",
+		description: "Guides on color theory, HEX/RGB/HSL, accessibility, and design — plus the tools to put them to use.",
+		eyebrow: "Blog",
+		heading: "Color, explained",
+		intro: "Guides on color theory, accessibility, and design — with the tools to put them to use.",
+		postTitleSuffix: "Your Color Picker Blog",
+		readyToTry: "Ready to try it yourself?",
+		back: "← Back to the blog",
+	},
 	notFound: {
 		title: "Page Not Found — Your Color Picker",
 		description: "The page you're looking for doesn't exist. Head back to Your Color Picker to find HEX, RGB, and HSL colors from any image.",
