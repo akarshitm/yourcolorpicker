@@ -1,6 +1,6 @@
 export const defaultLocale = "en";
 
-export const locales = ["en", "es", "fr", "hi", "de", "ja", "it", "ar"] as const;
+export const locales = ["en", "es", "fr", "hi", "de", "ja", "it", "ar", "pt"] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -13,6 +13,7 @@ export const localeNames: Record<Locale, string> = {
 	ja: "日本語",
 	it: "Italiano",
 	ar: "العربية",
+	pt: "Português",
 };
 
 // BCP 47 tags for <html lang>, hreflang, and og:locale.
@@ -25,6 +26,7 @@ export const localeTags: Record<Locale, string> = {
 	ja: "ja",
 	it: "it",
 	ar: "ar",
+	pt: "pt",
 };
 
 // Text direction — only Arabic reads right-to-left on this site.
@@ -37,4 +39,5 @@ export const localeDirs: Record<Locale, "ltr" | "rtl"> = {
 	ja: "ltr",
 	it: "ltr",
 	ar: "rtl",
+	pt: "ltr",
 };
