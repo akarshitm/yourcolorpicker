@@ -5,8 +5,11 @@ import {
 	formatHsl,
 	formatRgb,
 	hexToRgb,
+	hsvToRgb,
 	rgbToHex,
 	rgbToHsl,
+	rgbToHsv,
+	type HSV,
 	type RGB,
 } from "./colorMath";
 import { downsampleForQuantization, quantize, type PaletteSwatch } from "./quantize";
@@ -96,6 +99,10 @@ let rawImageData: ImageData | null = null;
 let currentPaletteHex: string[] = [];
 let cursor = { x: 0, y: 0 };
 let hasCursor = false;
+/** Whatever the readout currently shows — an image pixel, a spectrum pick, a screen pick, or a random color. */
+let currentRgb: RGB | null = null;
+/** Spectrum picker state, kept apart from currentRgb so the hue survives dragging into grays and black. */
+let spectrum: HSV = { h: 210, s: 75, v: 90 };
 
 // ---------------------------------------------------------------------------
 // Elements
@@ -124,6 +131,10 @@ const readoutRgb = el<HTMLParagraphElement>("readout-rgb");
 const readoutHsl = el<HTMLParagraphElement>("readout-hsl");
 const pinColorBtn = el<HTMLButtonElement>("pin-color-btn");
 const randomColorBtn = el<HTMLButtonElement>("random-color-btn");
+const spectrumSv = el<HTMLDivElement>("spectrum-sv");
+const spectrumThumb = el<HTMLDivElement>("spectrum-thumb");
+const spectrumHue = el<HTMLInputElement>("spectrum-hue");
+const spectrumHexInput = el<HTMLInputElement>("spectrum-hex-input");
 const savedColorsEl = el<HTMLDivElement>("saved-colors");
 
 const paletteCountInput = el<HTMLInputElement>("palette-count");
@@ -377,9 +388,19 @@ function pixelAt(x: number, y: number): RGB | null {
 	return { r: rawImageData.data[i], g: rawImageData.data[i + 1], b: rawImageData.data[i + 2] };
 }
 
-function updateReadout(rgb: RGB) {
+/** Pass fromSpectrum when the spectrum itself produced the color, so its position isn't re-derived (and jittered) from rounded RGB. */
+function updateReadout(rgb: RGB, fromSpectrum = false) {
 	const hex = rgbToHex(rgb);
 	const hsl = rgbToHsl(rgb);
+	currentRgb = rgb;
+	if (!fromSpectrum) {
+		const hsv = rgbToHsv(rgb);
+		// Grays and black have no hue of their own — leave the hue slider where it was.
+		if (hsv.s === 0 || hsv.v === 0) hsv.h = spectrum.h;
+		spectrum = hsv;
+	}
+	renderSpectrum();
+	if (document.activeElement !== spectrumHexInput) spectrumHexInput.value = hex;
 	readoutHex.textContent = hex;
 	readoutRgb.textContent = formatRgb(rgb);
 	readoutHsl.textContent = formatHsl(hsl);
@@ -493,9 +514,8 @@ function saveColor(hex: string) {
 }
 
 function pinCurrentColor() {
-	const rgb = pixelAt(cursor.x, cursor.y);
-	if (!rgb) return;
-	saveColor(rgbToHex(rgb));
+	if (!currentRgb) return;
+	saveColor(rgbToHex(currentRgb));
 }
 
 imageCanvas.addEventListener("mousemove", (e) => {
@@ -602,6 +622,80 @@ randomColorBtn.addEventListener("click", () => {
 	hideMagnifier();
 	updateReadout(rgb);
 });
+
+// ---------------------------------------------------------------------------
+// Spectrum picker — saturation/brightness square, hue slider, and HEX input
+// ---------------------------------------------------------------------------
+function renderSpectrum() {
+	const hex = rgbToHex(hsvToRgb(spectrum));
+	spectrumSv.style.setProperty("--hue", `hsl(${spectrum.h} 100% 50%)`);
+	spectrumThumb.style.left = `${spectrum.s}%`;
+	spectrumThumb.style.top = `${100 - spectrum.v}%`;
+	spectrumThumb.style.background = hex;
+	spectrumHue.value = String(spectrum.h);
+	spectrumSv.setAttribute("aria-valuenow", String(spectrum.s));
+	spectrumSv.setAttribute("aria-valuetext", `${hex}, saturation ${spectrum.s}%, brightness ${spectrum.v}%`);
+}
+
+function applySpectrum() {
+	hasCursor = false; // spectrum colors aren't tied to an image pixel
+	clearOverlay();
+	hideMagnifier();
+	updateReadout(hsvToRgb(spectrum), true);
+}
+
+function setSvFromPointer(e: PointerEvent) {
+	const rect = spectrumSv.getBoundingClientRect();
+	spectrum = {
+		h: spectrum.h,
+		s: Math.round(clamp((e.clientX - rect.left) / rect.width, 0, 1) * 100),
+		v: Math.round((1 - clamp((e.clientY - rect.top) / rect.height, 0, 1)) * 100),
+	};
+	applySpectrum();
+}
+
+spectrumSv.addEventListener("pointerdown", (e) => {
+	spectrumSv.setPointerCapture(e.pointerId);
+	spectrumSv.focus();
+	setSvFromPointer(e);
+});
+spectrumSv.addEventListener("pointermove", (e) => {
+	if (spectrumSv.hasPointerCapture(e.pointerId)) setSvFromPointer(e);
+});
+spectrumSv.addEventListener("keydown", (e) => {
+	const step = e.shiftKey ? 10 : 1;
+	const deltas: Record<string, [number, number]> = {
+		ArrowLeft: [-step, 0],
+		ArrowRight: [step, 0],
+		ArrowUp: [0, step],
+		ArrowDown: [0, -step],
+	};
+	const d = deltas[e.key];
+	if (!d) return;
+	e.preventDefault();
+	spectrum = { h: spectrum.h, s: clamp(spectrum.s + d[0], 0, 100), v: clamp(spectrum.v + d[1], 0, 100) };
+	applySpectrum();
+});
+spectrumHue.addEventListener("input", () => {
+	spectrum = { ...spectrum, h: Number(spectrumHue.value) };
+	applySpectrum();
+});
+spectrumHexInput.addEventListener("input", () => {
+	const rgb = hexToRgb(spectrumHexInput.value);
+	if (!rgb) return;
+	hasCursor = false;
+	clearOverlay();
+	hideMagnifier();
+	updateReadout(rgb);
+});
+spectrumHexInput.addEventListener("blur", () => {
+	// Snap back to the canonical form of the current color (or clear a half-typed code).
+	spectrumHexInput.value = currentRgb ? rgbToHex(currentRgb) : "";
+});
+spectrumHexInput.addEventListener("keydown", (e) => {
+	if (e.key === "Enter") spectrumHexInput.blur();
+});
+renderSpectrum();
 
 // ---------------------------------------------------------------------------
 // Color options menu — opens at the clicked/focused pixel with quick actions

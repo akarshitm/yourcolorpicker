@@ -31,11 +31,11 @@ export const fr: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Color Picker — Choisir une couleur à partir d'une image (HEX, RGB)",
+		metaTitle: "Color Picker en ligne — Code HEX/RGB du spectre ou d'une image",
 		metaDescription:
-			"Choisissez une couleur à partir d'une image en ligne : importez une photo ou une capture d'écran et obtenez le code HEX, RGB et HSL exact — gratuit, sans inscription, rien n'est envoyé.",
+			"Sélecteur de couleur en ligne gratuit : parcourez le spectre ou choisissez une couleur dans une image, puis copiez le code HEX, RGB et HSL exact. Sans inscription, rien n'est envoyé.",
 		eyebrow: "Sélecteur de couleur gratuit · Sans inscription · Rien n'est jamais téléversé",
-		heading: "Le sélecteur de couleur qui trouve n'importe quelle couleur dans une photo",
+		heading: "Sélecteur de couleur en ligne gratuit : choisissez dans le spectre ou dans une image",
 		subhead:
 			"Un détecteur de couleur à partir d'une image qui obtient chaque code HEX, RGB et HSL avec une précision au pixel près — plus un détecteur de couleur complémentaire intégré et un sélecteur de couleur aléatoire pour quand vous avez juste besoin d'un point de départ.",
 		ctaPrimary: "Importer une image",
@@ -114,10 +114,10 @@ export const fr: Dictionary = {
 		],
 	},
 	tool: {
-		eyebrow: "Sélecteur de couleur à partir d'une image",
-		heading: "Importez une image, obtenez toutes ses couleurs",
+		eyebrow: "Sélecteur de couleur en ligne",
+		heading: "Choisissez une couleur dans le spectre ou dans une image",
 		intro:
-			"Ce sélecteur de couleur d'image fait aussi office de détecteur de couleur à partir d'une image pour les codes HEX, RGB et HSL. Passez le curseur sur la photo d'exemple ci-dessous pour l'essayer, puis importez la vôtre — rien n'est téléversé où que ce soit, tout est lu et analysé entièrement dans votre navigateur.",
+			"Faites glisser le curseur sur le spectre, saisissez un code HEX ou passez sur la photo d'exemple ci-dessous — puis importez votre propre image pour y prélever des couleurs. Chaque couleur vous donne ses codes HEX, RGB et HSL, et rien n'est téléversé : les images sont lues et analysées entièrement dans votre navigateur.",
 		uploadButton: "Importer une image",
 		pickFromScreen: "Choisir depuis l'écran",
 		captureScreenshot: "Capturer l'écran",
@@ -134,6 +134,9 @@ export const fr: Dictionary = {
 		colorB: "Couleur B",
 		contrastPlaceholder: "Choisissez deux couleurs de l'image (via son menu d'options) ou collez des codes hexadécimaux pour les comparer.",
 		pickerHeading: "Sélecteur de couleur",
+		spectrumAriaLabel: "Saturation et luminosité — faites glisser ou utilisez les flèches du clavier",
+		hueAriaLabel: "Teinte",
+		hexInputAriaLabel: "Saisissez un code couleur HEX",
 		randomColor: "Couleur aléatoire",
 		hex: "HEX",
 		rgb: "RGB",

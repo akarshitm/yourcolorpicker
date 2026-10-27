@@ -29,11 +29,11 @@ export const en = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Color Picker From Image — Free HEX & RGB Finder | Your Color Picker",
+		metaTitle: "Color Picker Online — Pick HEX & RGB from Spectrum or Image",
 		metaDescription:
-			"Pick any color from an image online. Upload a photo or screenshot and get the exact HEX, RGB, and HSL code instantly — free, no signup, nothing uploaded.",
+			"Free online color picker: drag across the spectrum or pick any color from an image, then copy the exact HEX, RGB, and HSL code. No signup, nothing uploaded.",
 		eyebrow: "Free color picker · No signup · Nothing ever uploaded",
-		heading: "The color picker that finds any color in a photo",
+		heading: "Free online color picker — pick from the spectrum or any image",
 		subhead:
 			"A color finder from image that gets every HEX, RGB, and HSL code with pixel precision — plus a built-in complementary color finder and a random color picker for whenever you just need a color to start from.",
 		ctaPrimary: "Upload an image",
@@ -108,10 +108,10 @@ export const en = {
 		],
 	},
 	tool: {
-		eyebrow: "Color picker from image",
-		heading: "Upload an image, get every color in it",
+		eyebrow: "Online color picker",
+		heading: "Pick a color from the spectrum or an image",
 		intro:
-			"This image color picker doubles as a color finder from image for HEX, RGB, and HSL codes. Move over the sample photo below to try it, then upload your own — nothing is uploaded anywhere, it's read and analyzed entirely in your browser.",
+			"Drag across the color spectrum, type a HEX code, or move over the sample photo below — then upload your own image to pick colors from it. Every pick gives you HEX, RGB, and HSL codes, and nothing is uploaded anywhere: images are read and analyzed entirely in your browser.",
 		uploadButton: "Upload image",
 		pickFromScreen: "Pick from screen",
 		captureScreenshot: "Capture screenshot",
@@ -128,6 +128,9 @@ export const en = {
 		colorB: "Color B",
 		contrastPlaceholder: "Pick two colors from the image (via its options menu) or paste hex codes to compare.",
 		pickerHeading: "Color picker",
+		spectrumAriaLabel: "Saturation and brightness — drag or use the arrow keys",
+		hueAriaLabel: "Hue",
+		hexInputAriaLabel: "Type a HEX color code",
 		randomColor: "Random color",
 		hex: "HEX",
 		rgb: "RGB",

@@ -31,11 +31,11 @@ export const de: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Color Picker — Farbe aus Bild bestimmen (HEX, RGB) | Your Color Picker",
+		metaTitle: "Color Picker online — HEX & RGB aus Farbspektrum oder Bild",
 		metaDescription:
-			"Farbe aus einem Bild online bestimmen: Foto oder Screenshot laden und sofort den exakten HEX-, RGB- und HSL-Code erhalten — kostenlos, ohne Anmeldung, nichts wird hochgeladen.",
+			"Kostenloser Online-Color-Picker: über das Farbspektrum ziehen oder jede Farbe aus einem Bild wählen und den exakten HEX-, RGB- und HSL-Code kopieren. Ohne Anmeldung, nichts wird hochgeladen.",
 		eyebrow: "Kostenloser Color Picker · Keine Anmeldung · Nichts wird je hochgeladen",
-		heading: "Der Color Picker, der jede Farbe in einem Foto findet",
+		heading: "Kostenloser Online-Color-Picker — Farbe aus dem Spektrum oder jedem Bild wählen",
 		subhead:
 			"Ein Farbfinder aus einem Bild, der jeden HEX-, RGB- und HSL-Code pixelgenau ermittelt — plus ein integrierter Komplementärfarben-Finder und ein Zufallsfarben-Generator für den Fall, dass du einfach nur einen Ausgangspunkt brauchst.",
 		ctaPrimary: "Bild hochladen",
@@ -114,10 +114,10 @@ export const de: Dictionary = {
 		],
 	},
 	tool: {
-		eyebrow: "Color Picker aus einem Bild",
-		heading: "Bild hochladen, jede Farbe darin erhalten",
+		eyebrow: "Online-Color-Picker",
+		heading: "Farbe aus dem Spektrum oder einem Bild wählen",
 		intro:
-			"Dieser Bild-Farbwähler dient gleichzeitig als Farbfinder aus einem Bild für HEX-, RGB- und HSL-Codes. Bewege den Mauszeiger über das Beispielfoto unten, um es auszuprobieren, und lade dann dein eigenes hoch — nichts wird irgendwohin hochgeladen, alles wird vollständig in deinem Browser gelesen und analysiert.",
+			"Ziehe über das Farbspektrum, tippe einen HEX-Code ein oder bewege den Mauszeiger über das Beispielfoto unten — und lade dann dein eigenes Bild hoch, um Farben daraus zu wählen. Jede Farbe liefert HEX-, RGB- und HSL-Codes, und nichts wird irgendwohin hochgeladen: Bilder werden vollständig in deinem Browser gelesen und analysiert.",
 		uploadButton: "Bild hochladen",
 		pickFromScreen: "Vom Bildschirm auswählen",
 		captureScreenshot: "Bildschirm erfassen",
@@ -134,6 +134,9 @@ export const de: Dictionary = {
 		colorB: "Farbe B",
 		contrastPlaceholder: "Wähle zwei Farben aus dem Bild (über dessen Optionsmenü) oder füge Hex-Codes zum Vergleichen ein.",
 		pickerHeading: "Color Picker",
+		spectrumAriaLabel: "Sättigung und Helligkeit — ziehen oder Pfeiltasten verwenden",
+		hueAriaLabel: "Farbton",
+		hexInputAriaLabel: "HEX-Farbcode eingeben",
 		randomColor: "Zufallsfarbe",
 		hex: "HEX",
 		rgb: "RGB",

@@ -31,10 +31,10 @@ export const ja: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "カラーピッカー — 画像から色を抽出（HEX・RGB）| Your Color Picker",
-		metaDescription: "画像から色をオンラインで抽出。写真やスクリーンショットを読み込むだけで、正確なHEX・RGB・HSLコードをすぐに取得。無料・登録不要・アップロードなし。",
+		metaTitle: "カラーピッカー（オンライン）— スペクトルや画像からHEX・RGBを取得",
+		metaDescription: "無料のオンラインカラーピッカー。スペクトルをドラッグするか画像から色を選んで、正確なHEX・RGB・HSLコードをコピー。登録不要・アップロードなし。",
 		eyebrow: "無料のカラーピッカー・登録不要・アップロード一切なし",
-		heading: "写真の中のどんな色でも見つけられるカラーピッカー",
+		heading: "無料オンラインカラーピッカー — スペクトルや画像から色を選択",
 		subhead:
 			"画像から色を探せるカラーファインダーで、HEX・RGB・HSLコードをピクセル単位の精度で取得。補色を見つける機能や、迷ったときのランダムカラー生成機能も内蔵しています。",
 		ctaPrimary: "画像をアップロード",
@@ -109,10 +109,10 @@ export const ja: Dictionary = {
 		],
 	},
 	tool: {
-		eyebrow: "画像から色を選べるカラーピッカー",
-		heading: "画像をアップロードして、すべての色を取得",
+		eyebrow: "オンラインカラーピッカー",
+		heading: "スペクトルや画像から色を選ぶ",
 		intro:
-			"このイメージカラーピッカーは、HEX・RGB・HSLコードを取得できる画像カラーファインダーでもあります。下のサンプル写真にカーソルを合わせて試してから、ご自身の画像をアップロードしてください — どこにもアップロードされず、すべてブラウザ内だけで読み取り・解析されます。",
+			"カラースペクトルをドラッグするか、HEXコードを入力するか、下のサンプル写真にカーソルを合わせてください。ご自身の画像をアップロードすれば、そこから色を選ぶこともできます。どの色もHEX・RGB・HSLコードで表示され、画像はどこにもアップロードされず、すべてブラウザ内だけで読み取り・解析されます。",
 		uploadButton: "画像をアップロード",
 		pickFromScreen: "画面から選択",
 		captureScreenshot: "画面をキャプチャ",
@@ -129,6 +129,9 @@ export const ja: Dictionary = {
 		colorB: "色B",
 		contrastPlaceholder: "画像のオプションメニューから2色を選ぶか、HEXコードを貼り付けて比較してください。",
 		pickerHeading: "カラーピッカー",
+		spectrumAriaLabel: "彩度と明度 — ドラッグまたは矢印キーで調整",
+		hueAriaLabel: "色相",
+		hexInputAriaLabel: "HEXカラーコードを入力",
 		randomColor: "ランダムカラー",
 		hex: "HEX",
 		rgb: "RGB",
