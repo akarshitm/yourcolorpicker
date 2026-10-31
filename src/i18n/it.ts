@@ -31,11 +31,11 @@ export const it: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Color Picker — Trova il colore da un'immagine (HEX, RGB)",
+		metaTitle: "Color Picker online — Codice HEX e RGB da spettro o immagine",
 		metaDescription:
-			"Trova il colore di un'immagine online: carica una foto o uno screenshot e ottieni subito il codice HEX, RGB e HSL esatto — gratis, senza registrazione, nulla viene caricato.",
+			"Color picker online gratuito: trascina sullo spettro o scegli qualsiasi colore da un'immagine e copia il codice HEX, RGB e HSL esatto. Senza registrazione, nulla viene caricato.",
 		eyebrow: "Selettore di colore gratuito · Nessuna registrazione · Niente viene mai caricato",
-		heading: "Il selettore di colore che trova qualsiasi colore in una foto",
+		heading: "Selettore di colore online gratuito: scegli dallo spettro o da qualsiasi immagine",
 		subhead:
 			"Un cerca-colore da immagine che ottiene ogni codice HEX, RGB e HSL con precisione a livello di pixel — più un cerca-colore complementare integrato e un generatore di colori casuali per quando ti serve solo un punto di partenza.",
 		ctaPrimary: "Carica un'immagine",
@@ -114,10 +114,10 @@ export const it: Dictionary = {
 		],
 	},
 	tool: {
-		eyebrow: "Selettore di colore da immagine",
-		heading: "Carica un'immagine, ottieni ogni colore che contiene",
+		eyebrow: "Selettore di colore online",
+		heading: "Scegli un colore dallo spettro o da un'immagine",
 		intro:
-			"Questo selettore di colore da immagine funge anche da cerca-colore da immagine per codici HEX, RGB e HSL. Passa il cursore sulla foto di esempio qui sotto per provarlo, poi carica la tua — niente viene caricato da nessuna parte, viene letto e analizzato interamente nel tuo browser.",
+			"Trascina sullo spettro dei colori, digita un codice HEX o passa il cursore sulla foto di esempio qui sotto — poi carica la tua immagine per prelevarne i colori. Ogni colore ti dà i codici HEX, RGB e HSL, e niente viene caricato da nessuna parte: le immagini vengono lette e analizzate interamente nel tuo browser.",
 		uploadButton: "Carica immagine",
 		pickFromScreen: "Preleva dallo schermo",
 		captureScreenshot: "Cattura schermata",
@@ -134,6 +134,9 @@ export const it: Dictionary = {
 		colorB: "Colore B",
 		contrastPlaceholder: "Scegli due colori dall'immagine (tramite il suo menu opzioni) o incolla codici hex per confrontarli.",
 		pickerHeading: "Selettore di colore",
+		spectrumAriaLabel: "Saturazione e luminosità — trascina o usa i tasti freccia",
+		hueAriaLabel: "Tonalità",
+		hexInputAriaLabel: "Digita un codice colore HEX",
 		randomColor: "Colore casuale",
 		hex: "HEX",
 		rgb: "RGB",

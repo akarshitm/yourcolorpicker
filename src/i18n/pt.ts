@@ -34,11 +34,11 @@ export const pt: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Seletor de Cores de Imagem Online — Código HEX e RGB | Your Color Picker",
+		metaTitle: "Seletor de Cores Online — Código HEX e RGB do Espectro ou Imagem",
 		metaDescription:
-			"Pegue a cor de qualquer imagem online: envie uma foto ou print e descubra na hora o código HEX, RGB e HSL exato. Grátis, sem cadastro e nada é enviado.",
+			"Seletor de cores online grátis: arraste pelo espectro ou pegue qualquer cor de uma imagem e copie o código HEX, RGB e HSL exato. Sem cadastro e nada é enviado.",
 		eyebrow: "Seletor de cores grátis · Sem cadastro · Nada é enviado",
-		heading: "O seletor de cores que descobre qualquer cor em uma foto",
+		heading: "Seletor de cores online grátis: escolha no espectro ou em qualquer imagem",
 		subhead:
 			"Um identificador de cores de imagem que mostra cada código HEX, RGB e HSL com precisão de pixel — com um buscador de cores complementares integrado e um gerador de cor aleatória para quando você só precisa de um ponto de partida.",
 		ctaPrimary: "Enviar uma imagem",
@@ -117,10 +117,10 @@ export const pt: Dictionary = {
 		],
 	},
 	tool: {
-		eyebrow: "Seletor de cores de imagem",
-		heading: "Envie uma imagem e pegue cada cor dela",
+		eyebrow: "Seletor de cores online",
+		heading: "Escolha uma cor no espectro ou em uma imagem",
 		intro:
-			"Este seletor de cores de imagem também funciona como identificador de cores para códigos HEX, RGB e HSL. Mova o cursor sobre a foto de exemplo abaixo para testar e depois envie a sua — nada é enviado para lugar nenhum, tudo é lido e analisado no seu navegador.",
+			"Arraste pelo espectro de cores, digite um código HEX ou mova o cursor sobre a foto de exemplo abaixo — depois envie sua própria imagem para pegar as cores dela. Cada cor traz os códigos HEX, RGB e HSL, e nada é enviado para lugar nenhum: as imagens são lidas e analisadas no seu navegador.",
 		uploadButton: "Enviar imagem",
 		pickFromScreen: "Pegar cor da tela",
 		captureScreenshot: "Capturar tela",
@@ -137,6 +137,9 @@ export const pt: Dictionary = {
 		colorB: "Cor B",
 		contrastPlaceholder: "Escolha duas cores da imagem (pelo menu de opções) ou cole códigos hexadecimais para compará-las.",
 		pickerHeading: "Seletor de cores",
+		spectrumAriaLabel: "Saturação e brilho — arraste ou use as setas do teclado",
+		hueAriaLabel: "Matiz",
+		hexInputAriaLabel: "Digite um código de cor HEX",
 		randomColor: "Cor aleatória",
 		hex: "HEX",
 		rgb: "RGB",

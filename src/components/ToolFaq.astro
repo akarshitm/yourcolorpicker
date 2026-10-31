@@ -1,0 +1,39 @@
+---
+import type { Locale } from "../i18n/config";
+import { getToolFaq, type ToolFaqKey } from "../i18n/toolFaqs";
+
+interface Props {
+	lang: Locale;
+	tool: ToolFaqKey;
+}
+
+const { lang, tool } = Astro.props;
+const faq = getToolFaq(lang, tool);
+
+const jsonLd = faq && {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faq.items.map((f) => ({
+		"@type": "Question",
+		name: f.q,
+		acceptedAnswer: { "@type": "Answer", text: f.a },
+	})),
+};
+---
+
+{
+	faq && (
+		<div class="mt-xl">
+			<h2 class="type-heading-md mb-md">{faq.heading}</h2>
+			<div class="flex flex-col gap-lg">
+				{faq.items.map((item) => (
+					<div>
+						<h3 class="type-heading-md mb-xs">{item.q}</h3>
+						<p class="type-body-md text-body max-w-[70ch]">{item.a}</p>
+					</div>
+				))}
+			</div>
+			<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+		</div>
+	)
+}

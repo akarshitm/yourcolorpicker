@@ -2,6 +2,7 @@
 import PageLayout from "../../layouts/PageLayout.astro";
 import PageHeader from "../PageHeader.astro";
 import RelatedTools from "../RelatedTools.astro";
+import ToolFaq from "../ToolFaq.astro";
 import MoreToolsBanner from "../MoreToolsBanner.astro";
 import PlayGamesBanner from "../PlayGamesBanner.astro";
 import type { Locale } from "../../i18n/config";
@@ -67,6 +68,8 @@ const t = useTranslations(lang);
 			<h2 class="type-heading-md mb-xs">{t.gradientMakerTool.explainerHeading}</h2>
 			<p class="type-body-md text-body">{t.gradientMakerTool.explainerBody}</p>
 		</div>
+
+		<ToolFaq lang={lang} tool="gradientMaker" />
 
 		<RelatedTools lang={lang} current="/gradient-maker" picks={["/color-mixer", "/shades-and-tints-generator", "/palette-generator"]} />
 	</section>

@@ -31,11 +31,11 @@ export const es: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Selector de color de imagen online — HEX y RGB | Your Color Picker",
+		metaTitle: "Selector de color online — HEX y RGB desde espectro o imagen",
 		metaDescription:
-			"Obtén el color de una imagen online: sube una foto o captura de pantalla y consigue al instante el código HEX, RGB y HSL exacto — gratis, sin registro, nada se sube.",
+			"Selector de color online gratis: arrastra por el espectro o toma cualquier color de una imagen y copia el código HEX, RGB y HSL exacto. Sin registro, nada se sube.",
 		eyebrow: "Selector de color gratis · Sin registro · Nada se sube nunca",
-		heading: "El selector de color que encuentra cualquier color en una foto",
+		heading: "Selector de color online gratis: elige del espectro o de cualquier imagen",
 		subhead:
 			"Un buscador de color desde imagen que obtiene cada código HEX, RGB y HSL con precisión de píxel — además de un buscador de color complementario integrado y un selector de color aleatorio para cuando solo necesites un punto de partida.",
 		ctaPrimary: "Subir una imagen",
@@ -114,10 +114,10 @@ export const es: Dictionary = {
 		],
 	},
 	tool: {
-		eyebrow: "Selector de color desde imagen",
-		heading: "Sube una imagen, obtén cada color en ella",
+		eyebrow: "Selector de color online",
+		heading: "Elige un color del espectro o de una imagen",
 		intro:
-			"Este selector de color de imagen funciona también como buscador de color desde imagen para códigos HEX, RGB y HSL. Mueve el cursor sobre la foto de ejemplo de abajo para probarlo, luego sube la tuya — nada se sube a ningún sitio, se lee y analiza íntegramente en tu navegador.",
+			"Arrastra por el espectro de colores, escribe un código HEX o mueve el cursor sobre la foto de ejemplo de abajo — luego sube tu propia imagen para tomar colores de ella. Cada color te da sus códigos HEX, RGB y HSL, y nada se sube a ningún sitio: las imágenes se leen y analizan íntegramente en tu navegador.",
 		uploadButton: "Subir imagen",
 		pickFromScreen: "Elegir de la pantalla",
 		captureScreenshot: "Capturar pantalla",
@@ -134,6 +134,9 @@ export const es: Dictionary = {
 		colorB: "Color B",
 		contrastPlaceholder: "Elige dos colores de la imagen (mediante su menú de opciones) o pega códigos hexadecimales para compararlos.",
 		pickerHeading: "Selector de color",
+		spectrumAriaLabel: "Saturación y brillo — arrastra o usa las flechas del teclado",
+		hueAriaLabel: "Tono",
+		hexInputAriaLabel: "Escribe un código de color HEX",
 		randomColor: "Color aleatorio",
 		hex: "HEX",
 		rgb: "RGB",

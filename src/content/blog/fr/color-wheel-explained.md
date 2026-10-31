@@ -1,6 +1,6 @@
 ---
-title: "Le Cercle Chromatique Expliqué : Couleurs Complémentaires, Analogues et Triadiques"
-description: "Un guide pratique des relations classiques du cercle chromatique : à quoi elles ressemblent, pourquoi elles fonctionnent et quand utiliser chacune dans vos palettes."
+title: "Cercle chromatique : explication et accords de couleurs (complémentaires, analogues, triadiques)"
+description: "Le cercle chromatique expliqué simplement : comment il fonctionne et comment créer des accords de couleurs complémentaires, analogues, triadiques et monochromatiques pour vos palettes."
 publishDate: 2026-09-06
 relatedTool:
   label: "Créer une palette à partir du cercle chromatique"
@@ -8,6 +8,8 @@ relatedTool:
 ---
 
 La plupart des palettes de couleurs qui « fonctionnent tout simplement » ne sont pas dues au hasard : elles reposent sur un petit nombre de relations formalisées depuis des siècles sur le cercle chromatique. Pas besoin d'un diplôme de design pour les utiliser ; il suffit de savoir quoi chercher.
+
+## Qu'est-ce que le cercle chromatique ?
 
 Le cercle chromatique dispose les teintes (les couleurs pures : rouge, orange, jaune, vert, bleu, violet et tout ce qui se trouve entre elles) en cercle, dans l'ordre où elles apparaissent dans un arc-en-ciel, bouclées d'un bout à l'autre. Une fois les couleurs disposées ainsi, quelques relations géométriques sur ce cercle produisent systématiquement des palettes qui paraissent réfléchies.
 
@@ -33,7 +35,7 @@ Les palettes triadiques paraissent souvent vives et ludiques, c'est pourquoi on 
 
 Techniquement, ce n'est pas une *relation* du cercle puisqu'elle n'utilise qu'une seule teinte, mais elle mérite d'être citée avec les autres : une palette monochromatique prend une seule couleur et ne fait varier que sa luminosité et sa saturation (les [teintes, tons et nuances](/fr/blog/tints-tones-shades) de cette couleur) — un bleu qui va du presque blanc au presque noir. C'est la façon la moins risquée de construire une palette qui ne détonne jamais, puisque toutes les couleurs partagent la même teinte. La contrepartie est l'inverse des complémentaires : il est très difficile de créer un fort contraste visuel de cette manière, donc les palettes monochromatiques fonctionnent mieux quand la hiérarchie passe par la taille, l'espacement ou le contraste plutôt que par la couleur seule.
 
-## Comment choisir
+## Comment choisir un accord de couleurs sur le cercle chromatique
 
 Aucune n'est « meilleure » dans l'absolu — chacune convient à un usage différent :
 
