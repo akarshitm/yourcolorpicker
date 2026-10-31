@@ -31,9 +31,9 @@ export const fr: Dictionary = {
 		copyrightSuffix: "yourcolorpicker.com",
 	},
 	hero: {
-		metaTitle: "Color Picker en ligne — Code HEX/RGB du spectre ou d'une image",
+		metaTitle: "Color Picker en ligne & détecteur de couleur — HEX/RGB d'une image",
 		metaDescription:
-			"Sélecteur de couleur en ligne gratuit : parcourez le spectre ou choisissez une couleur dans une image, puis copiez le code HEX, RGB et HSL exact. Sans inscription, rien n'est envoyé.",
+			"Détecteur de couleur et sélecteur de couleur en ligne gratuit : parcourez le spectre ou détectez une couleur dans une image, puis copiez le code HEX, RGB et HSL exact. Sans inscription.",
 		eyebrow: "Sélecteur de couleur gratuit · Sans inscription · Rien n'est jamais téléversé",
 		heading: "Sélecteur de couleur en ligne gratuit : choisissez dans le spectre ou dans une image",
 		subhead:

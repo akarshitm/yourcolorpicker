@@ -31,7 +31,7 @@ export const en = {
 	hero: {
 		metaTitle: "Color Picker Online — Pick HEX & RGB from Spectrum or Image",
 		metaDescription:
-			"Free online color picker: drag across the spectrum or pick any color from an image, then copy the exact HEX, RGB, and HSL code. No signup, nothing uploaded.",
+			"Free online color picker: drag across the spectrum, or upload a picture to find, match, and detect any color from the image. Copy the exact HEX, RGB, and HSL code.",
 		eyebrow: "Free color picker · No signup · Nothing ever uploaded",
 		heading: "Free online color picker — pick from the spectrum or any image",
 		subhead:
@@ -44,11 +44,11 @@ export const en = {
 		items: [
 			{
 				title: "A color picker from image, pixel by pixel",
-				body: "Hover the image and a zoomed loupe shows every individual pixel around your cursor, with the exact target pixel outlined — so this image color picker selects the one you mean, not an average of its neighbors.",
+				body: "Hover the image and a zoomed loupe shows every individual pixel around your cursor, with the exact target pixel outlined — so this picture color picker selects the one you mean, not an average of its neighbors.",
 			},
 			{
-				title: "A hex color finder and RGB color finder, together",
-				body: "Every pixel doubles as a hex code color finder, an RGB color finder, and an HSL reader at once — with its closest standard color name matched in one click.",
+				title: "A color finder and color detector for any image",
+				body: "Every pixel doubles as a hex color finder, an RGB color finder, and an HSL reader at once — and the color detector matches it to its closest standard color name in one click, so you can match a color from an image to a name or code.",
 			},
 			{
 				title: "A built-in complementary color finder",
@@ -175,6 +175,14 @@ export const en = {
 			{
 				q: "How do I find the HEX code of a color in an image?",
 				a: "Upload the image, then hover — or drag your finger on a phone — over any pixel. The hex color finder updates live as you move, and clicking that pixel opens options to copy its HEX, RGB, or HSL, save it, or view it full-screen.",
+			},
+			{
+				q: "How do I match a color from an image?",
+				a: "Upload the image and click the exact spot you want to match — the image color picker reads that pixel's HEX, RGB, and HSL values, so you can recreate the color precisely in Figma, CSS, Photoshop, or a paint-matching app. The zoomed loupe makes sure you pick the pixel you mean, not a blended neighbor.",
+			},
+			{
+				q: "Can I use this as a color detector?",
+				a: "Yes. Drop in any picture and point at a color — the color detector shows its code and its closest named color (like \"Steel Blue\" or \"Coral\"), so you can identify a color from an image even if you don't know what it's called. It works as a color finder from image on phones, too.",
 			},
 			{
 				q: "What is a complementary color finder?",
@@ -597,11 +605,11 @@ export const en = {
 		},
 	},
 	gradientMakerTool: {
-		title: "Gradient Maker — Build a CSS Gradient | Your Color Picker",
-		description: "Build a linear or radial CSS gradient from two or more colors, preview it live, and copy the exact CSS.",
+		title: "CSS Gradient Generator — Linear & Radial Gradient Maker",
+		description: "Free CSS gradient generator: blend 2–5 colors into a linear or radial gradient, preview it live, and copy the background CSS in one click.",
 		eyebrow: "Tool",
-		heading: "Gradient Maker",
-		intro: "Add colors, choose linear or radial, and copy the finished CSS gradient.",
+		heading: "CSS Gradient Generator",
+		intro: "Add colors, choose linear or radial, set the angle, and copy the finished CSS gradient — a free gradient maker with a live preview.",
 		explainerHeading: "Why use a CSS gradient?",
 		explainerBody:
 			"Gradients add depth to a flat background without loading an image — commonly used for hero sections, buttons, and overlays. Linear gradients blend along a straight line at any angle; radial gradients blend outward from a center point. Set your colors here and copy the exact CSS, ready to drop into any stylesheet.",
@@ -721,11 +729,11 @@ export const en = {
 		},
 	},
 	colorMixerTool: {
-		title: "Color Mixer — Blend Two Colors | Your Color Picker",
-		description: "Blend two colors together at any ratio to find the color between them, with live HEX, RGB, and HSL output.",
+		title: "Color Mixer — Online Color Mixing Tool to Blend Two Colors",
+		description: "Free online color mixing tool: blend two colors at any ratio and get the mixed color's HEX, RGB, and HSL codes instantly. No signup.",
 		eyebrow: "Tool",
-		heading: "Color Mixer",
-		intro: "Pick two colors and a blend ratio to find the color between them.",
+		heading: "Color Mixer — Online Color Mixing Tool",
+		intro: "Pick two colors and a blend ratio to mix them and find the exact color in between.",
 		explainerHeading: "How color mixing works here",
 		explainerBody:
 			"This mixer blends two colors in RGB space at whatever ratio you set, rather than simulating paint or pigment mixing — so a 50/50 blend of red and blue returns a clean purple, matching how colors combine on screen. Useful for finding a midpoint shade between a brand's two main colors, or previewing a hover state between two states.",
@@ -769,11 +777,11 @@ export const en = {
 		},
 	},
 	paletteGeneratorTool: {
-		title: "Palette Generator — Color Schemes | Your Color Picker",
+		title: "Color Palette Generator — Create Color Schemes From One Color",
 		description:
-			"Generate a full color palette from any base color — complementary, analogous, triadic, and monochromatic schemes, ready to export as CSS, Tailwind, or JSON.",
+			"Free color palette generator: create complementary, analogous, triadic, and monochromatic color schemes from one color, then export as CSS, Tailwind, or JSON.",
 		eyebrow: "Tool",
-		heading: "Palette Generator",
+		heading: "Color Palette Generator",
 		intro:
 			"Pick a base color or randomize one, then explore complementary, analogous, triadic, and monochromatic palettes built from it — export any of them when you're ready.",
 		explainerHeading: "Complementary, analogous, and triadic, explained",
